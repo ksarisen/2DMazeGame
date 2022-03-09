@@ -19,7 +19,11 @@ import java.awt.Point;
 
 /**
  * @author Reece Landry
+ * 
+ * Creates a level from a JSON file using game objects
+ * 
  */
+
 
 
 public class LevelGenerator extends JComponent {
