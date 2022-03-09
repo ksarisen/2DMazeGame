@@ -1,36 +1,62 @@
-package main;
+package MazeGame;
 import javax.swing.JPanel;
 import java.awt.*;
+import java.util.HashMap;
+
+import javax.swing.JFrame;
 
 public class GamePanel extends JPanel implements Runnable{
     // screen setting
-    final int originaltilesize = 16;// 16 by 16 tiles
-    final int scale = 3;
+    final int originaltilesize = 50;// 16 by 16 tiles
+    final int scale = 2;
     final int tilesize = originaltilesize *scale;
-    final int maxscreencol = 16;
-    final int maxscreenrow = 12;
+    final int maxscreencol = 6;
+    final int maxscreenrow = 3;
     final int screenwidth = tilesize * maxscreencol;
     final int screenheight = tilesize * maxscreenrow;
 
-    // we set the frame rate hear
+    // we set the frame rate here
 
     int fps = 30;
 
     keyhandler keyh = new keyhandler();
     Thread gameThread;
-
+    
+    public static LevelGenerator level;
+    private int currentLevel = 0;
+    
     // the default positions of the players.
     int playerx = 100;
     int playery = 100;
-    int playerspeed = 10;
+    int playerspeed = 5;
+    
+    //Store object mapping codes.
+    private HashMap <String, GameObject> codes = new HashMap<>();
+    
+    //create base url for level loading
+    private String basePath = "src/";
+    
+	//create level options
+	public String[] levels = new String[] {
+								"Level1.json",
+								"Level2.json",
+								"Level3.json"
+							};
+    
+    //Player player = new Player(0, "Player 1", 10,  Cell(), map )
+    
+    JFrame frame;
+    
 
-
-    public GamePanel(){
+    public GamePanel(JFrame f){
         this.setPreferredSize(new Dimension(screenwidth,screenheight));
-    this.setBackground(Color.black);
-    this.setDoubleBuffered(true);
-    this.addKeyListener(keyh);
-    this.setFocusable(true);
+       // this.setBackground(Color.black);
+        this.setDoubleBuffered(true);
+        this.addKeyListener(keyh);
+        this.setFocusable(true);
+        this.startGame();
+        //this.load(0);
+        this.frame = f;
     }
 
     public void startGameThread(){
@@ -72,6 +98,63 @@ public class GamePanel extends JPanel implements Runnable{
 
         }
     }
+    
+    /**
+	 * @author Reece Landry
+	 * @param l
+	 * Loads level #l
+	 */
+	public void load(int l) {
+		if(this.level != null) {
+			this.remove(this.level);
+			this.revalidate();
+		}
+		System.out.println("Create Gane");
+		//create level and build the game for the level #l
+		this.level = new LevelGenerator();
+		this.level.buildGame(this.basePath + this.levels[l]);
+		
+		this.add(this.level, BorderLayout.CENTER);
+		
+//		this.frame.pack();
+//		this.frame.revalidate();
+//		this.frame.repaint();
+		
+	}
+	
+	
+	/**
+	 * @author Reece Landry
+	 * Starts the game using the current Level
+	 */
+	public void startGame() {
+		this.load(this.currentLevel);
+	}
+	
+	
+	/**
+	 * @author Reece Landry
+	 * Switching the the next level or displays end of game message.
+	 */
+	public void nextLevel() {
+		//check if it is not the last level
+		if(this.currentLevel < this.levels.length - 1) {
+			this.currentLevel++;
+			this.load(this.currentLevel);
+		}else {
+			//TODO: show end game menu
+		}
+	}
+	
+	public void restartLevel() {
+		this.load(this.currentLevel);
+		
+	}
+	public LevelGenerator getCurrentLevel() {
+		return this.level;
+	}
+	
+	
     public void update(){
         if(keyh.uppressed){
             playery -= playerspeed;
@@ -88,12 +171,21 @@ public class GamePanel extends JPanel implements Runnable{
     }
     public void paintComponent (Graphics g){
         super.paintComponent(g);
-
         Graphics2D g2 = (Graphics2D) g;
         g2.setColor(Color.white);
         g2.fillRect(playerx,playery,tilesize,tilesize);
+        level.clearQueue();
+        for(GameObject[] y : level.gameObjects) {
+           for(GameObject x : y) {
+               level.queue(x);
+            }
+        }
+            
+        for(GameObject obj : level.queue) {
+        	g.drawImage(obj.texture.getTexture(), (int) obj.position.getX() * tilesize, (int) obj.position.getY() * tilesize, tilesize, tilesize, null);
+        }
+        level.clearQueue();
         g2.dispose();
-
     }
 
 }
