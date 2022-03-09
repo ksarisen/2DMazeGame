@@ -2,23 +2,20 @@ package objects;
 import MazeGame.GameObject;
 import Textures.Image;
 
+/**
+ * 
+ * @author Reece Landry
+ *	Creates Road object based on encoded string of directions
+ *	n = north
+ *	s = south
+ *	e = east
+ *	w = west
+ *	Strings must be in order of North, East, South, West
+ */
+
 public class Road extends GameObject {
 	
-	public enum RoadDirections {
-		NORTH,
-		SOUTH,
-		EAST,
-		WEST
-	}
-	
-	//TODO: Make road work
-	public Road(RoadDirections[] directions) {
-		System.out.println("This one happened");
-		super.texture = new Image("North-South.png");
-	}
-	
 	public Road(String directionCode) {
-		//convert code to name
 	
 		System.out.println(this.parseTextureName(directionCode));
 		super.texture = new Image("Textures/" + this.parseTextureName(directionCode));
