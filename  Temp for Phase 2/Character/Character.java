@@ -1,3 +1,11 @@
+package Character;
+import java.awt.Point;
+import Textures.Image;
+import objects.Road;
+import MazeGame.GameObject;
+import MazeGame.GamePanel;
+
+
 public class Character {
     private Maze map;
     private Cell location;
