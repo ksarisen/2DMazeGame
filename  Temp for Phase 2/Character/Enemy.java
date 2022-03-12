@@ -23,7 +23,7 @@ public class Enemy extends Character {
     }
 
     public int distance(Player p) {
-        return p.getLocation().X - this.getLocation().X + p.getLocation().Y - this.getLocation().Y;
+        return p.getLocation().x - this.getLocation().x + p.getLocation().y - this.getLocation().y;
     }
 
     public void chase(Player p) {
@@ -31,46 +31,46 @@ public class Enemy extends Character {
         if (distance(p) <= viewrange) {
             int random1 = rand.nextInt();
             if (random1 == 0) {
-                if (p.getLocation().X - this.getLocation().X < 0) {
+                if (p.getLocation().x - this.getLocation().x < 0) {
                     this.moveLeft();
                 } else {
                     this.moveRight();
                 }
             } else {
-                if (p.getLocation().Y - this.getLocation().Y < 0) {
+                if (p.getLocation().y - this.getLocation().y < 0) {
                     this.moveUp();
                 } else {
                     this.moveDown();
                 }
             }
         } else {
-            int ramdom2 = rand.nextInt(3);
-            if (ramdom2 == 0) {
+            int random2 = rand.nextInt(3);
+            if (random2 == 0) {
                 if (this.moveRight()) {
                     return;
                 }
-                ramdom2=1;
+                random2=1;
             }
-            if (ramdom2 == 1) {
+            if (random2 == 1) {
                 if(this.moveLeft())
                 {
                     return;
                 }
-                ramdom2=2;
+                random2=2;
             }
-            if (ramdom2 == 2) {
+            if (random2 == 2) {
                 if(this.moveUp())
                 {
                     return;
                 }
-                ramdom2=3;
+                random2=3;
             }
-            if (ramdom2 == 3) {
+            if (random2 == 3) {
                 if(this.moveDown())
                 {
                     return;
                 }
-                ramdom2=0;
+                random2=0;
             }
         }
         return;
