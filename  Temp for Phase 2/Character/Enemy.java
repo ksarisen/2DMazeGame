@@ -1,13 +1,16 @@
+package Character;
+
 import java.util.Random;
+import java.awt.Point;
+import Textures.Image;
+import MazeGame.GamePanel;
 
 public class Enemy extends Character {
     int viewrange;
 
-    public Enemy(int viewrange, int speed, Cell location, Maze map) {
+     public Enemy(int viewrange, int speed, Image texture, Point location, GamePanel map) {
+    	super(location, texture, speed, map);
         this.viewrange = viewrange;
-        this.setSpeed(speed);
-        this.setLocation(location);
-        this.setMap(map);
         return;
     }
 
