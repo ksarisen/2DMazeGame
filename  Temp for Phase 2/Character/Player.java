@@ -1,14 +1,18 @@
+package Character;
+import Rewards.Reward;
+import java.awt.Point;
+import MazeGame.GamePanel;
+import Textures.Image;
+
 public class Player extends Character{
     private int score;
     private String name;
 
-    public Player (int score,String name,int speed,Cell location,Maze map)
+    public Player (int score,String name,int speed,Point location, GamePanel map, Image texture)
     {
-        this.score=score;
-        this.name=name;
-        this.setSpeed(speed);
-        this.setLocation(location);
-        this.setMap(map);
+    	super(location, texture, speed, map);
+        this.score = score;
+        this.name = name;
         return;
     }
 
