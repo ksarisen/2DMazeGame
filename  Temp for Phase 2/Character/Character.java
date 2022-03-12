@@ -11,7 +11,15 @@ public class Character {
     private Point location;
     private int speed;
     private Image texture;
-
+    
+    /**
+     * Creates a character given the parameters
+     * @param location
+     * @param texture
+     * @param speed
+     * @param map
+     * @author Reece Landry
+     */
     public Character(Point location, Image texture, int speed, GamePanel map) {
     	this.location = location;
     	this.texture = texture;
