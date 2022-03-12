@@ -99,23 +99,43 @@ public class LevelGenerator extends JComponent {
 		}	catch (Exception e) {System.out.println("Error:" + e);}
 	}
 	
+	/**
+	 * Initializes a game object given the parameters
+	 * @param o
+	 * @param p
+	 * @author Reece Landry
+	 */
+	
 	public void setGameObject(GameObject o, Point p) {
-		System.out.println("Queue");
 		gameObjects[(int)p.getY()][(int)p.getX()] = o;
 		o.setPosition(p);
 		this.queue(o);
-		
 	}
+	
+	/**
+	 * Adds the object to the list of {@code GameObject}
+	 * @param obj
+	 * @author Reece Landry
+	 */
 	
 	public static void queue(GameObject obj) {
 		queue.add(obj);
 	}
 	
-	 public static void clearQueue() {
-	        queue.clear();
-	    }
+	/**
+	 * Clears the current list of {@code GameObject}
+	 * @author Reece Landry
+	 */
 	
+	public static void clearQueue() {
+		queue.clear();
+	}
 	
+	/**
+	 * Returns the coordinates of the player starting position
+	 * @return Point
+	 * @author Reece Landry
+	 */
 	public Point getPlayerStart() {
 		return this.playerStart;
 	}
