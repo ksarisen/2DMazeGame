@@ -43,11 +43,18 @@ public class LevelGenerator extends JComponent {
 	
 	public LevelGenerator() {
 		codes.put("-", new Grass());
-		codes.put("ne", new Road("nw"));
-		codes.put("ew", new Road("ew"));
+		codes.put("esw", new Road("esw"));
 		codes.put("es", new Road("es"));
+		codes.put("ew", new Road("ew"));
+		codes.put("nesw", new Road("nesw"));
+		codes.put("nes", new Road("nes"));
+		codes.put("new", new Road("new"));
+		codes.put("ne", new Road("ne"));
+		codes.put("nsw", new Road("nsw"));
+		codes.put("ns", new Road("ns"));
 		codes.put("nw", new Road("nw"));
 		codes.put("sw", new Road("sw"));
+		codes.put("o", new Road("o"));
 	}
 	
 	
@@ -103,18 +110,6 @@ public class LevelGenerator extends JComponent {
 	public static void queue(GameObject obj) {
 		queue.add(obj);
 	}
-	
-//	public static void drawQueue() {
-//		//Main.manager.level.getGraphics();
-//        //Graphics g = MazeGame.manager.level.getGraphics();
-//        
-//        //Collections.sort(queue, new QueueOrderer());
-//        for(GameObject obj : queue) {
-//            obj.draw(g);
-//        }
-//        
-//        clearQueue();
-//    }
 	
 	 public static void clearQueue() {
 	        queue.clear();
