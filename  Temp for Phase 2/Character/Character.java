@@ -7,16 +7,25 @@ import MazeGame.GamePanel;
 
 
 public class Character {
-    private Maze map;
-    private Cell location;
+    private GamePanel map;
+    private Point location;
     private int speed;
-    private img texture;
+    private Image texture;
 
-    public Cell getLocation() {
+    public Character(Point location, Image texture, int speed, GamePanel map) {
+    	this.location = location;
+    	this.texture = texture;
+    	this.speed = speed;
+    	this.map = map;
+    	
+    }
+
+
+    public Point getLocation() {
         return location;
     }
 
-    public img getTexture() {
+    public Image getTexture() {
         return texture;
     }
 
@@ -24,15 +33,15 @@ public class Character {
         return speed;
     }
 
-    public Maze getMap() {
+    public GamePanel getMap() {
         return map;
     }
 
-    public void setLocation(Cell location) {
+    public void setLocation(Point location) {
         this.location = location;
     }
 
-    public void setMap(Maze map) {
+    public void setMap(GamePanel map) {
         this.map = map;
     }
 
@@ -40,7 +49,7 @@ public class Character {
         this.speed = speed;
     }
 
-    public void setTexture(img texture) {
+    public void setTexture(Image texture) {
         this.texture = texture;
     }
 
