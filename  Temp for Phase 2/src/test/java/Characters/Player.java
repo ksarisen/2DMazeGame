@@ -1,6 +1,9 @@
 package test.java.Characters;
+
 import test.java.Rewards.Reward;
 import java.awt.Point;
+import java.util.ArrayList;
+
 import test.java.MazeGame.GamePanel;
 import test.java.Textures.Image;
 
@@ -32,16 +35,24 @@ public class Player extends Character{
         this.score = score;
     }
 
-    private Reward pickReward(RewardList rl, Player p)
+    private Reward pickReward(ArrayList<Reward> rl)
     {
-        for()
+        for(int i=0;i<rl.size();i++)
         {
-            if(p.getLocation()==r.getLocation)
+            if(super.getLocation()==rl.get(i).getLocation())
             {
-                return r;
+                return rl.get(i);
             }
         }
         return empty_r;
+    }
+    public Boolean collectReward(Reward r)
+    {
+        if(super.getLocation()==r.getLocation())
+        {
+            return true;
+        }
+        return false;
     }
 
     private int punishment( BarrierList bl, EnemyList el)

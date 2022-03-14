@@ -1,4 +1,7 @@
 package test.java.Rewards;
+import test.java.Characters.*;
+
+import java.awt.*;
 
 public abstract class Reward {
     public String name;
@@ -6,11 +9,11 @@ public abstract class Reward {
     private int value;
     private String description;
     private Image texture;
-    private Cell location;
+    private Point location;
     private int score;
 
 
-    public Reward(String name, int value, String description, Image texture, Cell location, int score) {
+    public Reward(String name, int value, String description, Image texture, Point location, int score) {
         this.name = name;
         this.value = value;
         this.description = description;
@@ -29,7 +32,7 @@ public abstract class Reward {
         return score;
     }
 
-    public Cell getLocation() {
+    public Point getLocation() {
         return location;
     }
 
@@ -49,7 +52,7 @@ public abstract class Reward {
         return name;
     }
 
-    public void setLocation(Cell location) {
+    public void setLocation(Point location) {
         this.location = location;
     }
 
