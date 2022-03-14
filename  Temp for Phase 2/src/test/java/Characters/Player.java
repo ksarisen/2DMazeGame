@@ -1,5 +1,7 @@
 package test.java.Characters;
 
+import test.java.MazeGame.keyhandler;
+import test.java.Rewards.Barrier;
 import test.java.Rewards.Reward;
 import java.awt.Point;
 import java.util.ArrayList;
@@ -35,6 +37,11 @@ public class Player extends Character{
         this.score = score;
     }
 
+    @Override
+    public Point getLocation() {
+        return super.getLocation();
+    }
+
     private Reward pickReward(ArrayList<Reward> rl)
     {
         for(int i=0;i<rl.size();i++)
@@ -44,7 +51,7 @@ public class Player extends Character{
                 return rl.get(i);
             }
         }
-        return empty_r;
+        return null;
     }
     public Boolean collectReward(Reward r)
     {
@@ -55,18 +62,18 @@ public class Player extends Character{
         return false;
     }
 
-    private int punishment( BarrierList bl, EnemyList el)
+    private int punishment(ArrayList<Barrier> bl, ArrayList<Enemy> el)
     {
-        for()
+        for(int i=0;i<bl.size();i++)
         {
-            if(this.getLocation()==b.getLocation)
+            if(super.getLocation()==bl.get(i).getLocation())
             {
-                return b.getScore;
+                return bl.get(i).getScore();
             }
         }
-        for()
+        for(int i=0;i<el.size();i++)
         {
-            if(this.getLocation()==e.getLocation)
+            if(super.getLocation()==el.get(i).getLocation())
             {
                 return 10;//the punishment score if player touch the enemy
             }
@@ -76,18 +83,36 @@ public class Player extends Character{
 
     private void scoreIncrease ( Reward r)
     {
-        if(r == empty_r)
+        if(r == null)
         {
             return;
         }
-        this.getScore()=this.getScore() + r.getScore();
+        this.score=this.score + r.getScore();
         return;
     }
 
     private void scoreDecrease ( int punishment_score)
     {
-        this.getScore()=this.getScore() - punishment_score;
+        this.score=this.score - punishment_score;
         return;
+    }
+
+    public void moveUp_player()
+    {
+        if(keyhandler.isUppressed()==true & super.moveUp());
+
+    }
+    public void moveDown_player()
+    {
+        if(keyhandler.isDownpressed()==true & super.moveDown());
+    }
+    public void moveRight_player()
+    {
+        if(keyhandler.isRightpressed()==true & super.moveRight());
+    }
+    public void moveLeft_player()
+    {
+        if(keyhandler.isLeftpressed()==true & super.moveLeft());
     }
 }
 
