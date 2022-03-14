@@ -2,27 +2,38 @@ package test.java.Rewards;
 
 public abstract class Reward {
     public String name;
-
+    import test.java.Textures.Image;
     private int value;
     private String description;
-    private img texture;
+    private Image texture;
     private Cell location;
+    private int score;
 
 
-    public Reward(String name, int value, String description, img texture, Cell location) {
+    public Reward(String name, int value, String description, Image texture, Cell location, int score) {
         this.name = name;
         this.value = value;
         this.description = description;
         this.texture = texture;
         this.location = location;
+        this.score=score;
     }
 
     //Accessors
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
     public Cell getLocation() {
         return location;
     }
 
-    public img getTexture() {
+    public Image getTexture() {
         return texture;
     }
 
@@ -54,7 +65,7 @@ public abstract class Reward {
         this.description = description;
     }
 
-    public void setTexture(img texture) {
+    public void setTexture(Image texture) {
         this.texture = texture;
     }
 
