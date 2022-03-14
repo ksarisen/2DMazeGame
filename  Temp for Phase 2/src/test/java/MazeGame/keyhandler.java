@@ -5,7 +5,23 @@ import java.awt.event.KeyListener;
 
 public class keyhandler implements KeyListener {
 
-    public boolean uppressed,downpressed,leftpressed,rightpressed;
+    public static boolean uppressed,downpressed,leftpressed,rightpressed;
+
+    public static boolean isDownpressed() {
+        return downpressed;
+    }
+
+    public static boolean isLeftpressed() {
+        return leftpressed;
+    }
+
+    public static boolean isRightpressed() {
+        return rightpressed;
+    }
+
+    public static boolean isUppressed() {
+        return uppressed;
+    }
 
     @Override
     public void keyTyped(KeyEvent e) {
