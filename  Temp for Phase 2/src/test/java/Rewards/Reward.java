@@ -1,3 +1,5 @@
+package test.java.Rewards;
+
 public abstract class Reward {
     public String name;
 

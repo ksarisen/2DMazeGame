@@ -1,4 +1,4 @@
-package MazeGame;
+package test.java.MazeGame;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;

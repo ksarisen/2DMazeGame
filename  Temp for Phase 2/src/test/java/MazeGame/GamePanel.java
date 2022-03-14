@@ -1,4 +1,4 @@
-package MazeGame;
+package test.java.MazeGame;
 import javax.swing.JPanel;
 import java.awt.*;
 import java.util.HashMap;

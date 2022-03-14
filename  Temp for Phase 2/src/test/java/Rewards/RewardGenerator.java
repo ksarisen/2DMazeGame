@@ -1,3 +1,5 @@
+package test.java.Rewards;
+
 import java.util.ArrayList;
 
 public class RewardGenerator {

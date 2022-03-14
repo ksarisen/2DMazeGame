@@ -1,11 +1,11 @@
-package Character;
+package test.java.Characters;
 
 import java.util.Random;
 import java.awt.Point;
-import Textures.Image;
-import MazeGame.GamePanel;
+import test.java.Textures.Image;
+import test.java.MazeGame.GamePanel;
 
-public class Enemy extends Character {
+public class Enemy extends java.lang.Character {
     int viewrange;
 
      public Enemy(int viewrange, int speed, Image texture, Point location, GamePanel map) {

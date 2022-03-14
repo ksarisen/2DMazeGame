@@ -1,6 +1,6 @@
-package objects;
-import MazeGame.GameObject;
-import Textures.Image;
+package test.java.Objects;
+import test.java.MazeGame.GameObject;
+import test.java.Textures.Image;
 
 /**
  * 

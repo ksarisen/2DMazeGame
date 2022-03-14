@@ -1,7 +1,7 @@
-package MazeGame;
+package test.java.MazeGame;
 import Character.Player;
-import objects.Grass;
-import objects.Road;
+import test.java.Objects.Grass;
+import test.java.Objects.Road;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.io.File;
 import java.io.FileReader;
-import java.util.Collections;
 import javax.swing.JComponent;
 import java.awt.Point;
 

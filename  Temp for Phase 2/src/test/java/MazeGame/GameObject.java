@@ -1,13 +1,9 @@
-package MazeGame;
+package test.java.MazeGame;
 
-import java.awt.color.*;
-
-import Textures.Image;
+import test.java.Textures.Image;
 
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Point;
-import java.awt.RenderingHints;
 
 
 public abstract class GameObject {

@@ -1,9 +1,8 @@
-package Character;
+package test.java.Characters;
+
 import java.awt.Point;
-import Textures.Image;
-import objects.Road;
-import MazeGame.GameObject;
-import MazeGame.GamePanel;
+import test.java.Textures.Image;
+import test.java.MazeGame.GamePanel;
 
 
 public class Character {
