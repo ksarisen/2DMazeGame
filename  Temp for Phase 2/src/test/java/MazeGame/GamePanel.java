@@ -2,6 +2,7 @@ package test.java.MazeGame;
 import javax.swing.JPanel;
 import java.awt.*;
 import java.util.HashMap;
+import test.java.Characters.Player;
 
 import javax.swing.JFrame;
 
@@ -24,11 +25,7 @@ public class GamePanel extends JPanel implements Runnable{
     
     public static LevelGenerator level;
     private int currentLevel = 0;
-    
-    // the default positions of the players.
-    int playerx = 100;
-    int playery = 100;
-    int playerspeed = 5;
+
     
     //Store object mapping codes.
     private HashMap <String, GameObject> codes = new HashMap<>();
@@ -42,9 +39,8 @@ public class GamePanel extends JPanel implements Runnable{
 								"Level2.json",
 								"Level3.json"
 							};
-    
-    //Player player = new Player(0, "Player 1", 10,  Cell(), map )
-    
+    // the default positions of the players.
+    Player player = new Player(0, "Player 1", 0, 0, new Point(100,100),this, texture_of_Player );
     JFrame frame;
     
 
@@ -153,27 +149,27 @@ public class GamePanel extends JPanel implements Runnable{
 	public LevelGenerator getCurrentLevel() {
 		return this.level;
 	}
-	
-	
+
+
     public void update(){
         if(keyh.uppressed){
-            playery -= playerspeed;
+            player.setLocation(player.getLocation().x,player.getLocation().y-player.getSpeedy());
         }
         else if(keyh.downpressed){
-            playery += playerspeed;
+            player.setLocation(player.getLocation().x,player.getLocation().y+player.getSpeedy());
         }
         else if(keyh.rightpressed){
-            playerx += playerspeed;
+            player.setLocation(player.getLocation().x+player.getSpeedx(),player.getLocation().y);
         }
         else if(keyh.leftpressed){
-            playerx -= playerspeed;
+            player.setLocation(player.getLocation().x-player.getSpeedx(),player.getLocation().y);
         }
     }
     public void paintComponent (Graphics g){
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         g2.setColor(Color.white);
-        g2.fillRect(playerx,playery,tilesize,tilesize);
+        g2.fillRect(player.getLocation().x,player.getLocation().y,tilesize,tilesize);
         level.clearQueue();
         for(GameObject[] y : level.gameObjects) {
            for(GameObject x : y) {
