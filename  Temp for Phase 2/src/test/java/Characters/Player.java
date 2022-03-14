@@ -9,17 +9,18 @@ import java.util.ArrayList;
 import test.java.MazeGame.GamePanel;
 import test.java.Textures.Image;
 
-public class Player extends Character{
+public class Player extends Character {
     private int score;
     private String name;
 
-    public Player (int score,String name,int speed,Point location, GamePanel map, Image texture)
+    public Player (int score,String name,int speedx,int speedy,Point location, GamePanel map, Image texture)
     {
-        super(location, texture, speed, map);
+        super(location, texture, speedx,speedy, map);
         this.score = score;
         this.name = name;
         return;
     }
+
 
     public void setName(String name) {
         this.name = name;
@@ -37,10 +38,6 @@ public class Player extends Character{
         this.score = score;
     }
 
-    @Override
-    public Point getLocation() {
-        return super.getLocation();
-    }
 
     private Reward pickReward(ArrayList<Reward> rl)
     {
