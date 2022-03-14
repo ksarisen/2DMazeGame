@@ -1,5 +1,5 @@
 package test.java.Rewards;
-import test.java.Characters.*;
+import test.java.Characters.Player;
 
 import java.awt.*;
 
@@ -74,7 +74,7 @@ public abstract class Reward {
 
     // If collectReward = true then player's score will increase but Idk if it should increase here or in the player class
     public void applyReward(Player player) {
-        player.collectReward(this) = true;
+        if(player.collectReward(this) == true);
     }
 
     // It should remove the reward that is located at the player's cell

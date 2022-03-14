@@ -1,5 +1,5 @@
 package test.java.MazeGame;
-import test.java.Characters.*;
+import test.java.Characters.Player;
 import test.java.Objects.Grass;
 import test.java.Objects.Road;
 
