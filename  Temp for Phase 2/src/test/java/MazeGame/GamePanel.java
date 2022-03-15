@@ -73,8 +73,7 @@ public class GamePanel extends JPanel implements Runnable{
         // this is the core of the game
         //the game loop
         while(gameThread != null){
-
-            //  System.out.println("The game loop is running");
+            
             update();
             repaint();
 
