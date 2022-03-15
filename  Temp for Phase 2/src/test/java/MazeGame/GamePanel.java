@@ -39,8 +39,12 @@ public class GamePanel extends JPanel implements Runnable{
 								"Level2.json",
 								"Level3.json"
 							};
-    // the default positions of the players.
-    Player player = new Player(0, "Player 1", 0, 0, new Point(100,100),this, texture_of_Player );
+
+    //get player start position
+    Point start = level.getPlayerStart();
+		
+	player = new Player(0, "Player 1", 5, start, this, new Image("Textures/Car.png"));
+
     JFrame frame;
     
 
@@ -112,10 +116,6 @@ public class GamePanel extends JPanel implements Runnable{
 		
 		this.add(this.level, BorderLayout.CENTER);
 		
-//		this.frame.pack();
-//		this.frame.revalidate();
-//		this.frame.repaint();
-		
 	}
 	
 	
@@ -168,8 +168,6 @@ public class GamePanel extends JPanel implements Runnable{
     public void paintComponent (Graphics g){
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        g2.setColor(Color.white);
-        g2.fillRect(player.getLocation().x,player.getLocation().y,tilesize,tilesize);
         level.clearQueue();
         for(GameObject[] y : level.gameObjects) {
            for(GameObject x : y) {
@@ -180,6 +178,7 @@ public class GamePanel extends JPanel implements Runnable{
         for(GameObject obj : level.queue) {
         	g.drawImage(obj.texture.getTexture(), (int) obj.position.getX() * tilesize, (int) obj.position.getY() * tilesize, tilesize, tilesize, null);
         }
+        g.drawImage(player.getTexture().getTexture(), (int) player.getLocation().getX() * tilesize , (int) player.getLocation().getY() * tilesize, tilesize, tilesize, null);
         level.clearQueue();
         g2.dispose();
     }
