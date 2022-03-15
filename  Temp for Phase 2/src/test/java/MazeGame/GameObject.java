@@ -15,12 +15,6 @@ public abstract class GameObject {
 	protected Image texture;
 	protected String path;
 	
-	
-	public void draw(Graphics g) {
-		
-		
-	}
-	
 	public void setTexture(Image t) {
 		this.texture = t;
 	}
