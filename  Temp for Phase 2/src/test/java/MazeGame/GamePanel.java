@@ -3,8 +3,8 @@ import javax.swing.JPanel;
 import java.awt.*;
 import java.util.HashMap;
 import test.java.Characters.Player;
-
 import javax.swing.JFrame;
+import test.java.Textures.Image;
 
 public class GamePanel extends JPanel implements Runnable{
     // screen setting
