@@ -78,17 +78,17 @@ public class Player extends Character {
         return 0;
     }
 
-    private void scoreIncrease ( Reward r)
+    public void scoreIncrease(Reward r)
     {
         if(r == null)
         {
             return;
         }
-        this.score=this.score + r.getScore();
+        this.score=this.score + r.getValue();
         return;
     }
 
-    private void scoreDecrease ( int punishment_score)
+    public void scoreDecrease ( int punishment_score)
     {
         this.score=this.score - punishment_score;
         return;

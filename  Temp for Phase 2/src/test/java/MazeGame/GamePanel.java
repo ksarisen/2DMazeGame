@@ -108,7 +108,7 @@ public class GamePanel extends JPanel implements Runnable{
 			this.remove(this.level);
 			this.revalidate();
 		}
-		System.out.println("Create Gane");
+		System.out.println("Create Game");
 		//create level and build the game for the level #l
 		this.level = new LevelGenerator();
 		this.level.buildGame(this.basePath + this.levels[l]);
@@ -129,7 +129,7 @@ public class GamePanel extends JPanel implements Runnable{
 	
 	/**
 	 * @author Reece Landry
-	 * Switching the the next level or displays end of game message.
+	 * Switching the next level or displays end of game message.
 	 */
 	public void nextLevel() {
 		//check if it is not the last level

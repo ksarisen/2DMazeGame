@@ -1,4 +1,6 @@
 package test.java.Rewards;
+import test.java.Characters.Player;
+import test.java.Textures.Image;
 import java.awt.Point;
 
 public abstract class Reward {
@@ -9,6 +11,15 @@ public abstract class Reward {
     private Image texture;
     private Point location;
 
+    /**
+     * Creates a reward given the parameters
+     * @param name
+     * @param value
+     * @param description
+     * @param texture
+     * @param location
+     * @author Kerem Sarisen
+     */
 
     public Reward(String name, int value, String description, Image texture, Point location) {
         this.name = name;
@@ -59,14 +70,17 @@ public abstract class Reward {
         this.texture = texture;
     }
 
-    // If collectReward = true then player's score will increase but Idk if it should increase here or in the player class
+    // If collectReward = true then player's score will increase.
     public void applyReward(Player player) {
-        player.collectReward(this) = true;
+        if (player.collectReward(this) == true) {
+            player.scoreIncrease(this);
+        }
     }
 
-    // It should remove the reward that is located at the player's cell
-    public void removeReward(Player player) {
+    // It decreases the player's score by the value of this reward's value.
+    public void cancelReward(Player player)
 
+        }
     }
 
 }
