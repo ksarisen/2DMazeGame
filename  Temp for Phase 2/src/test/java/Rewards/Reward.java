@@ -11,13 +11,14 @@ public abstract class Reward {
     private Image texture;
     private Point location;
 
-    /**
+    /*
      * Creates a reward given the parameters
      * @param name
      * @param value
      * @param description
      * @param texture
      * @param location
+     * @param score
      * @author Kerem Sarisen
      */
 
@@ -72,7 +73,7 @@ public abstract class Reward {
 
     // If collectReward = true then player's score will increase.
     public void applyReward(Player player) {
-        if (player.collectReward(this) == true) {
+        if (player.collectReward(this)) {
             player.scoreIncrease(this);
         }
     }
