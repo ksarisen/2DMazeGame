@@ -2,8 +2,9 @@ package test.java.MazeGame;
 import javax.swing.JPanel;
 import java.awt.*;
 import java.util.HashMap;
-
+import test.java.Characters.Player;
 import javax.swing.JFrame;
+import test.java.Textures.Image;
 
 public class GamePanel extends JPanel implements Runnable{
     // screen setting
@@ -24,11 +25,7 @@ public class GamePanel extends JPanel implements Runnable{
     
     public static LevelGenerator level;
     private int currentLevel = 0;
-    
-    // the default positions of the players.
-    int playerx = 100;
-    int playery = 100;
-    int playerspeed = 5;
+
     
     //Store object mapping codes.
     private HashMap <String, GameObject> codes = new HashMap<>();
@@ -42,9 +39,12 @@ public class GamePanel extends JPanel implements Runnable{
 								"Level2.json",
 								"Level3.json"
 							};
-    
-    //Player player = new Player(0, "Player 1", 10,  Cell(), map )
-    
+
+    //get player start position
+    Point start = level.getPlayerStart();
+		
+	player = new Player(0, "Player 1", 5, start, this, new Image("Textures/Car.png"));
+
     JFrame frame;
     
 
@@ -73,8 +73,7 @@ public class GamePanel extends JPanel implements Runnable{
         // this is the core of the game
         //the game loop
         while(gameThread != null){
-
-            //  System.out.println("The game loop is running");
+            
             update();
             repaint();
 
@@ -116,10 +115,6 @@ public class GamePanel extends JPanel implements Runnable{
 		
 		this.add(this.level, BorderLayout.CENTER);
 		
-//		this.frame.pack();
-//		this.frame.revalidate();
-//		this.frame.repaint();
-		
 	}
 	
 	
@@ -153,27 +148,25 @@ public class GamePanel extends JPanel implements Runnable{
 	public LevelGenerator getCurrentLevel() {
 		return this.level;
 	}
-	
-	
+
+
     public void update(){
         if(keyh.uppressed){
-            playery -= playerspeed;
+            player.setLocation(player.getLocation().x,player.getLocation().y-player.getSpeedy());
         }
         else if(keyh.downpressed){
-            playery += playerspeed;
+            player.setLocation(player.getLocation().x,player.getLocation().y+player.getSpeedy());
         }
         else if(keyh.rightpressed){
-            playerx += playerspeed;
+            player.setLocation(player.getLocation().x+player.getSpeedx(),player.getLocation().y);
         }
         else if(keyh.leftpressed){
-            playerx -= playerspeed;
+            player.setLocation(player.getLocation().x-player.getSpeedx(),player.getLocation().y);
         }
     }
     public void paintComponent (Graphics g){
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        g2.setColor(Color.white);
-        g2.fillRect(playerx,playery,tilesize,tilesize);
         level.clearQueue();
         for(GameObject[] y : level.gameObjects) {
            for(GameObject x : y) {
@@ -184,6 +177,7 @@ public class GamePanel extends JPanel implements Runnable{
         for(GameObject obj : level.queue) {
         	g.drawImage(obj.texture.getTexture(), (int) obj.position.getX() * tilesize, (int) obj.position.getY() * tilesize, tilesize, tilesize, null);
         }
+        g.drawImage(player.getTexture().getTexture(), (int) player.getLocation().getX() * tilesize , (int) player.getLocation().getY() * tilesize, tilesize, tilesize, null);
         level.clearQueue();
         g2.dispose();
     }

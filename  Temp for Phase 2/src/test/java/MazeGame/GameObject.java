@@ -5,21 +5,18 @@ import test.java.Textures.Image;
 import java.awt.Graphics;
 import java.awt.Point;
 
+/**
+ * Creates a {@code GameObject} that stores details of cells on the game board
+ * @author Reece Landry
+ */
 
 public abstract class GameObject {
 
 	public static final int SIZE = 50;
-	private String texturePath;
 	public Point position;
 	protected int index = 0;
 	protected Image texture;
 	protected String path;
-	
-	
-	public void draw(Graphics g) {
-		
-		
-	}
 	
 	public void setTexture(Image t) {
 		this.texture = t;
@@ -32,11 +29,6 @@ public abstract class GameObject {
 	}
 	public void setPosition(Point p) {
 		this.position = p;
-	}
-	
-	//TODO: allow for removing the item
-	public void remove() {
-		
 	}
 	
 }

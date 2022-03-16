@@ -1,5 +1,5 @@
 package test.java.MazeGame;
-import Character.Player;
+import test.java.Characters.Player;
 import test.java.Objects.Grass;
 import test.java.Objects.Road;
 
@@ -54,15 +54,18 @@ public class LevelGenerator extends JComponent {
 		codes.put("nw", new Road("nw"));
 		codes.put("sw", new Road("sw"));
 		codes.put("o", new Road("o"));
+		codes.put("pl", new PoliceStation("l"));
+		codes.put("pr", new PoliceStation("r"));
+		codes.put("bl", new Bank("l"));
+		codes.put("br", new Bank("r"));
 	}
 	
 	
 	/**
+	 * Creates a map based on the JSON file at levelPath
+	 * based on the decoding scheme defined in code
 	 * @author Reece Landry
 	 * @param levelPath
-	 * @param objectCodeMap
-	 * Creates a map based on the JSON file at levelPath
-	 * based on the coding scheme defied in objectCodeMap
 	 */
 	
 	public void buildGame(String levelPath) {
@@ -81,6 +84,10 @@ public class LevelGenerator extends JComponent {
 			this.HEIGHT= layout.size();
 			this.setPreferredSize(new Dimension(this.WIDTH * GameObject.SIZE, this.HEIGHT * GameObject.SIZE));
 			
+			JSONObject spawn = (JSONObject) object.get("start");
+			Point start = new Point(Integer.parseInt(spawn.get("x").toString()), Integer.parseInt(spawn.get("y").toString()));
+			this.playerStart = start;
+			
 			this.gameObjects = new GameObject[this.HEIGHT][this.WIDTH];
 			
 			for (int y = 0; y < this.HEIGHT; y++) {
@@ -88,8 +95,6 @@ public class LevelGenerator extends JComponent {
 				for(int x = 0; x < this.WIDTH; x++) {
 					if (codes.containsKey(xLayout.get(x))) {
 						//create gameObject based on code reference and create new instance.
-						System.out.println("Code: " + xLayout.get(x));
-						System.out.println(codes.get(xLayout.get(x)).getClass().getDeclaredConstructor(new Class[] {String.class}));
 						setGameObject(codes.get(xLayout.get(x)).getClass().getDeclaredConstructor(new Class[] {String.class}).newInstance((xLayout.get(x))) , new Point(x, y));
 					}
 				}
@@ -97,6 +102,7 @@ public class LevelGenerator extends JComponent {
 			
 		}	catch (Exception e) {System.out.println("Error:" + e);}
 	}
+	
 	
 	/**
 	 * Initializes a game object given the parameters

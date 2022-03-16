@@ -5,24 +5,27 @@ import test.java.Textures.Image;
 import test.java.MazeGame.GamePanel;
 
 
-public class Character {
+public abstract class Character {
     private GamePanel map;
     private Point location;
-    private int speed;
+    private int speedx;
+    private int speedy;
     private Image texture;
     
     /**
      * Creates a character given the parameters
      * @param location
      * @param texture
-     * @param speed
+     * @param speedx
+     * @param speedy
      * @param map
      * @author Reece Landry
      */
-    public Character(Point location, Image texture, int speed, GamePanel map) {
+    public Character(Point location, Image texture, int speedx, int speedy, GamePanel map) {
     	this.location = location;
     	this.texture = texture;
-    	this.speed = speed;
+    	this.speedx = speedx;
+        this.speedy = speedy;
     	this.map = map;
     	
     }
@@ -36,8 +39,12 @@ public class Character {
         return texture;
     }
 
-    public int getSpeed() {
-        return speed;
+    public int getSpeedx() {
+        return speedx;
+    }
+
+    public int getSpeedy() {
+        return speedy;
     }
 
     public GamePanel getMap() {
@@ -47,13 +54,19 @@ public class Character {
     public void setLocation(Point location) {
         this.location = location;
     }
+    public void setLocation(int x, int y) {
+        this.location = new Point(x,y);
+    }
 
     public void setMap(GamePanel map) {
         this.map = map;
     }
 
-    public void setSpeed(int speed) {
-        this.speed = speed;
+    public void setSpeedx(int speedx) {
+        this.speedx = speedx;
+    }
+    public void setSpeedy(int speedy) {
+        this.speedy = speedy;
     }
 
     public void setTexture(Image texture) {
@@ -61,34 +74,34 @@ public class Character {
     }
 
     public boolean moveUp (){
-        if(Cell(this.location.X,this.location.Y+1) != wall)
+        if(map(this.location.x,this.location.y+1) != wall)
         {
-            this.location.Y=this.location.Y+1;
+            this.location.y=this.location.y+1;
             return true;
         }
         return false;
     }
     public boolean moveDown (){
-        if(Cell(this.location.X,this.location.Y-1) != wall)
+        if(Cell(this.location.x,this.location.y-1) != wall)
         {
-            this.location.Y=this.location.Y-1;
+            this.location.y=this.location.y-1;
             return true;
         }
         return false;
     }
 
     public boolean moveLeft (){
-        if(Cell(this.location.X-1,this.location.Y) != wall)
+        if(Cell(this.location.x-1,this.location.y) != wall)
         {
-            this.location.X=this.location.X-1;
+            this.location.x=this.location.x-1;
             return true;
         }
         return false;
     }
     public boolean moveRight (){
-        if(Cell(this.location.X+1,this.location.Y) != wall)
+        if(Cell(this.location.x+1,this.location.y) != wall)
         {
-            this.location.X=this.location.X+1;
+            this.location.x=this.location.x+1;
             return true;
         }
         return false;
