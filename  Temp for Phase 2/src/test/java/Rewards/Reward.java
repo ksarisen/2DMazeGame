@@ -1,15 +1,16 @@
 package test.java.Rewards;
+import java.awt.Point;
 
 public abstract class Reward {
     public String name;
 
     private int value;
     private String description;
-    private img texture;
-    private Cell location;
+    private Image texture;
+    private Point location;
 
 
-    public Reward(String name, int value, String description, img texture, Cell location) {
+    public Reward(String name, int value, String description, Image texture, Point location) {
         this.name = name;
         this.value = value;
         this.description = description;
@@ -18,11 +19,11 @@ public abstract class Reward {
     }
 
     //Accessors
-    public Cell getLocation() {
+    public Point getLocation() {
         return location;
     }
 
-    public img getTexture() {
+    public Image getTexture() {
         return texture;
     }
 
@@ -38,7 +39,7 @@ public abstract class Reward {
         return name;
     }
 
-    public void setLocation(Cell location) {
+    public void setLocation(Point location) {
         this.location = location;
     }
 
@@ -54,7 +55,7 @@ public abstract class Reward {
         this.description = description;
     }
 
-    public void setTexture(img texture) {
+    public void setTexture(Image texture) {
         this.texture = texture;
     }
 
