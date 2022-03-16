@@ -78,9 +78,7 @@ public abstract class Reward {
     }
 
     // It decreases the player's score by the value of this reward's value.
-    public void cancelReward(Player player)
-
-        }
+    public void cancelReward(Player player) {
+        player.scoreDecrease(this.value);
     }
-
 }
