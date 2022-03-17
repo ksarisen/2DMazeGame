@@ -2,6 +2,7 @@ package main.java.Characters;
 
 import main.java.MazeGame.keyhandler;
 import main.java.Rewards.Barrier;
+import main.java.Rewards.RegularReward;
 import main.java.Rewards.Reward;
 import java.awt.Point;
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ public class Player extends Character {
     private int score;
     private String name;
     private  int health;
+    private int collection;
 
     public Player (int score,String name,int speedx,int speedy,Point location, GamePanel map, Image texture)
     {
@@ -20,11 +22,16 @@ public class Player extends Character {
         this.score = score;
         this.name = name;
         this.health=100;
+        this.collection=0;
         return;
     }
 
     public int getHealth() {
         return health;
+    }
+
+    public int getCollection() {
+        return collection;
     }
 
     public void setName(String name) {
@@ -44,16 +51,17 @@ public class Player extends Character {
     }
 
 
-    private Reward pickReward(ArrayList<Reward> rl)
+    private void pickReward(ArrayList<Reward> rl)
     {
         for(int i=0;i<rl.size();i++)
         {
             if(super.getLocation()==rl.get(i).getLocation())
             {
-                return rl.get(i);
+                if(rl.get(i) instanceof RegularReward)
+                    this.collection=this.collection+1;
+                this.score=this.score+rl.get(i).getScore();
             }
         }
-        return null;
     }
     public Boolean collectReward(Reward r)
     {
@@ -84,15 +92,7 @@ public class Player extends Character {
         }
     }
 
-    private void scoreIncrease ( Reward r)
-    {
-        if(r == null)
-        {
-            return;
-        }
-        this.score=this.score + r.getScore();
-        return;
-    }
+
 
 
     public void moveUp_player()
