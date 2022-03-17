@@ -10,10 +10,10 @@ import javax.swing.JFrame;
 public class GamePanel extends JPanel implements Runnable{
     // screen setting
     final int originaltilesize = 50;// 16 by 16 tiles
-    final int scale = 2;
+    final int scale = 1;
     final int tilesize = originaltilesize *scale;
-    final int maxscreencol = 6;
-    final int maxscreenrow = 3;
+    final int maxscreencol = 24;
+    final int maxscreenrow = 16;
     final int screenwidth = tilesize * maxscreencol;
     final int screenheight = tilesize * maxscreenrow;
 
@@ -36,9 +36,7 @@ public class GamePanel extends JPanel implements Runnable{
     
 	//create level options
 	public String[] levels = new String[] {
-								"Level1.json",
-								"Level2.json",
-								"Level3.json"
+								"Level1.json"
 							};
 
     //get player start position
