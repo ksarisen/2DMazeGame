@@ -10,7 +10,8 @@ import java.awt.*;
  */
 
 public class RegularReward extends Reward {
-    public RegularReward(String name, int value, String description, Image texture, Point location) {
-        super(name, value, description, texture, location);
+
+    public RegularReward(int value, Image texture, Point location) {
+        super(value, texture, location);
     }
 }

@@ -22,10 +22,8 @@ public abstract class Reward {
      * @author Kerem Sarisen
      */
 
-    public Reward(String name, int value, String description, Image texture, Point location) {
-        this.name = name;
+    public Reward(int value, Image texture, Point location) {
         this.value = value;
-        this.description = description;
         this.texture = texture;
         this.location = location;
     }
@@ -43,28 +41,12 @@ public abstract class Reward {
         return value;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public String getName() {
-        return name;
-    }
-
     public void setLocation(Point location) {
         this.location = location;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public void setValue(int value) {
         this.value = value;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public void setTexture(Image texture) {

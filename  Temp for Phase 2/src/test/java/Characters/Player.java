@@ -1,7 +1,7 @@
 package test.java.Characters;
 
 import test.java.MazeGame.keyhandler;
-import test.java.Rewards.Barrier;
+import test.java.MazeGame.Barrier;
 import test.java.Rewards.Reward;
 import java.awt.Point;
 import java.util.ArrayList;
