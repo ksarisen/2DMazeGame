@@ -1,7 +1,7 @@
 package main.java.Characters;
 
 import main.java.MazeGame.keyhandler;
-import main.java.Rewards.Barrier;
+import main.java.MazeGame.Barrier;
 import main.java.Rewards.RegularReward;
 import main.java.Rewards.Reward;
 import java.awt.Point;
