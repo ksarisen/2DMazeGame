@@ -1,6 +1,8 @@
 package main.java.MazeGame;
-import test.java.Characters.Player;
+import main.java.Characters.Player;
+import main.java.Objects.Bank;
 import main.java.Objects.Grass;
+import main.java.Objects.PoliceStation;
 import main.java.Objects.Road;
 
 import org.json.simple.JSONArray;
