@@ -19,7 +19,8 @@ public class EnemyGenerator {
     final int viewRange = 5;
     final int maxEnemyAmount = 5;
 
-    public EnemyGenerator() {
+    public EnemyGenerator(GamePanel map) {
+        this.map = map;
         for (int i = 0; i <= maxEnemyAmount; i++) {
             enemyList.add(generateEnemy());
         }
@@ -33,7 +34,7 @@ public class EnemyGenerator {
         int xCord = r.nextInt(maxCordX + 1);
         int yCord = r.nextInt(maxCordY + 1);
 
-        Enemy enemy = new Enemy(viewRange, speedX, speedY, enemyImg, new Point(xCord, yCord),/*needs GamePanel param*/ );
+        Enemy enemy = new Enemy(viewRange, speedX, speedY, enemyImg, new Point(xCord, yCord), map );
 
         for (int i = 0; i < enemyList.size(); i++) {
             if (enemy.getLocation() == enemyList.get(i).getLocation())
