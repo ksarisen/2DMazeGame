@@ -7,7 +7,7 @@ public class Main {
         win.setResizable(false);
         win.setTitle("name_to_be_decided");
 
-        GamePanel gamepanel = new GamePanel();
+        GamePanel gamepanel = new GamePanel(win);
         win.add(gamepanel);
         win.pack();
 
