@@ -1,6 +1,6 @@
-package objects;
-import MazeGame.GameObject;
-import Textures.Image;
+package main.java.Objects;
+import main.java.MazeGame.GameObject;
+import main.java.Textures.Image;
 
 /**
  * Creates object with grass image

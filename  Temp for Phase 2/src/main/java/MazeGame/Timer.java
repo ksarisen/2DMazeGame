@@ -1,4 +1,4 @@
-package MazeGame;
+package main.java.MazeGame;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

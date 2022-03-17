@@ -1,4 +1,4 @@
-package MazeGame;
+package main.java.MazeGame;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
