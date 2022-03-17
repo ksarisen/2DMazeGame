@@ -4,9 +4,8 @@ import main.java.MazeGame.GameObject;
 
 
 /**
- * 
+ * Creates object with Police Station image as described by constructor param
  * @author Reece Landry
- *	Creates object with Police Station image as described by constructor param
  */
 
 public class PoliceStation extends GameObject {

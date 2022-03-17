@@ -4,9 +4,10 @@ import main.java.MazeGame.GameObject;
 import main.java.Textures.Image;
 
 /**
- * 
+ * Creates object with Bank image as described by constructor param
+ 
  * @author Reece Landry
- *	Creates object with Bank image as described by constructor param
+ *	
  */
 
 public class Bank extends GameObject{

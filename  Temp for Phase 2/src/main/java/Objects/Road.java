@@ -4,13 +4,14 @@ import main.java.Textures.Image;
 
 /**
  * 
- * @author Reece Landry
+ * 
  *	Creates Road object based on encoded string of directions
  *	n = north
  *	s = south
  *	e = east
  *	w = west
  *	Strings must be in order of North, East, South, West
+ *  @author Reece Landry
  */
 
 public class Road extends GameObject {

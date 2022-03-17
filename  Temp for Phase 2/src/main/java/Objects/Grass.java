@@ -3,9 +3,9 @@ import main.java.MazeGame.GameObject;
 import main.java.Textures.Image;
 
 /**
- * 
+ * Creates object with grass image
  * @author Reece Landry
- *	Creates object with grass image
+ *	
  */
 
 public class Grass extends GameObject {
