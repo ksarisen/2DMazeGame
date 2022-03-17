@@ -16,8 +16,15 @@ public class RewardGenerator {
     final int regRewardVal = 10;
     final int bonusRewardVal = 25;
 
+    // Generating and adding the new rewards to the list
     public RewardGenerator() {
+        for (int i = 0; i <= maxRegReward; i++) {
+            rewardsList.add(generateRegularReward());
+        }
 
+        for (int i = 0; i <= maxBonusReward; i++) {
+            rewardsList.add(generateBonusReward());
+        }
     }
 
     Random r = new Random();
