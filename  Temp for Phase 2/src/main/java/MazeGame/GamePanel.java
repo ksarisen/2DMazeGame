@@ -7,7 +7,7 @@ import main.java.Textures.Image;
 import main.java.Characters.Player;
 import javax.swing.JFrame;
 
-ppublic class GamePanel extends JPanel implements Runnable{
+public class GamePanel extends JPanel implements Runnable{
     // screen setting
     final int originaltilesize = 50;// 16 by 16 tiles
     final int scale = 1;
