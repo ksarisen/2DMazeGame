@@ -1,11 +1,11 @@
 package main.java.Rewards;
-import test.java.Characters.Player;
+import main.java.Characters.Player;
+import main.java.Textures.Image;
 
 import java.awt.*;
 
 public abstract class Reward {
     public String name;
-    import main.java.Textures.Image;
     private int value;
     private String description;
     private Image texture;
@@ -78,7 +78,7 @@ public abstract class Reward {
     }
 
     // It should remove the reward that is located at the player's cell
-    public void removeReward(Player player) {
+    public void removeReward() {
 
     }
 
