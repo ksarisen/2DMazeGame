@@ -51,7 +51,7 @@ public class Player extends Character {
     }
 
 
-    private void pickReward(ArrayList<Reward> rl)
+    public void pickReward(ArrayList<Reward> rl)
     {
         for(int i=0;i<rl.size();i++)
         {
@@ -59,7 +59,7 @@ public class Player extends Character {
             {
                 if(rl.get(i) instanceof RegularReward)
                     this.collection=this.collection+1;
-                this.score=this.score+rl.get(i).getScore();
+                this.score=this.score+rl.get(i).getValue();
             }
         }
     }

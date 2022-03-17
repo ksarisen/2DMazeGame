@@ -1,6 +1,6 @@
 package main.java.Rewards;
 
-import test.java.Textures.Image;
+import main.java.Textures.Image;
 
 import java.awt.*;
 import java.util.ArrayList;

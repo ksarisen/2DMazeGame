@@ -1,24 +1,19 @@
-package test.java.Rewards;
-import test.java.Characters.Player;
-import test.java.Textures.Image;
+package main.java.Rewards;
+import main.java.Characters.Player;
+import main.java.Textures.Image;
 import java.awt.Point;
 
 public abstract class Reward {
-    public String name;
 
     private int value;
-    private String description;
     private Image texture;
     private Point location;
 
     /*
      * Creates a reward given the parameters
-     * @param name
      * @param value
-     * @param description
      * @param texture
      * @param location
-     * @param score
      * @author Kerem Sarisen
      */
 
@@ -53,15 +48,4 @@ public abstract class Reward {
         this.texture = texture;
     }
 
-    // If collectReward = true then player's score will increase.
-    public void applyReward(Player player) {
-        if (player.collectReward(this)) {
-            player.scoreIncrease(this);
-        }
-    }
-
-    // It decreases the player's score by the value of this reward's value.
-    public void cancelReward(Player player) {
-        player.scoreDecrease(this.value);
-    }
 }
