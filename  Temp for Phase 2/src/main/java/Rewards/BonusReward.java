@@ -1,5 +1,5 @@
-package test.java.Rewards;
-import test.java.Textures.Image;
+package main.java.Rewards;
+import main.java.Textures.Image;
 
 import java.awt.*;
 

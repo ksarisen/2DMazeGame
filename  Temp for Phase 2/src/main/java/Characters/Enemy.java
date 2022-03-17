@@ -1,15 +1,15 @@
-package test.java.Characters;
+package main.java.Characters;
 
 import java.util.Random;
 import java.awt.Point;
 
-import test.java.Textures.Image;
-import test.java.MazeGame.GamePanel;
+import main.java.Textures.Image;
+import main.java.MazeGame.GamePanel;
 
 public class Enemy extends Character {
     int viewrange;
 
-     public Enemy(int viewrange, int speedx,int speedy, Image texture, Point location, GamePanel map) {
+     public Enemy(int viewrange, int speedx, int speedy, Image texture, Point location, GamePanel map) {
     	super(location, texture, speedx,speedy, map);
         this.viewrange = viewrange;
         return;

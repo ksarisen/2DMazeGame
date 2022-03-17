@@ -1,11 +1,11 @@
-package test.java.Rewards;
+package main.java.Rewards;
 import test.java.Characters.Player;
 
 import java.awt.*;
 
 public abstract class Reward {
     public String name;
-    import test.java.Textures.Image;
+    import main.java.Textures.Image;
     private int value;
     private String description;
     private Image texture;

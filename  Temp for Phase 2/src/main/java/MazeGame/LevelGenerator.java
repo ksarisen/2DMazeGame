@@ -1,7 +1,7 @@
-package test.java.MazeGame;
+package main.java.MazeGame;
 import test.java.Characters.Player;
-import test.java.Objects.Grass;
-import test.java.Objects.Road;
+import main.java.Objects.Grass;
+import main.java.Objects.Road;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;

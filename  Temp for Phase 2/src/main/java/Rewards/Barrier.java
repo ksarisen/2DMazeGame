@@ -1,4 +1,4 @@
-package test.java.Rewards;
+package main.java.Rewards;
 
 import java.awt.*;
 

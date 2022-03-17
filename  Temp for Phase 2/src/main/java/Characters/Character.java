@@ -1,8 +1,9 @@
-package test.java.Characters;
+package main.java.Characters;
 
 import java.awt.Point;
-import test.java.Textures.Image;
-import test.java.MazeGame.GamePanel;
+
+import main.java.Textures.Image;
+import main.java.MazeGame.GamePanel;
 
 
 public abstract class Character {

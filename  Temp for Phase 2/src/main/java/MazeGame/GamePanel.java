@@ -1,10 +1,11 @@
-package test.java.MazeGame;
+package main.java.MazeGame;
 import javax.swing.JPanel;
 import java.awt.*;
 import java.util.HashMap;
+
+import main.java.Textures.Image;
 import test.java.Characters.Player;
 import javax.swing.JFrame;
-import test.java.Textures.Image;
 
 public class GamePanel extends JPanel implements Runnable{
     // screen setting
@@ -43,7 +44,7 @@ public class GamePanel extends JPanel implements Runnable{
     //get player start position
     Point start = level.getPlayerStart();
 		
-	player = new Player(0, "Player 1", 5, start, this, new Image("Textures/Car.png"));
+	player = new Player(0, "Player 1", 5,start, this, new Image("Textures/Car.png"));
 
     JFrame frame;
     
