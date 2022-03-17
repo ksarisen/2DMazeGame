@@ -41,12 +41,18 @@ public class RewardGenerator {
 
     // Generate a bonus reward at some random point
     public Reward generateBonusReward () {
-//        Image bonusRewardImg = new Image("Textures/money.png");
-//
-//        int xCord = r.nextInt(maxCordX + 1);
-//        int yCord = r.nextInt(maxCordY + 1);
-//
-//        return new BonusReward(bonusRewardVal, bonusRewardImg, new Point(xCord, yCord));
-    }
+        Image bonusRewardImg = new Image("Textures/money.png");
 
+        int xCord = r.nextInt(maxCordX + 1);
+        int yCord = r.nextInt(maxCordY + 1);
+
+        Reward bonusReward = new BonusReward(bonusRewardVal, bonusRewardImg, new Point(xCord, yCord));
+
+        // Checking if the generated reward's location is equal to another one's in the list, if it is, then we use recursion
+        for (int i = 0; i < rewardsList.size(); i++) {
+            if (bonusReward.getLocation() == rewardsList.get(i).getLocation())
+                return generateBonusReward();
+        }
+        return bonusReward;
+    }
 }
