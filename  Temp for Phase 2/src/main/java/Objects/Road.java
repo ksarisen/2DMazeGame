@@ -1,6 +1,6 @@
-package test.java.Objects;
-import test.java.MazeGame.GameObject;
-import test.java.Textures.Image;
+package main.java.Objects;
+import main.java.MazeGame.GameObject;
+import main.java.Textures.Image;
 
 /**
  * 
@@ -14,14 +14,56 @@ import test.java.Textures.Image;
  */
 
 public class Road extends GameObject {
+	private boolean north;
+	private boolean south;
+	private boolean east;
+	private boolean west;
 	
 	public Road(String directionCode) {
-	
+
+		this.east=false;
+		this.north=false;
+		this.south=false;
+		this.west=false;
 		System.out.println(this.parseTextureName(directionCode));
+		for(int i=0; i<directionCode.length(); i++)
+		{
+			char c=directionCode.charAt(i);
+			switch (c) {
+				case 'n':
+					this.north=true;
+					break;
+				case 'e':
+					this.east=true;
+					break;
+				case 's':
+					this.south=true;
+					break;
+				case 'w':
+					this.west=true;
+					break;
+			}
+		}
 		super.texture = new Image("Textures/" + this.parseTextureName(directionCode));
 		
 	}
-	
+
+	public boolean isEast() {
+		return east;
+	}
+
+	public boolean isNorth() {
+		return north;
+	}
+
+	public boolean isSouth() {
+		return south;
+	}
+
+	public boolean isWest() {
+		return west;
+	}
+
 	private String parseTextureName(String s) {
 		String textureName = "";
 		for (int i = 0; i < s.length(); i++) {

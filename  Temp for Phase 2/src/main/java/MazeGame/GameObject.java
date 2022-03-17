@@ -1,8 +1,7 @@
-package test.java.MazeGame;
+package main.java.MazeGame;
 
-import test.java.Textures.Image;
+import main.java.Textures.Image;
 
-import java.awt.Graphics;
 import java.awt.Point;
 
 /**

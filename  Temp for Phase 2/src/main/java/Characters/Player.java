@@ -1,26 +1,38 @@
-package test.java.Characters;
+package main.java.Characters;
 
-import test.java.MazeGame.keyhandler;
-import test.java.MazeGame.Barrier;
-import test.java.Rewards.Reward;
+import main.java.MazeGame.keyhandler;
+import main.java.Rewards.Barrier;
+import main.java.Rewards.RegularReward;
+import main.java.Rewards.Reward;
 import java.awt.Point;
 import java.util.ArrayList;
 
-import test.java.MazeGame.GamePanel;
-import test.java.Textures.Image;
+import main.java.MazeGame.GamePanel;
+import main.java.Textures.Image;
 
 public class Player extends Character {
     private int score;
     private String name;
+    private  int health;
+    private int collection;
 
     public Player (int score,String name,int speedx,int speedy,Point location, GamePanel map, Image texture)
     {
         super(location, texture, speedx,speedy, map);
         this.score = score;
         this.name = name;
+        this.health=100;
+        this.collection=0;
         return;
     }
 
+    public int getHealth() {
+        return health;
+    }
+
+    public int getCollection() {
+        return collection;
+    }
 
     public void setName(String name) {
         this.name = name;
@@ -39,16 +51,17 @@ public class Player extends Character {
     }
 
 
-    private Reward pickReward(ArrayList<Reward> rl)
+    private void pickReward(ArrayList<Reward> rl)
     {
         for(int i=0;i<rl.size();i++)
         {
             if(super.getLocation()==rl.get(i).getLocation())
             {
-                return rl.get(i);
+                if(rl.get(i) instanceof RegularReward)
+                    this.collection=this.collection+1;
+                this.score=this.score+rl.get(i).getScore();
             }
         }
-        return null;
     }
     public Boolean collectReward(Reward r)
     {
@@ -59,40 +72,28 @@ public class Player extends Character {
         return false;
     }
 
-    private int punishment(ArrayList<Barrier> bl, ArrayList<Enemy> el)
+    private void punishment(ArrayList<Barrier> bl, ArrayList<Enemy> el)
     {
         for(int i=0;i<bl.size();i++)
         {
             if(super.getLocation()==bl.get(i).getLocation())
             {
-                return bl.get(i).getScore();
+                this.health=this.health-20;
+                return;
             }
         }
         for(int i=0;i<el.size();i++)
         {
             if(super.getLocation()==el.get(i).getLocation())
             {
-                return 10;//the punishment score if player touch the enemy
+                this.health=this.health-20;
+                return;
             }
         }
-        return 0;
     }
 
-    public void scoreIncrease(Reward r)
-    {
-        if(r == null)
-        {
-            return;
-        }
-        this.score=this.score + r.getValue();
-        return;
-    }
 
-    public void scoreDecrease ( int punishment_score)
-    {
-        this.score=this.score - punishment_score;
-        return;
-    }
+
 
     public void moveUp_player()
     {

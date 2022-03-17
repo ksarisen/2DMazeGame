@@ -1,4 +1,4 @@
-package test.java.Textures;
+package main.java.Textures;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.HashMap;
