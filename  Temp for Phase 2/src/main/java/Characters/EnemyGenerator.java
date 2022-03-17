@@ -12,6 +12,8 @@ import java.util.Random;
 public class EnemyGenerator {
     private ArrayList<Reward> enemyList = new ArrayList<>();
 
+    GamePanel map;
+
     final int maxCordX = 25;
     final int maxCordY = 15;
     final int speedX = 1;
