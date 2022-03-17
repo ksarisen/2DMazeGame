@@ -2,6 +2,8 @@ package main.java.Characters;
 
 import java.awt.Point;
 
+import main.java.MazeGame.GameObject;
+import main.java.Objects.Road;
 import main.java.Textures.Image;
 import main.java.MazeGame.GamePanel;
 
@@ -74,36 +76,57 @@ public abstract class Character {
         this.texture = texture;
     }
 
-    public boolean moveUp (){
-        if(map(this.location.x,this.location.y+1) != wall)
-        {
-            this.location.y=this.location.y+1;
-            return true;
+    public boolean moveUp () {
+
+        if(map.level.gameObjects[(int)this.location.getX()][(int)this.location.getY()] instanceof Road &
+                map.level.gameObjects[(int)this.location.getX()][(int)this.location.getY()+1] instanceof Road) {
+            Road r = (Road) map.level.gameObjects[this.location.x][this.location.y + 1];
+            if (r.isSouth()) {
+                this.location.y=this.location.y+1;
+                System.out.println("CAN MOVE UP");
+                return true;
+            }
         }
         return false;
     }
-    public boolean moveDown (){
-        if(Cell(this.location.x,this.location.y-1) != wall)
-        {
-            this.location.y=this.location.y-1;
-            return true;
+    public boolean moveDown () {
+
+        if(map.level.gameObjects[(int)this.location.getX()][(int)this.location.getY()] instanceof Road &
+                map.level.gameObjects[(int)this.location.getX()][(int)this.location.getY()-1] instanceof Road) {
+            Road r = (Road) map.level.gameObjects[this.location.x][this.location.y - 1];
+            if (r.isNorth()) {
+                this.location.y=this.location.y-1;
+                System.out.println("CAN MOVE DOWN");
+                return true;
+            }
         }
         return false;
     }
 
-    public boolean moveLeft (){
-        if(Cell(this.location.x-1,this.location.y) != wall)
-        {
-            this.location.x=this.location.x-1;
-            return true;
+    public boolean moveLeft () {
+
+        if(map.level.gameObjects[(int)this.location.getX()][(int)this.location.getY()] instanceof Road &
+                map.level.gameObjects[(int)this.location.getX()-1][(int)this.location.getY()] instanceof Road) {
+            Road r = (Road) map.level.gameObjects[this.location.x-1][this.location.y];
+            if (r.isEast()) {
+                this.location.x=this.location.x-1;
+                System.out.println("CAN MOVE LEFT");
+                return true;
+            }
         }
         return false;
     }
-    public boolean moveRight (){
-        if(Cell(this.location.x+1,this.location.y) != wall)
-        {
-            this.location.x=this.location.x+1;
-            return true;
+
+    public boolean moveRight () {
+
+        if(map.level.gameObjects[(int)this.location.getX()][(int)this.location.getY()] instanceof Road &
+                map.level.gameObjects[(int)this.location.getX()+1][(int)this.location.getY()] instanceof Road) {
+            Road r = (Road) map.level.gameObjects[this.location.x+1][this.location.y];
+            if (r.isWest()) {
+                this.location.x=this.location.x+1;
+                System.out.println("CAN MOVE RIGHT");
+                return true;
+            }
         }
         return false;
     }
