@@ -7,55 +7,52 @@ import main.java.Textures.Image;
 import main.java.Characters.Player;
 import javax.swing.JFrame;
 
-public class GamePanel extends JPanel implements Runnable{
+ppublic class GamePanel extends JPanel implements Runnable{
     // screen setting
     final int originaltilesize = 50;// 16 by 16 tiles
     final int scale = 1;
     final int tilesize = originaltilesize *scale;
     final int maxscreencol = 24;
-    final int maxscreenrow = 16;
+    final int maxscreenrow = 17;
     final int screenwidth = tilesize * maxscreencol;
-    final int screenheight = tilesize * maxscreenrow;
-
+    final int screenheight = (tilesize * maxscreenrow);
+    
     // we set the frame rate here
-
     int fps = 30;
-
+    
     keyhandler keyh = new keyhandler();
     Thread gameThread;
     
     public static LevelGenerator level;
     private int currentLevel = 0;
-
+    
+    Timer timer = new Timer();
     
     //Store object mapping codes.
     private HashMap <String, GameObject> codes = new HashMap<>();
     
     //create base url for level loading
-    private String basePath = "src/";
+    private String basePath = "src/levels/";
     
 	//create level options
 	public String[] levels = new String[] {
 								"Level1.json"
 							};
-
-    //get player start position
-    Point start = level.getPlayerStart();
-		
-	Player player = new Player(0, "Player 1", 0,0,start, this, new Image("Textures/Car.png"));
-
+	
+	Player player = new Player(0, "Player 1", 0,0, new Point(0,0), this, new Image("Textures/Car.png"));
+	
     JFrame frame;
+    public MenuBar menu = new MenuBar();
     
-
     public GamePanel(JFrame f){
+        
         this.setPreferredSize(new Dimension(screenwidth,screenheight));
-       // this.setBackground(Color.black);
         this.setDoubleBuffered(true);
         this.addKeyListener(keyh);
         this.setFocusable(true);
-        this.startGame();
-        //this.load(0);
         this.frame = f;
+        this.startGame();
+        
     }
 
     public void startGameThread(){
@@ -66,7 +63,6 @@ public class GamePanel extends JPanel implements Runnable{
     @Override
     public void run(){
 
-
         double drawinterval = 1000000000/fps; // this is around 0.01666 seconds
         double nextdrawtime = System.nanoTime() + drawinterval;
         // this is the core of the game
@@ -75,8 +71,7 @@ public class GamePanel extends JPanel implements Runnable{
             
             update();
             repaint();
-
-
+            
             // this is to call the paint componant method.
 
             try{
@@ -110,21 +105,26 @@ public class GamePanel extends JPanel implements Runnable{
 		System.out.println("Create Game");
 		//create level and build the game for the level #l
 		this.level = new LevelGenerator();
+		System.out.println(this.basePath + this.levels[l]);
 		this.level.buildGame(this.basePath + this.levels[l]);
 		
-		this.add(this.level, BorderLayout.CENTER);
+		Point start = level.getPlayerStart();
 		
+		player.setLocation(start);
+		
+		this.frame.add(menu, BorderLayout.NORTH);
+		
+		this.add(this.level, BorderLayout.CENTER);
+			
 	}
-	
 	
 	/**
 	 * @author Reece Landry
 	 * Starts the game using the current Level
 	 */
-	public void startGame() {
+	public void startGame() {   
 		this.load(this.currentLevel);
 	}
-	
 	
 	/**
 	 * @author Reece Landry
@@ -142,14 +142,14 @@ public class GamePanel extends JPanel implements Runnable{
 	
 	public void restartLevel() {
 		this.load(this.currentLevel);
-		
 	}
+	
 	public LevelGenerator getCurrentLevel() {
 		return this.level;
 	}
 
-
     public void update(){
+    	menu.update(player.getScore(), timer.getTimeRemaining());
         if(keyh.uppressed){
             player.setLocation(player.getLocation().x,player.getLocation().y-player.getSpeedy());
         }
@@ -163,6 +163,7 @@ public class GamePanel extends JPanel implements Runnable{
             player.setLocation(player.getLocation().x-player.getSpeedx(),player.getLocation().y);
         }
     }
+    
     public void paintComponent (Graphics g){
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
