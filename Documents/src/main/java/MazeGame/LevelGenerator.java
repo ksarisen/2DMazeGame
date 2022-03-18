@@ -4,6 +4,7 @@ import Objects.Bank;
 import Objects.Grass;
 import Objects.PoliceStation;
 import Objects.Road;
+import Objects.Helicopter;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -54,6 +55,7 @@ public class LevelGenerator extends JComponent {
 		codes.put("nw", new Road("nw"));
 		codes.put("sw", new Road("sw"));
 		codes.put("o", new Road("o"));
+		codes.put("h"), new Helicopter("h");
 		codes.put("pl", new PoliceStation("l"));
 		codes.put("pr", new PoliceStation("r"));
 		codes.put("bl", new Bank("l"));
