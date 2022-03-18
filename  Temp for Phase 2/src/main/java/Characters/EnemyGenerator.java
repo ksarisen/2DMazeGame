@@ -10,7 +10,11 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class EnemyGenerator {
-    private ArrayList<Enemy> enemyList = new ArrayList<>();
+    private static ArrayList<Enemy> enemyList = new ArrayList<>();
+
+    public static ArrayList<Enemy> getEnemyList() {
+        return enemyList;
+    }
 
     GamePanel map;
 
