@@ -38,7 +38,7 @@ public class GamePanel extends JPanel implements Runnable{
     private HashMap <String, GameObject> codes = new HashMap<>();
 
     //create base URL for level loading
-    private String basePath = "src/Levels/";
+    private String basePath = "Levels/";
 
 	//create level options
 	public String[] levels = new String[] {
