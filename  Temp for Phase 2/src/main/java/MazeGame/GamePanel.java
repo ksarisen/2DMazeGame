@@ -6,6 +6,8 @@ import java.util.HashMap;
 
 import main.java.Characters.Enemy;
 import main.java.Characters.EnemyGenerator;
+import main.java.Rewards.Reward;
+import main.java.Rewards.RewardGenerator;
 import main.java.Textures.Image;
 import main.java.Characters.Player;
 import javax.swing.JFrame;
@@ -43,8 +45,13 @@ public class GamePanel extends JPanel implements Runnable{
 							};
 	
 	Player player = new Player(0, "Player 1", 0,0, new Point(0,0), this, new Image("Textures/Car.png"));
-    EnemyGenerator enemyGenerator=new EnemyGenerator(this);
-    ArrayList<Enemy> enemies= EnemyGenerator.getEnemyList();
+
+    EnemyGenerator enemyGenerator = new EnemyGenerator(this);
+    ArrayList<Enemy> enemies = enemyGenerator.getEnemyList();
+
+    RewardGenerator rewardGenerator = new RewardGenerator(this);
+    ArrayList<Reward> rewards = rewardGenerator.getRewardsList();
+
 
 	
     JFrame frame;
@@ -174,6 +181,7 @@ public class GamePanel extends JPanel implements Runnable{
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         level.clearQueue();
+
         for(GameObject[] y : level.gameObjects) {
            for(GameObject x : y) {
                level.queue(x);
@@ -184,10 +192,17 @@ public class GamePanel extends JPanel implements Runnable{
         	g.drawImage(obj.texture.getTexture(), (int) obj.position.getX() * tilesize, (int) obj.position.getY() * tilesize, tilesize, tilesize, null);
         }
         g.drawImage(player.getTexture().getTexture(), (int) player.getLocation().getX() * tilesize , (int) player.getLocation().getY() * tilesize, tilesize, tilesize, null);
+
         for(Enemy e : enemies)
         {
             g.drawImage(e.getTexture().getTexture(), (int) e.getLocation().getX() * tilesize , (int) e.getLocation().getY() * tilesize, tilesize, tilesize, null);
         }
+
+        for(Reward e : rewards)
+        {
+            g.drawImage(e.getTexture().getTexture(), (int) e.getLocation().getX() * tilesize , (int) e.getLocation().getY() * tilesize, tilesize, tilesize, null);
+        }
+
         level.clearQueue();
         g2.dispose();
     }

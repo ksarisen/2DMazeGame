@@ -10,7 +10,7 @@ import java.util.Random;
 
 public class RewardGenerator {
 
-    private static final ArrayList<Reward> rewardsList = new ArrayList<>();
+    private static ArrayList<Reward> rewardsList = new ArrayList<>();
 
     public static ArrayList<Reward> getRewardsList() {
         return rewardsList;
