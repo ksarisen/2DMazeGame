@@ -80,7 +80,7 @@ public class Player extends Character {
         {
             if(super.getLocation()==el.get(i).getLocation())
             {
-                this.score=this.score-20;
+                this.score=-1;
                 return;
             }
         }
