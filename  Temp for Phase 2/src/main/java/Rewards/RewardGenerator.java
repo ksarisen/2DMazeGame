@@ -1,5 +1,7 @@
 package main.java.Rewards;
 
+import main.java.Characters.Enemy;
+import main.java.MazeGame.GamePanel;
 import main.java.Textures.Image;
 
 import java.awt.*;
@@ -8,7 +10,14 @@ import java.util.Random;
 
 public class RewardGenerator {
 
-    private ArrayList<Reward> rewardsList = new ArrayList<>();
+    private static final ArrayList<Reward> rewardsList = new ArrayList<>();
+
+    public static ArrayList<Reward> getRewardsList() {
+        return rewardsList;
+    }
+
+    GamePanel map;
+
     final int maxRegReward = 10;
     final int maxBonusReward = 2;
     final int maxCordX = 25;
@@ -17,7 +26,8 @@ public class RewardGenerator {
     final int bonusRewardVal = 25;
 
     // Generating and adding the new rewards to the list
-    public RewardGenerator() {
+    public RewardGenerator(GamePanel map) {
+        this.map = map;
         for (int i = 0; i <= maxRegReward; i++) {
             rewardsList.add(generateRegularReward());
         }
@@ -36,11 +46,11 @@ public class RewardGenerator {
         int xCord = r.nextInt(maxCordX + 1);
         int yCord = r.nextInt(maxCordY + 1);
 
-        Reward regReward = new RegularReward(regRewardVal, regRewardImg, new Point(xCord, yCord));
+        Reward regReward = new RegularReward(regRewardVal, regRewardImg, new Point(xCord, yCord), map);
 
         // Checking if the generated reward's location is equal to another one's in the list, if it is, then we use recursion
-        for (int i = 0; i < rewardsList.size(); i++) {
-            if (regReward.getLocation() == rewardsList.get(i).getLocation())
+        for (Reward reward : rewardsList) {
+            if (regReward.getLocation() == reward.getLocation())
                 return generateRegularReward();
         }
         return regReward;
@@ -53,11 +63,11 @@ public class RewardGenerator {
         int xCord = r.nextInt(maxCordX + 1);
         int yCord = r.nextInt(maxCordY + 1);
 
-        Reward bonusReward = new BonusReward(bonusRewardVal, bonusRewardImg, new Point(xCord, yCord));
+        Reward bonusReward = new BonusReward(bonusRewardVal, bonusRewardImg, new Point(xCord, yCord), map);
 
         // Checking if the generated reward's location is equal to another one's in the list, if it is, then we use recursion
-        for (int i = 0; i < rewardsList.size(); i++) {
-            if (bonusReward.getLocation() == rewardsList.get(i).getLocation())
+        for (Reward reward : rewardsList) {
+            if (bonusReward.getLocation() == reward.getLocation())
                 return generateBonusReward();
         }
         return bonusReward;

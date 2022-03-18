@@ -1,10 +1,12 @@
 package main.java.Rewards;
 import main.java.Characters.Player;
+import main.java.MazeGame.GamePanel;
 import main.java.Textures.Image;
 import java.awt.Point;
 
 public abstract class Reward {
 
+    private GamePanel map;
     private int value;
     private Image texture;
     private Point location;
@@ -17,23 +19,16 @@ public abstract class Reward {
      * @author Kerem Sarisen
      */
 
-    public Reward(int value, Image texture, Point location) {
+    public Reward(int value, Image texture, Point location, GamePanel map) {
         this.value = value;
         this.texture = texture;
         this.location = location;
+        this.map = map;
     }
 
-    //Accessors
-    public Point getLocation() {
-        return location;
-    }
-
-    public Image getTexture() {
-        return texture;
-    }
-
-    public int getValue() {
-        return value;
+    //Mutators
+    public void setMap(GamePanel map) {
+        this.map = map;
     }
 
     public void setLocation(Point location) {
@@ -48,4 +43,20 @@ public abstract class Reward {
         this.texture = texture;
     }
 
+    //Accessors
+    public GamePanel getMap() {
+        return map;
+    }
+
+    public Point getLocation() {
+        return location;
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public Image getTexture() {
+        return texture;
+    }
 }
