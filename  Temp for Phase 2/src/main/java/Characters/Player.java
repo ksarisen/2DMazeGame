@@ -13,7 +13,6 @@ import main.java.Textures.Image;
 public class Player extends Character {
     private int score;
     private String name;
-    private  int health;
     private int collection;
 
     public Player (int score,String name,int speedx,int speedy,Point location, GamePanel map, Image texture)
@@ -21,13 +20,8 @@ public class Player extends Character {
         super(location, texture, speedx,speedy, map);
         this.score = score;
         this.name = name;
-        this.health=100;
         this.collection=0;
         return;
-    }
-
-    public int getHealth() {
-        return health;
     }
 
     public int getCollection() {
@@ -78,7 +72,7 @@ public class Player extends Character {
         {
             if(super.getLocation()==bl.get(i).getLocation())
             {
-                this.health=this.health-20;
+                this.score=this.score-20;
                 return;
             }
         }
@@ -86,7 +80,7 @@ public class Player extends Character {
         {
             if(super.getLocation()==el.get(i).getLocation())
             {
-                this.health=this.health-20;
+                this.score=this.score-20;
                 return;
             }
         }
