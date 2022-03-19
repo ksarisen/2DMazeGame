@@ -76,6 +76,8 @@ public abstract class Character {
     }
 
     public boolean moveUp () {
+        if(((int)this.location.getY()-1)<=0)
+            return false;
 
         if(map.level.gameObjects[(int)this.location.getY()][(int)this.location.getX()] instanceof Road &
                 map.level.gameObjects[(int)this.location.getY()-1][(int)this.location.getX()] instanceof Road) {
@@ -89,6 +91,8 @@ public abstract class Character {
         return false;
     }
     public boolean moveDown () {
+        if(((int)this.location.getY()+1)>=17)
+            return false;
 
         if(map.level.gameObjects[(int)this.location.getY()][(int)this.location.getX()] instanceof Road &
                 map.level.gameObjects[(int)this.location.getY()+1][(int)this.location.getX()] instanceof Road) {
@@ -104,6 +108,8 @@ public abstract class Character {
 
     public boolean moveLeft () {
 
+        if(((int)this.location.getX()-1)<0)
+            return false;
         if(map.level.gameObjects[(int)this.location.getY()][(int)this.location.getX()] instanceof Road &
                 map.level.gameObjects[(int)this.location.getY()][(int)this.location.getX()-1] instanceof Road) {
             Road r = (Road) map.level.gameObjects[this.location.y][this.location.x-1];
@@ -117,6 +123,8 @@ public abstract class Character {
     }
 
     public boolean moveRight () {
+        if(((int)this.location.getX()+1)>=24)
+            return false;
 
         if(map.level.gameObjects[(int)this.location.getY()][(int)this.location.getX()] instanceof Road &
                 map.level.gameObjects[(int)this.location.getY()][(int)this.location.getX()] instanceof Road) {
