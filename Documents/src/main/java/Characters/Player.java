@@ -1,6 +1,5 @@
 package Characters;
 
-import MazeGame.KeyHandler;
 import RewardsAndPunishments.PunishmentRoadBlock;
 import RewardsAndPunishments.RegularReward;
 import RewardsAndPunishments.Reward;
@@ -23,31 +22,41 @@ public class Player extends Character {
         this.name = name;
         this.collection = 0;
     }
+
+    /*
+     * It checks if the player has collected all 10 regular rewards and
+     * the location of the rescue helicopter same as the player's location
+     */
     public boolean check()
     {
         return collection == 10 & Objects.equals(super.getLocation(), new Point(1, 21));
     }
+
+    // Accessors
     public int getCollection() {
         return collection;
     }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getName() {
         return name;
     }
-
     public int getScore() {
         return score;
     }
 
+    // Mutators
     public void setScore(int score) {
         this.score = score;
     }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-
+    /*
+     * If the player's locations is same as reward's location then
+     * it makes the player collect the reward.
+     * Increases the score of the player by the worth of the reward's value
+     * If the reward is regular reward then it increases the collection by 1 to keep the count of regulars.
+     */
     public ArrayList<Reward> pickReward(ArrayList<Reward> rl)
     {
         for (Reward reward : rl) {
@@ -63,6 +72,10 @@ public class Player extends Character {
         return rl;
     }
 
+    /*
+     * If the location of the player same as the location of the punishment then
+     * it makes the players loose score by the worth of punishment's value
+     */
     public ArrayList<PunishmentRoadBlock> punishment(ArrayList<PunishmentRoadBlock> pl)
     {
         for (PunishmentRoadBlock punishment : pl) {
