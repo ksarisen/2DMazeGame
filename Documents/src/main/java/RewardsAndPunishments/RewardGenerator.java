@@ -31,56 +31,51 @@ public class RewardGenerator {
     public RewardGenerator(GamePanel map) {
         this.map = map;
         for (int i = 0; i <= maxRegReward; i++) {
-            rewardsList.add(generateRegularReward());
+            rewardsList.add(generateRegularReward(map));
         }
 
         for (int i = 0; i <= maxBonusReward; i++) {
-            rewardsList.add(generateBonusReward());
+            rewardsList.add(generateBonusReward(map));
         }
     }
 
     Random r = new Random();
 
     // Generate a regular reward at some  point
-    public Reward generateRegularReward () {
+    public Reward generateRegularReward (GamePanel map) {
         Image regRewardImg = new Image("gas.png");
 
-        int xCord = r.nextInt(maxCordX + 1);
-        int yCord = r.nextInt(maxCordY + 1);
+        int xCord = r.nextInt(maxCordX - 1);
+        int yCord = r.nextInt(maxCordY - 1);
 
         Reward regReward = new RegularReward(regRewardVal, regRewardImg, new Point(xCord, yCord), map);
 
         // Checking if the generated reward's location is equal to another one's in the list, if it is, then we use recursion
         for (Reward reward : rewardsList) {
-            if (regReward.getLocation() == reward.getLocation())
-                return generateRegularReward();
+            if (regReward.getLocation().equals(reward.getLocation()))
+                return generateRegularReward(map);
         }
-        for (GameObject grass : LevelGenerator.getGameObjectsList()) {
-            if (grass instanceof BarrierGrass)
-                return generateRegularReward();
-        }
+        if(!map.level.gameObjects[(int)regReward.getLocation().getY()][(int)regReward.getLocation().getX()].getClass().getSimpleName().equals("Road"))
+            return generateRegularReward(map);
         return regReward;
     }
 
     // Generate a bonus reward at some random point
-    public Reward generateBonusReward () {
+    public Reward generateBonusReward (GamePanel map) {
         Image bonusRewardImg = new Image("money.png");
 
-        int xCord = r.nextInt(maxCordX + 1);
-        int yCord = r.nextInt(maxCordY + 1);
+        int xCord = r.nextInt(maxCordX - 1);
+        int yCord = r.nextInt(maxCordY - 1);
 
         Reward bonusReward = new BonusReward(bonusRewardVal, bonusRewardImg, new Point(xCord, yCord), map);
 
         // Checking if the generated reward's location is equal to another one's in the list, if it is, then we use recursion
         for (Reward reward : rewardsList) {
             if (bonusReward.getLocation() == reward.getLocation())
-                return generateBonusReward();
+                return generateBonusReward(map);
         }
-        //NOT WORKING!!!
-        for (GameObject grass : LevelGenerator.getGameObjectsList()) {
-            if (grass instanceof BarrierGrass)
-                return generateBonusReward();
-        }
+        if(!map.level.gameObjects[(int)bonusReward.getLocation().getY()][(int)bonusReward.getLocation().getX()].getClass().getSimpleName().equals("Road"))
+            return generateBonusReward(map);
         return bonusReward;
     }
 }

@@ -29,29 +29,27 @@ public class EnemyGenerator {
     public EnemyGenerator(GamePanel map) {
         this.map = map;
         for (int i = 0; i <= maxEnemyAmount; i++) {
-            enemyList.add(generateEnemy());
+            enemyList.add(generateEnemy(map));
         }
     }
 
     Random r = new Random();
 
-    public Enemy generateEnemy() {
+    public Enemy generateEnemy(GamePanel map) {
         Image enemyImg = new Image("Police.png");
 
-        int xCord = r.nextInt(maxCordX + 1);
-        int yCord = r.nextInt(maxCordY + 1);
+        int xCord = r.nextInt(maxCordX -1);
+        int yCord = r.nextInt(maxCordY -1);
 
         Enemy enemy = new Enemy(viewRange, speedX, speedY, enemyImg, new Point(xCord, yCord), map );
 
         for (Enemy value : enemyList) {
             if (enemy.getLocation() == value.getLocation())
-                return generateEnemy();
+                return generateEnemy(map);
         }
-        //NOT WORKING!!
-        for (GameObject grass : LevelGenerator.getGameObjectsList()) {
-            if (grass instanceof BarrierGrass)
-                return generateEnemy();
-        }
+        if(!map.level.gameObjects[(int)enemy.getLocation().getY()][(int)enemy.getLocation().getX()].getClass().getSimpleName().equals("Road"))
+            return generateEnemy(map);
+
         return enemy;
     }
 }

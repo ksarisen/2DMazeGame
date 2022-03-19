@@ -29,31 +29,28 @@ public class PunishmentGenerator {
         this.map = map;
 
         for (int i = 0; i <= maxPunishment; i++) {
-            punishmentsList.add(generatePunishment());
+            punishmentsList.add(generatePunishment(map));
         }
     }
 
     Random r = new Random();
 
     // Generate a punishment road block at some random point
-    public PunishmentRoadBlock generatePunishment () {
+    public PunishmentRoadBlock generatePunishment (GamePanel map) {
         Image punishmentImg = new Image("Construction.png");
 
-        int xCord = r.nextInt(maxCordX + 1);
-        int yCord = r.nextInt(maxCordY + 1);
+        int xCord = r.nextInt(maxCordX - 1 );
+        int yCord = r.nextInt(maxCordY - 1);
 
         PunishmentRoadBlock newPunishment = new PunishmentRoadBlock(punishmentValue, punishmentImg, new Point(xCord, yCord), map);
 
         // Checking if the generated reward's location is equal to another one's in the list, if it is, then we use recursion
         for (PunishmentRoadBlock punishment : punishmentsList) {
-            if (newPunishment.getLocation() == punishment.getLocation())
-                return generatePunishment();
+            if (newPunishment.getLocation().equals( punishment.getLocation()))
+                return generatePunishment(map);
         }
-        //NOT WORKING!!
-        for (GameObject grass : LevelGenerator.getGameObjectsList()) {
-            if (grass instanceof BarrierGrass)
-                return generatePunishment();
-        }
+        if(!map.level.gameObjects[(int)newPunishment.getLocation().getY()][(int)newPunishment.getLocation().getX()].getClass().getSimpleName().equals("Road"))
+            return generatePunishment(map);
         return newPunishment;
     }
 }

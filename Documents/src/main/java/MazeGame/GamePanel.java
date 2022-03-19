@@ -48,14 +48,14 @@ public class GamePanel extends JPanel implements Runnable{
 
 	Player player = new Player(0, "Player 1", 0,0, new Point(0,0), this, new Image("Car.png"));
 
-    EnemyGenerator enemyGenerator = new EnemyGenerator(this);
-    ArrayList<Enemy> enemies = enemyGenerator.getEnemyList();
+    EnemyGenerator enemyGenerator;
+    ArrayList<Enemy> enemies;
 
-    PunishmentGenerator punishmentGenerator = new PunishmentGenerator(this);
-    ArrayList<PunishmentRoadBlock> punishments = punishmentGenerator.getPunishmentsList();
+    PunishmentGenerator punishmentGenerator;
+    ArrayList<PunishmentRoadBlock> punishments;
 
-    RewardGenerator rewardGenerator = new RewardGenerator(this);
-    ArrayList<Reward> rewards = rewardGenerator.getRewardsList();
+    RewardGenerator rewardGenerator;
+    ArrayList<Reward> rewards;
 
     JFrame frame;
     public MenuBar menu = new MenuBar();
@@ -128,6 +128,14 @@ public class GamePanel extends JPanel implements Runnable{
 
 		this.frame.add(menu, BorderLayout.NORTH);
 		this.add(this.level, BorderLayout.CENTER);
+        enemyGenerator = new EnemyGenerator(this);
+        enemies = enemyGenerator.getEnemyList();
+
+        punishmentGenerator = new PunishmentGenerator(this);
+        punishments = punishmentGenerator.getPunishmentsList();
+
+        rewardGenerator = new RewardGenerator(this);
+        rewards = rewardGenerator.getRewardsList();
 
 	}
 
