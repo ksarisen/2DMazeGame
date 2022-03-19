@@ -81,6 +81,7 @@ public class Player extends Character {
         for (PunishmentRoadBlock punishment : pl) {
             if (super.getLocation().equals( punishment.getLocation())) {
                 this.score -= punishment.getValue();
+                pl.remove(punishment);
                 return pl;
             }
         }
