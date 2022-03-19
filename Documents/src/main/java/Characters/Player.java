@@ -22,7 +22,13 @@ public class Player extends Character {
         this.name = name;
         this.collection=0;
     }
-
+    public boolean check()
+    {
+        if (collection == 10 & super.getLocation() ==new Point(1,21)){
+            return true;
+        }
+        return false;
+    }
     public int getCollection() {
         return collection;
     }
@@ -51,15 +57,12 @@ public class Player extends Character {
                 if (reward instanceof RegularReward)
                     this.collection = this.collection + 1;
                 this.score = this.score + reward.getValue();
+                rl.remove(reward);
             }
         }
     }
-    public Boolean collectReward(Reward r)
-    {
-        return super.getLocation() == r.getLocation();
-    }
 
-    private void punishment(ArrayList<Barrier> bl, ArrayList<Enemy> el)
+    public void punishment(ArrayList<Barrier> bl, ArrayList<Enemy> el)
     {
         for (Barrier barrier : bl) {
             if (super.getLocation() == barrier.getLocation()) {
