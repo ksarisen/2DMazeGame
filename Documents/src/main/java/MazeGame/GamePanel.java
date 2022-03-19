@@ -7,6 +7,7 @@ import java.util.HashMap;
 
 import Characters.Enemy;
 import Characters.EnemyGenerator;
+import Objects.Road;
 import RewardsAndPunishments.PunishmentGenerator;
 import RewardsAndPunishments.PunishmentRoadBlock;
 import RewardsAndPunishments.Reward;
@@ -33,6 +34,7 @@ public class GamePanel extends JPanel implements Runnable{
 
     public static LevelGenerator level;
     private int currentLevel = 0;
+    private  int check=0;
 
     Timer timer = new Timer();
 
@@ -161,13 +163,23 @@ public class GamePanel extends JPanel implements Runnable{
 
     public void update(){
     	menu.update(player.getScore(), timer.getTimeRemaining());
+        check++;
+        while(check==30){
+            check=0;
+        System.out.println(player.getLocation().x);
+        System.out.println(player.getLocation().y);
+        Road r = (Road) level.gameObjects[player.getLocation().y][player.getLocation().x];
+        System.out.println(r.isWest());
+        System.out.println(r.isEast());
+        System.out.println(r.isSouth());
+        System.out.println(r.isNorth());
         if(keyH.upPressed){
             if(player.moveUp())
             {
-                for(Enemy e:enemies)
-                {
-                    e.chase(player);
-                }
+                //for(Enemy e:enemies)
+                //{
+                //    e.chase(player);
+                //}
                 player.punishment(punishments);
                 player.check();
                 player.pickReward(rewards);
@@ -176,10 +188,10 @@ public class GamePanel extends JPanel implements Runnable{
         else if(keyH.downPressed){
             if(player.moveDown())
             {
-                for(Enemy e:enemies)
-                {
-                    e.chase(player);
-                }
+                //for(Enemy e:enemies)
+                //{
+                //    e.chase(player);
+                //}
                 player.punishment(punishments);
                 player.check();
                 player.pickReward(rewards);
@@ -188,10 +200,10 @@ public class GamePanel extends JPanel implements Runnable{
         else if(keyH.rightPressed){
             if(player.moveRight())
             {
-                for(Enemy e:enemies)
-                {
-                    e.chase(player);
-                }
+                //for(Enemy e:enemies)
+                //{
+                //    e.chase(player);
+                //}
                 player.punishment(punishments);
                 player.check();
                 player.pickReward(rewards);
@@ -200,15 +212,15 @@ public class GamePanel extends JPanel implements Runnable{
         else if(keyH.leftPressed){
             if(player.moveLeft())
             {
-                for(Enemy e:enemies)
-                {
-                    e.chase(player);
-                }
+                //for(Enemy e:enemies)
+                //{
+                //    e.chase(player);
+                //}
                 player.punishment(punishments);
                 player.check();
                 player.pickReward(rewards);
             }
-        }
+        }}
     }
 
     public void paintComponent (Graphics g){
