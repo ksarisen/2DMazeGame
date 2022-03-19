@@ -172,15 +172,8 @@ public class GamePanel extends JPanel implements Runnable{
     public void update(){
     	menu.update(player.getScore(), timer.getTimeRemaining());
         check++;
-        while(check==30){
-            check=0;
-        System.out.println(player.getLocation().x);
-        System.out.println(player.getLocation().y);
-        Road r = (Road) level.gameObjects[player.getLocation().y][player.getLocation().x];
-        System.out.println(r.isWest());
-        System.out.println(r.isEast());
-        System.out.println(r.isSouth());
-        System.out.println(r.isNorth());
+        if(check==20||check==40){
+        System.out.println(player.getLocation());
         if(keyH.upPressed){
             player.moveUp();
         }
@@ -195,10 +188,14 @@ public class GamePanel extends JPanel implements Runnable{
         }
             punishments=player.punishment(punishments);
         }
-        //for(Enemy e:enemies)
-        //{
-        //    e.chase(player);
-        //}
+        if(check==40)
+        {
+            check=0;
+            for(Enemy e:enemies)
+            {
+                e.chase(player);
+            }
+        }
         player.check();
         rewards=player.pickReward(rewards);
     }

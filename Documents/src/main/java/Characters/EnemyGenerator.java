@@ -23,8 +23,8 @@ public class EnemyGenerator {
     final int maxCordY = 15;
     final int speedX = 1;
     final int speedY = 1;
-    final int viewRange = 5;
-    final int maxEnemyAmount = 5;
+    final int viewRange = 8;
+    final int maxEnemyAmount = 2;
 
     public EnemyGenerator(GamePanel map) {
         this.map = map;
