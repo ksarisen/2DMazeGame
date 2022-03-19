@@ -16,17 +16,21 @@ public abstract class GameObject {
 	protected int index = 0;
 	protected Image texture;
 	protected String path;
-	
+
+	// Mutators
 	public void setTexture(Image t) {
 		this.texture = t;
 	}
+	public void setPosition(Point p) {
+		this.position = p;
+	}
+
+	// Accessors
 	public Image getTexture() {
 		return this.texture;
 	}
 	public Point getPosition() {
 		return this.position;
 	}
-	public void setPosition(Point p) {
-		this.position = p;
-	}
+
 }

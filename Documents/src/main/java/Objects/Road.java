@@ -3,8 +3,6 @@ import MazeGame.GameObject;
 import Textures.Image;
 
 /**
- * 
- * 
  *	Creates Road object based on encoded string of directions
  *	n = north
  *	s = south

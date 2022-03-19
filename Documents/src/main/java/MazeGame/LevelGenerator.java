@@ -73,7 +73,7 @@ public class LevelGenerator extends JComponent {
 	public void buildGame(String levelPath) {
 		JSONParser parser = new JSONParser();
 		
-		// Read json file
+		// Reads json file
 		try {
 			File file = new File(levelPath);
 			FileReader fileReader = new FileReader(file.getAbsoluteFile());
@@ -81,7 +81,7 @@ public class LevelGenerator extends JComponent {
 			JSONArray layout = (JSONArray) object.get("layout");
 			JSONArray first = (JSONArray) layout.get(0);
 			
-			// Set width and height
+			// Sets width and height
 			this.WIDTH = first.size();
 			this.HEIGHT= layout.size();
 			this.setPreferredSize(new Dimension(this.WIDTH * GameObject.SIZE, this.HEIGHT * GameObject.SIZE));

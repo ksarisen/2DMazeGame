@@ -5,9 +5,7 @@ import Textures.Image;
 
 /**
  * Creates object with Bank image as described by constructor param
- 
  * @author Reece Landry
- *	
  */
 
 public class Bank extends GameObject{

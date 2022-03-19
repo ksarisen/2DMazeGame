@@ -4,6 +4,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+/*
+ * Sets the timer
+ */
 public class Timer {
 	
 	private final int amountOfTime = 10;

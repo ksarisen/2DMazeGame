@@ -13,7 +13,6 @@ public class Main {
         win.add(gamepanel);
         win.pack();
 
-
         win.setLocationRelativeTo(null);
         win.setVisible(true);
 

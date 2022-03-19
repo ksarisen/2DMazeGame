@@ -20,7 +20,8 @@ public class MenuBar extends JPanel {
 	JLabel timer = new JLabel("Timer");
 	
 	JLabel gasMeter = new JLabel("Gas: 2/10");
-	
+
+	// Settings to arrange how the screen looks.
  	public MenuBar() {
  		
 		this.setLayout(new BorderLayout());
@@ -52,7 +53,8 @@ public class MenuBar extends JPanel {
 		
 		this.add(window, BorderLayout.CENTER);
 	 }
- 	
+
+	 // Updates the time for the user
  	public void update(int score, String time) {
  		
  		gasMeter.setText("" + score);
