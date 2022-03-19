@@ -1,6 +1,5 @@
-package Rewards;
+package RewardsAndPunishments;
 
-import Characters.Enemy;
 import MazeGame.GamePanel;
 import Textures.Image;
 

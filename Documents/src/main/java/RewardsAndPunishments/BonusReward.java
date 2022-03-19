@@ -1,4 +1,4 @@
-package Rewards;
+package RewardsAndPunishments;
 import MazeGame.GamePanel;
 import Textures.Image;
 

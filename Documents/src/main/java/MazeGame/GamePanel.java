@@ -7,8 +7,8 @@ import java.util.HashMap;
 
 import Characters.Enemy;
 import Characters.EnemyGenerator;
-import Rewards.Reward;
-import Rewards.RewardGenerator;
+import RewardsAndPunishments.Reward;
+import RewardsAndPunishments.RewardGenerator;
 import Textures.Image;
 import Characters.Player;
 import javax.swing.JFrame;

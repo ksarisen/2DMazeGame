@@ -1,5 +1,4 @@
-package Rewards;
-import Characters.Player;
+package RewardsAndPunishments;
 import MazeGame.GamePanel;
 import Textures.Image;
 import java.awt.Point;

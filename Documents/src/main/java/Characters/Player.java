@@ -1,9 +1,8 @@
 package Characters;
 
 import MazeGame.KeyHandler;
-import Rewards.Barrier;
-import Rewards.RegularReward;
-import Rewards.Reward;
+import RewardsAndPunishments.RegularReward;
+import RewardsAndPunishments.Reward;
 import java.awt.Point;
 import java.util.ArrayList;
 
@@ -59,14 +58,8 @@ public class Player extends Character {
         return super.getLocation() == r.getLocation();
     }
 
-    private void punishment(ArrayList<Barrier> bl, ArrayList<Enemy> el)
+    private void punishment(ArrayList<Enemy> el)
     {
-        for (Barrier barrier : bl) {
-            if (super.getLocation() == barrier.getLocation()) {
-                this.score = this.score - 20;
-                return;
-            }
-        }
         for (Enemy enemy : el) {
             if (super.getLocation() == enemy.getLocation()) {
                 this.score = -1;
@@ -75,7 +68,9 @@ public class Player extends Character {
         }
     }
     public void moveUp_player() {
-        if(KeyHandler.isUpPressed() == true & super.moveUp());
+        if(KeyHandler.isUpPressed() == true & super.moveUp()) {
+
+        }
 
     }
     public void moveDown_player() {

@@ -1,7 +1,5 @@
 package Characters;
 
-import Rewards.RegularReward;
-import Rewards.Reward;
 import Textures.Image;
 import MazeGame.GamePanel;
 
