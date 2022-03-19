@@ -12,15 +12,15 @@ public class PoliceStation extends GameObject {
 
 	public PoliceStation(String x) {
 		if (x.toLowerCase().contains("l")) {
-			super.texture = new Image("Textures/Police-Left.png");
+			super.texture = new Image("Police-Left.png");
 		} else if (x.toLowerCase().contains("r")) {
-			super.texture = new Image("Textures/Police-Right.png");
+			super.texture = new Image("Police-Right.png");
 		}else {
 			System.out.println("Error: Police Station Image not available");
 		}
 	}
 	public PoliceStation() {
-		super.texture = new Image("Textures/Police-Right.png");
+		super.texture = new Image("Police-Right.png");
 	}
 	
 }

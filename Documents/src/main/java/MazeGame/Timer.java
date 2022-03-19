@@ -23,7 +23,6 @@ public class Timer {
 		long timeSince = endTime.getTime() - currentTime.getTime();
 		long differenceInMinutes = (timeSince / (1000 * 60)) % 60;
 		long differenceInSeconds = timeSince / 1000 % 60;
-		System.out.println(differenceInMinutes + "   " +  differenceInMinutes);
 		
 		return differenceInMinutes + ":" + differenceInSeconds;
 	}

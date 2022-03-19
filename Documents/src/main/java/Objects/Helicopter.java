@@ -11,10 +11,10 @@ import Textures.Image;
 public class Helicopter extends GameObject {
 
 	public Helicopter(String x) {
-		super.texture = new Image("Textures/Helicopter.png");
+		super.texture = new Image("Helicopter.png");
 	}
 	public Helicopter() {
-		super.texture = new Image("Textures/Helicopter.png");
+		super.texture = new Image("Helicopter.png");
 	}
 	
 }

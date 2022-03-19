@@ -34,7 +34,7 @@ public class PunishmentGenerator {
 
     // Generate a punishment road block at some random point
     public PunishmentRoadBlock generatePunishment () {
-        Image punishmentImg = new Image("Textures/Construction.png");
+        Image punishmentImg = new Image("Construction.png");
 
         int xCord = r.nextInt(maxCordX + 1);
         int yCord = r.nextInt(maxCordY + 1);

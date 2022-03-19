@@ -40,7 +40,7 @@ public class RewardGenerator {
 
     // Generate a regular reward at some  point
     public Reward generateRegularReward () {
-        Image regRewardImg = new Image("Textures/gas.png");
+        Image regRewardImg = new Image("gas.png");
 
         int xCord = r.nextInt(maxCordX + 1);
         int yCord = r.nextInt(maxCordY + 1);
@@ -57,7 +57,7 @@ public class RewardGenerator {
 
     // Generate a bonus reward at some random point
     public Reward generateBonusReward () {
-        Image bonusRewardImg = new Image("Textures/money.png");
+        Image bonusRewardImg = new Image("money.png");
 
         int xCord = r.nextInt(maxCordX + 1);
         int yCord = r.nextInt(maxCordY + 1);

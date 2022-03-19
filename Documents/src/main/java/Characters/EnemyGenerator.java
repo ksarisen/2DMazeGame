@@ -33,7 +33,7 @@ public class EnemyGenerator {
     Random r = new Random();
 
     public Enemy generateEnemy() {
-        Image enemyImg = new Image("Textures/Police.png");
+        Image enemyImg = new Image("Police.png");
 
         int xCord = r.nextInt(maxCordX + 1);
         int yCord = r.nextInt(maxCordY + 1);

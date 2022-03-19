@@ -42,7 +42,7 @@ public class LevelGenerator extends JComponent {
 	private HashMap <String, GameObject> codes = new HashMap<>();
 	
 	public LevelGenerator() {
-		codes.put("-", new BarrierGrass());
+		codes.put("-", new BarrierGrass("s"));
 		codes.put("esw", new Road("esw"));
 		codes.put("es", new Road("es"));
 		codes.put("ew", new Road("ew"));

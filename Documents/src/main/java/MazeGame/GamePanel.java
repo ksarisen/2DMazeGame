@@ -47,7 +47,7 @@ public class GamePanel extends JPanel implements Runnable{
 								"Level1.json"
 							};
 
-	Player player = new Player(0, "Player 1", 0,0, new Point(0,0), this, new Image("Textures/Car.png"));
+	Player player = new Player(0, "Player 1", 0,0, new Point(0,0), this, new Image("Car.png"));
 
     EnemyGenerator enemyGenerator = new EnemyGenerator(this);
     ArrayList<Enemy> enemies = enemyGenerator.getEnemyList();
@@ -229,10 +229,6 @@ public class GamePanel extends JPanel implements Runnable{
             }
         }
 
-        for(GameObject obj : level.queue) {
-        	g.drawImage(obj.texture.getTexture(), (int) obj.position.getX() * tileSize, (int) obj.position.getY() * tileSize, tileSize, tileSize, null);
-        }
-
         g.drawImage(player.getTexture().getTexture(), (int) player.getLocation().getX() * tileSize, (int) player.getLocation().getY() * tileSize, tileSize, tileSize, null);
 
         for(Enemy e : enemies) {
@@ -245,6 +241,10 @@ public class GamePanel extends JPanel implements Runnable{
 
         for(PunishmentRoadBlock e : punishments) {
             g.drawImage(e.getTexture().getTexture(), (int) e.getLocation().getX() * tileSize, (int) e.getLocation().getY() * tileSize, tileSize, tileSize, null);
+        }
+        
+        for(GameObject obj : level.queue) {
+        	g.drawImage(obj.texture.getTexture(), (int) obj.position.getX() * tileSize, (int) obj.position.getY() * tileSize, tileSize, tileSize, null);
         }
 
         level.clearQueue();

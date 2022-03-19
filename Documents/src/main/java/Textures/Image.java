@@ -24,7 +24,7 @@ public class Image {
 		// Check if texture is already created
 		if (textures.get(path) != null) {
 			// Get texture from list of already downloaded
-			this.texture = this.textures.get(path);
+			this.texture = this.textures.get("src/main/java/Textures/" + path);
 		} else {
 			try {
 				// Get current thread and find file path
@@ -39,12 +39,13 @@ public class Image {
 				// Set texture to downloaded texture
 				this.texture = texture;
 
-			} catch (Exception e) { System.out.println(e); }
+			} catch (Exception e) { e.printStackTrace(); }
 		}
 	}
 	
 	public BufferedImage getTexture() {
 		return this.texture;
+		
 	}
 	
 }

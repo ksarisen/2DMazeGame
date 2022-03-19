@@ -10,8 +10,7 @@ import Textures.Image;
 
 public class BarrierGrass extends GameObject {
 
-	public BarrierGrass() {
-		super.texture = new Image("Textures/Grass.png");
+	public BarrierGrass(String s) {
+		super.texture = new Image("Grass.png");
 	}
-	
 }

@@ -27,8 +27,6 @@ public class Road extends GameObject {
 		this.south = false;
 		this.west = false;
 
-		System.out.println(this.parseTextureName(directionCode));
-
 		for(int i = 0; i < directionCode.length(); i++)
 		{
 			char c = directionCode.charAt(i);
@@ -45,9 +43,14 @@ public class Road extends GameObject {
 				case 'w':
 					this.west = true;
 					break;
+				case 'o':
+					this.west = true;
+					this.north = true;
+					this.south = true;
+					this.east = true;
 			}
 		}
-		super.texture = new Image("Textures/" + this.parseTextureName(directionCode));
+		super.texture = new Image("" + this.parseTextureName(directionCode));
 		
 	}
 
@@ -83,6 +86,9 @@ public class Road extends GameObject {
 				break;
 			case 'w':
 				textureName += "West";
+				break;
+			case 'o':
+				textureName += "Open";
 				break;
 			}
 			if (i != s.length() - 1) {
