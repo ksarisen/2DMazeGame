@@ -1,8 +1,5 @@
 package Characters;
 
-import MazeGame.GameObject;
-import MazeGame.LevelGenerator;
-import Objects.BarrierGrass;
 import Textures.Image;
 import MazeGame.GamePanel;
 
@@ -26,6 +23,7 @@ public class EnemyGenerator {
     final int viewRange = 5;
     final int maxEnemyAmount = 5;
 
+    // Constructor that adds the generated enemies to the list that is declared to keep them
     public EnemyGenerator(GamePanel map) {
         this.map = map;
         for (int i = 0; i <= maxEnemyAmount; i++) {
@@ -35,11 +33,15 @@ public class EnemyGenerator {
 
     Random r = new Random();
 
+    /*
+     * It generates enemy randomly on the map.
+     * It also makes sure that each enemy has different location than any other enemies.
+     */
     public Enemy generateEnemy(GamePanel map) {
         Image enemyImg = new Image("Police.png");
 
-        int xCord = r.nextInt(maxCordX -1);
-        int yCord = r.nextInt(maxCordY -1);
+        int xCord = r.nextInt(maxCordX - 1);
+        int yCord = r.nextInt(maxCordY - 1);
 
         Enemy enemy = new Enemy(viewRange, speedX, speedY, enemyImg, new Point(xCord, yCord), map );
 
@@ -49,7 +51,6 @@ public class EnemyGenerator {
         }
         if(!map.level.gameObjects[(int)enemy.getLocation().getY()][(int)enemy.getLocation().getX()].getClass().getSimpleName().equals("Road"))
             return generateEnemy(map);
-
         return enemy;
     }
 }

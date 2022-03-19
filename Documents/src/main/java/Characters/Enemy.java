@@ -15,19 +15,24 @@ public class Enemy extends Character {
         return;
     }
 
-
+    // Mutator method
     public int getViewRange() {
         return viewRange;
     }
-
-    public void setViewRange(int viewRange) {
-        this.viewRange = viewRange;
-    }
-
     public int getDistance(Player p) {
         return p.getLocation().x - super.getLocation().x + p.getLocation().y - super.getLocation().y;
     }
 
+    // Accessor method
+    public void setViewRange(int viewRange) {
+        this.viewRange = viewRange;
+    }
+
+    /*
+     * It first checks the difference between the location of the player and the location of the enemy
+     * Then, if it is less or equal then enemy's view range, enemy gets closer to the player by 1 cell
+     * each time player moves.
+     */
     public void chase(Player p) {
         Random rand = new Random();
         boolean check = true;

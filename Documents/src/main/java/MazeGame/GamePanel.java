@@ -165,6 +165,16 @@ public class GamePanel extends JPanel implements Runnable{
 		this.load(this.currentLevel);
 	}
 
+    //Accessors
+    public ArrayList<Enemy> getEnemiesList () {
+        return enemies;
+    }
+    public ArrayList<PunishmentRoadBlock> getPunishmentsList () {
+        return punishments;
+    }
+    public ArrayList<Reward> getRewardsList () {
+        return rewards;
+    }
 	public LevelGenerator getCurrentLevel() {
 		return this.level;
 	}
