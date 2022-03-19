@@ -114,7 +114,7 @@ public class LevelGenerator extends JComponent {
 	public void setGameObject(GameObject o, Point p) {
 		gameObjects[(int)p.getY()][(int)p.getX()] = o;
 		o.setPosition(p);
-		this.queue(o);
+		LevelGenerator.queue(o);
 	}
 	
 	/**

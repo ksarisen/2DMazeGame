@@ -50,8 +50,8 @@ public class Road extends GameObject {
 					this.east = true;
 			}
 		}
-		super.texture = new Image("" + this.parseTextureName(directionCode));
-		
+		Image i = new Image("" + this.parseTextureName(directionCode));
+		super.setTexture(i);
 	}
 
 	public boolean isEast() {

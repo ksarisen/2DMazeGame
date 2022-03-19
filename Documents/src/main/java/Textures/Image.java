@@ -24,13 +24,13 @@ public class Image {
 		// Check if texture is already created
 		if (textures.get(path) != null) {
 			// Get texture from list of already downloaded
-			this.texture = this.textures.get("src/main/java/Textures/" + path);
+			this.texture = this.textures.get("" + path);
 		} else {
 			try {
 				// Get current thread and find file path
 				ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
 				File file = new File(classLoader.getResource("" + path).toURI());
-
+				
 				// Read the file
 				BufferedImage texture = ImageIO.read(file);
 				// Add the texture to list of all textures

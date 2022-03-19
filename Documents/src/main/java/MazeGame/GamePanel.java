@@ -36,9 +36,6 @@ public class GamePanel extends JPanel implements Runnable{
 
     Timer timer = new Timer();
 
-    //Store object mapping codes.
-    private HashMap <String, GameObject> codes = new HashMap<>();
-
     //create base URL for level loading
     private String basePath = "src/main/java/Levels/";
 
@@ -58,19 +55,17 @@ public class GamePanel extends JPanel implements Runnable{
     RewardGenerator rewardGenerator = new RewardGenerator(this);
     ArrayList<Reward> rewards = rewardGenerator.getRewardsList();
 
-
-
     JFrame frame;
     public MenuBar menu = new MenuBar();
 
     public GamePanel(JFrame f){
-
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setDoubleBuffered(true);
         this.addKeyListener(keyH);
         this.setFocusable(true);
         this.frame = f;
         this.startGame();
+        this.setVisible(true);
 
     }
 
@@ -122,16 +117,14 @@ public class GamePanel extends JPanel implements Runnable{
 		}
 		System.out.println("Create Game");
 		// Create level and build the game for the level #l
-		this.level = new LevelGenerator();
+		GamePanel.level = new LevelGenerator();
 		System.out.println(this.basePath + this.levels[l]);
-		this.level.buildGame(this.basePath + this.levels[l]);
-
+		GamePanel.level.buildGame(this.basePath + this.levels[l]);
+		
 		Point start = level.getPlayerStart();
-
 		player.setLocation(start);
 
 		this.frame.add(menu, BorderLayout.NORTH);
-
 		this.add(this.level, BorderLayout.CENTER);
 
 	}
@@ -228,9 +221,10 @@ public class GamePanel extends JPanel implements Runnable{
                level.queue(x);
             }
         }
-
+        for(GameObject obj : level.queue) {
+        	g.drawImage(obj.getTexture().getTexture(), (int) obj.position.getX() * tileSize, (int) obj.position.getY() * tileSize, tileSize, tileSize, null);
+        }
         g.drawImage(player.getTexture().getTexture(), (int) player.getLocation().getX() * tileSize, (int) player.getLocation().getY() * tileSize, tileSize, tileSize, null);
-
         for(Enemy e : enemies) {
             g.drawImage(e.getTexture().getTexture(), (int) e.getLocation().getX() * tileSize, (int) e.getLocation().getY() * tileSize, tileSize, tileSize, null);
         }
@@ -242,11 +236,7 @@ public class GamePanel extends JPanel implements Runnable{
         for(PunishmentRoadBlock e : punishments) {
             g.drawImage(e.getTexture().getTexture(), (int) e.getLocation().getX() * tileSize, (int) e.getLocation().getY() * tileSize, tileSize, tileSize, null);
         }
-        
-        for(GameObject obj : level.queue) {
-        	g.drawImage(obj.texture.getTexture(), (int) obj.position.getX() * tileSize, (int) obj.position.getY() * tileSize, tileSize, tileSize, null);
-        }
-
+       
         level.clearQueue();
         g2.dispose();
     }
