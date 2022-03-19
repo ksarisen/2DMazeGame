@@ -1,5 +1,8 @@
 package Characters;
 
+import MazeGame.GameObject;
+import MazeGame.LevelGenerator;
+import Objects.BarrierGrass;
 import Textures.Image;
 import MazeGame.GamePanel;
 
@@ -42,6 +45,11 @@ public class EnemyGenerator {
 
         for (Enemy value : enemyList) {
             if (enemy.getLocation() == value.getLocation())
+                return generateEnemy();
+        }
+        //NOT WORKING!!
+        for (GameObject grass : LevelGenerator.getGameObjectsList()) {
+            if (grass instanceof BarrierGrass)
                 return generateEnemy();
         }
         return enemy;

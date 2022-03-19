@@ -1,6 +1,9 @@
 package RewardsAndPunishments;
 
+import MazeGame.GameObject;
 import MazeGame.GamePanel;
+import MazeGame.LevelGenerator;
+import Objects.BarrierGrass;
 import Textures.Image;
 
 import java.awt.*;
@@ -52,6 +55,10 @@ public class RewardGenerator {
             if (regReward.getLocation() == reward.getLocation())
                 return generateRegularReward();
         }
+        for (GameObject grass : LevelGenerator.getGameObjectsList()) {
+            if (grass instanceof BarrierGrass)
+                return generateRegularReward();
+        }
         return regReward;
     }
 
@@ -67,6 +74,11 @@ public class RewardGenerator {
         // Checking if the generated reward's location is equal to another one's in the list, if it is, then we use recursion
         for (Reward reward : rewardsList) {
             if (bonusReward.getLocation() == reward.getLocation())
+                return generateBonusReward();
+        }
+        //NOT WORKING!!!
+        for (GameObject grass : LevelGenerator.getGameObjectsList()) {
+            if (grass instanceof BarrierGrass)
                 return generateBonusReward();
         }
         return bonusReward;

@@ -29,5 +29,4 @@ public abstract class GameObject {
 	public void setPosition(Point p) {
 		this.position = p;
 	}
-	
 }
