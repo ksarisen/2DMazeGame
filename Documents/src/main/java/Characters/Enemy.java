@@ -10,7 +10,7 @@ public class Enemy extends Character {
     int viewRange;
 
     public Enemy(int viewRange, int speedX, int speedY, Image texture, Point location, GamePanel map) {
-        super(location, texture, speedX,speedY, map);
+        super(location, texture, speedX, speedY, map);
         this.viewRange = viewRange;
         return;
     }
@@ -25,55 +25,58 @@ public class Enemy extends Character {
     }
 
     public int getDistance(Player p) {
-        return p.getLocation().x- super.getLocation().x + p.getLocation().y - super.getLocation().y;
+        return p.getLocation().x - super.getLocation().x + p.getLocation().y - super.getLocation().y;
     }
 
     public void chase(Player p) {
         Random rand = new Random();
+        boolean check = true;
         if (getDistance(p) <= viewRange) {
-            int random1 = rand.nextInt();
-            if (random1 == 0) {
-                if (p.getLocation().x - this.getLocation().x < 0) {
-                    super.moveLeft();
+            while (check) {
+                int random1 = rand.nextInt();
+                if (random1 == 0) {
+                    if (p.getLocation().x - this.getLocation().x < 0) {
+                        if (super.moveLeft())
+                            check = false;
+                    } else {
+                        if (super.moveRight())
+                            check = false;
+                    }
                 } else {
-                    super.moveRight();
-                }
-            } else {
-                if (p.getLocation().y - this.getLocation().y < 0) {
-                    super.moveUp();
-                } else {
-                    super.moveDown();
+                    if (p.getLocation().y - this.getLocation().y < 0) {
+                        if (super.moveUp())
+                            check = false;
+                    } else {
+                        if (super.moveDown())
+                            check = false;
+                    }
                 }
             }
         } else {
-            int random2 = rand.nextInt(3);
-            if (random2 == 0) {
-                if (super.moveRight()) {
-                    return;
+            while (check) {
+                int random2 = rand.nextInt(3);
+                if (random2 == 0) {
+                    if (super.moveRight()) {
+                        check=false;
+                    }
                 }
-                random2=1;
-            }
-            if (random2 == 1) {
-                if(super.moveLeft())
-                {
-                    return;
+                else if (random2 == 1) {
+                    if (super.moveLeft()) {
+                        check=false;
+                    }
                 }
-                random2=2;
-            }
-            if (random2 == 2) {
-                if(super.moveUp())
-                {
-                    return;
+                else if (random2 == 2) {
+                    if (super.moveUp()) {
+                        check=false;
+                    }
                 }
-                random2=3;
-            }
-            if (random2 == 3) {
-                if(super.moveDown())
-                {
-                    return;
+                else if (random2 == 3) {
+                    if (super.moveDown()) {
+                        check=false;
+                    }
                 }
-                random2=0;
             }
         }
     }
 }
+

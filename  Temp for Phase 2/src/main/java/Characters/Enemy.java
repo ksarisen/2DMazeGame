@@ -1,4 +1,4 @@
-package main.java.Characters;
+package Characters;
 
 import java.util.Random;
 import java.awt.Point;

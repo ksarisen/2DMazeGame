@@ -1,8 +1,9 @@
 package Characters;
 
 import MazeGame.KeyHandler;
-import RewardsAndPunishments.RegularReward;
-import RewardsAndPunishments.Reward;
+import Rewards.Barrier;
+import Rewards.RegularReward;
+import Rewards.Reward;
 import java.awt.Point;
 import java.util.ArrayList;
 
@@ -21,7 +22,13 @@ public class Player extends Character {
         this.name = name;
         this.collection=0;
     }
-
+    public boolean check()
+    {
+        if (collection == 10 & super.getLocation() ==new Point(1,21)){
+            return true;
+        }
+        return false;
+    }
     public int getCollection() {
         return collection;
     }
@@ -50,16 +57,19 @@ public class Player extends Character {
                 if (reward instanceof RegularReward)
                     this.collection = this.collection + 1;
                 this.score = this.score + reward.getValue();
+                rl.remove(reward);
             }
         }
     }
-    public Boolean collectReward(Reward r)
-    {
-        return super.getLocation() == r.getLocation();
-    }
 
-    private void punishment(ArrayList<Enemy> el)
+    public void punishment(ArrayList<Barrier> bl, ArrayList<Enemy> el)
     {
+        for (Barrier barrier : bl) {
+            if (super.getLocation() == barrier.getLocation()) {
+                this.score = this.score - 20;
+                return;
+            }
+        }
         for (Enemy enemy : el) {
             if (super.getLocation() == enemy.getLocation()) {
                 this.score = -1;
@@ -68,9 +78,7 @@ public class Player extends Character {
         }
     }
     public void moveUp_player() {
-        if(KeyHandler.isUpPressed() == true & super.moveUp()) {
-
-        }
+        if(KeyHandler.isUpPressed() == true & super.moveUp());
 
     }
     public void moveDown_player() {
