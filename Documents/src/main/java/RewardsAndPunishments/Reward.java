@@ -10,14 +10,6 @@ public abstract class Reward {
     private Image texture;
     private Point location;
 
-    /*
-     * Creates a reward given the parameters
-     * @param value
-     * @param texture
-     * @param location
-     * @author Kerem Sarisen
-     */
-
     public Reward(int value, Image texture, Point location, GamePanel map) {
         this.value = value;
         this.texture = texture;

@@ -6,6 +6,7 @@ import RewardsAndPunishments.RegularReward;
 import RewardsAndPunishments.Reward;
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import MazeGame.GamePanel;
 import Textures.Image;
@@ -20,14 +21,11 @@ public class Player extends Character {
         super(location, texture, speedX,speedY, map);
         this.score = score;
         this.name = name;
-        this.collection=0;
+        this.collection = 0;
     }
     public boolean check()
     {
-        if (collection == 10 & super.getLocation() ==new Point(1,21)){
-            return true;
-        }
-        return false;
+        return collection == 10 & Objects.equals(super.getLocation(), new Point(1, 21));
     }
     public int getCollection() {
         return collection;
@@ -67,24 +65,25 @@ public class Player extends Character {
         for (PunishmentRoadBlock punishment : pl) {
             if (super.getLocation() == punishment.getLocation()) {
                 this.score -= punishment.getValue();
+                pl.remove(punishment);
                 return;
             }
         }
     }
     public void moveUp_player() {
-        if(KeyHandler.isUpPressed() == true & super.moveUp());
+        if(KeyHandler.isUpPressed() & super.moveUp());
 
     }
     public void moveDown_player() {
-        if(KeyHandler.isDownPressed() == true & super.moveDown());
+        if(KeyHandler.isDownPressed() & super.moveDown());
     }
     public void moveRight_player()
     {
-        if(KeyHandler.isRightPressed() == true & super.moveRight());
+        if(KeyHandler.isRightPressed() & super.moveRight());
     }
     public void moveLeft_player()
     {
-        if(KeyHandler.isLeftPressed() == true & super.moveLeft());
+        if(KeyHandler.isLeftPressed() & super.moveLeft());
     }
 }
 
