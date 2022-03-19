@@ -38,7 +38,7 @@ public class GamePanel extends JPanel implements Runnable{
     private HashMap <String, GameObject> codes = new HashMap<>();
 
     //create base URL for level loading
-    private String basePath = "Levels/";
+    private String basePath = "src/main/java/Levels/";
 
 	//create level options
 	public String[] levels = new String[] {
@@ -164,16 +164,52 @@ public class GamePanel extends JPanel implements Runnable{
     public void update(){
     	menu.update(player.getScore(), timer.getTimeRemaining());
         if(keyH.upPressed){
-            player.setLocation(player.getLocation().x,player.getLocation().y-player.getSpeedY());
+            if(player.moveUp())
+            {
+                for(Enemy e:enemies)
+                {
+                    e.chase(player);
+                }
+                player.punishment(bl,enemies);
+                player.check();
+                player.pickReward(rewards);
+            }
         }
         else if(keyH.downPressed){
-            player.setLocation(player.getLocation().x,player.getLocation().y+player.getSpeedY());
+            if(player.moveDown())
+            {
+                for(Enemy e:enemies)
+                {
+                    e.chase(player);
+                }
+                player.punishment(bl,enemies);
+                player.check();
+                player.pickReward(rewards);
+            }
         }
         else if(keyH.rightPressed){
-            player.setLocation(player.getLocation().x+player.getSpeedX(),player.getLocation().y);
+            if(player.moveRight())
+            {
+                for(Enemy e:enemies)
+                {
+                    e.chase(player);
+                }
+                player.punishment(bl,enemies);
+                player.check();
+                player.pickReward(rewards);
+            }
         }
         else if(keyH.leftPressed){
-            player.setLocation(player.getLocation().x-player.getSpeedX(),player.getLocation().y);
+            if(player.moveLeft())
+            {
+                for(Enemy e:enemies)
+                {
+                    e.chase(player);
+                }
+                player.punishment(bl,enemies);
+                player.check();
+                player.pickReward(rewards);
+            }
         }
     }
 
