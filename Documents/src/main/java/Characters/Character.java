@@ -77,11 +77,11 @@ public abstract class Character {
 
     public boolean moveUp () {
 
-        if(map.level.gameObjects[(int)this.location.getX()][(int)this.location.getY()] instanceof Road &
-                map.level.gameObjects[(int)this.location.getX()][(int)this.location.getY()+1] instanceof Road) {
-            Road r = (Road) map.level.gameObjects[this.location.x][this.location.y + 1];
+        if(map.level.gameObjects[(int)this.location.getY()][(int)this.location.getX()] instanceof Road &
+                map.level.gameObjects[(int)this.location.getY()-1][(int)this.location.getX()] instanceof Road) {
+            Road r = (Road) map.level.gameObjects[this.location.y-1][this.location.x];
             if (r.isSouth()) {
-                this.location.y=this.location.y+1;
+                this.location.y=this.location.y-1;
                 System.out.println("CAN MOVE UP");
                 return true;
             }
@@ -90,11 +90,11 @@ public abstract class Character {
     }
     public boolean moveDown () {
 
-        if(map.level.gameObjects[(int)this.location.getX()][(int)this.location.getY()] instanceof Road &
-                map.level.gameObjects[(int)this.location.getX()][(int)this.location.getY()-1] instanceof Road) {
-            Road r = (Road) map.level.gameObjects[this.location.x][this.location.y - 1];
+        if(map.level.gameObjects[(int)this.location.getY()][(int)this.location.getX()] instanceof Road &
+                map.level.gameObjects[(int)this.location.getY()+1][(int)this.location.getX()] instanceof Road) {
+            Road r = (Road) map.level.gameObjects[this.location.y+1][this.location.x];
             if (r.isNorth()) {
-                this.location.y=this.location.y-1;
+                this.location.y=this.location.y+1;
                 System.out.println("CAN MOVE DOWN");
                 return true;
             }
@@ -104,9 +104,9 @@ public abstract class Character {
 
     public boolean moveLeft () {
 
-        if(map.level.gameObjects[(int)this.location.getX()][(int)this.location.getY()] instanceof Road &
-                map.level.gameObjects[(int)this.location.getX()-1][(int)this.location.getY()] instanceof Road) {
-            Road r = (Road) map.level.gameObjects[this.location.x-1][this.location.y];
+        if(map.level.gameObjects[(int)this.location.getY()][(int)this.location.getX()] instanceof Road &
+                map.level.gameObjects[(int)this.location.getY()][(int)this.location.getX()-1] instanceof Road) {
+            Road r = (Road) map.level.gameObjects[this.location.y][this.location.x-1];
             if (r.isEast()) {
                 this.location.x=this.location.x-1;
                 System.out.println("CAN MOVE LEFT");
@@ -118,9 +118,9 @@ public abstract class Character {
 
     public boolean moveRight () {
 
-        if(map.level.gameObjects[(int)this.location.getX()][(int)this.location.getY()] instanceof Road &
-                map.level.gameObjects[(int)this.location.getX()+1][(int)this.location.getY()] instanceof Road) {
-            Road r = (Road) map.level.gameObjects[this.location.x+1][this.location.y];
+        if(map.level.gameObjects[(int)this.location.getY()][(int)this.location.getX()] instanceof Road &
+                map.level.gameObjects[(int)this.location.getY()][(int)this.location.getX()] instanceof Road) {
+            Road r = (Road) map.level.gameObjects[this.location.y][this.location.x+1];
             if (r.isWest()) {
                 this.location.x=this.location.x+1;
                 System.out.println("CAN MOVE RIGHT");
