@@ -184,12 +184,13 @@ public class GamePanel extends JPanel implements Runnable{
         }
         else if(keyH.leftPressed){
             player.moveLeft();
-        }}
+        }
+            punishments=player.punishment(punishments);
+        }
         //for(Enemy e:enemies)
         //{
         //    e.chase(player);
         //}
-        player.punishment(punishments);
         player.check();
         rewards=player.pickReward(rewards);
     }

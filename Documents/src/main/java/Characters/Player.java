@@ -63,15 +63,15 @@ public class Player extends Character {
         return rl;
     }
 
-    public void punishment(ArrayList<PunishmentRoadBlock> pl)
+    public ArrayList<PunishmentRoadBlock> punishment(ArrayList<PunishmentRoadBlock> pl)
     {
         for (PunishmentRoadBlock punishment : pl) {
-            if (super.getLocation() == punishment.getLocation()) {
+            if (super.getLocation().equals( punishment.getLocation())) {
                 this.score -= punishment.getValue();
-                pl.remove(punishment);
-                return;
+                return pl;
             }
         }
+        return pl;
     }
 }
 
