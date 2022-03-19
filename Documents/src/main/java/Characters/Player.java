@@ -48,16 +48,19 @@ public class Player extends Character {
     }
 
 
-    public void pickReward(ArrayList<Reward> rl)
+    public ArrayList<Reward> pickReward(ArrayList<Reward> rl)
     {
         for (Reward reward : rl) {
-            if (super.getLocation() == reward.getLocation()) {
+            if (reward.getLocation().equals(super.getLocation())) {
+                System.out.println("Reward is picked");
                 if (reward instanceof RegularReward)
                     this.collection = this.collection + 1;
                 this.score = this.score + reward.getValue();
                 rl.remove(reward);
+                return rl;
             }
         }
+        return rl;
     }
 
     public void punishment(ArrayList<PunishmentRoadBlock> pl)
@@ -69,21 +72,6 @@ public class Player extends Character {
                 return;
             }
         }
-    }
-    public void moveUp_player() {
-        if(KeyHandler.isUpPressed() & super.moveUp());
-
-    }
-    public void moveDown_player() {
-        if(KeyHandler.isDownPressed() & super.moveDown());
-    }
-    public void moveRight_player()
-    {
-        if(KeyHandler.isRightPressed() & super.moveRight());
-    }
-    public void moveLeft_player()
-    {
-        if(KeyHandler.isLeftPressed() & super.moveLeft());
     }
 }
 

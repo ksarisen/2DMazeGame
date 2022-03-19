@@ -174,53 +174,24 @@ public class GamePanel extends JPanel implements Runnable{
         System.out.println(r.isSouth());
         System.out.println(r.isNorth());
         if(keyH.upPressed){
-            if(player.moveUp())
-            {
-                //for(Enemy e:enemies)
-                //{
-                //    e.chase(player);
-                //}
-                player.punishment(punishments);
-                player.check();
-                player.pickReward(rewards);
-            }
+            player.moveUp();
         }
         else if(keyH.downPressed){
-            if(player.moveDown())
-            {
-                //for(Enemy e:enemies)
-                //{
-                //    e.chase(player);
-                //}
-                player.punishment(punishments);
-                player.check();
-                player.pickReward(rewards);
-            }
+            player.moveDown();
         }
         else if(keyH.rightPressed){
-            if(player.moveRight())
-            {
-                //for(Enemy e:enemies)
-                //{
-                //    e.chase(player);
-                //}
-                player.punishment(punishments);
-                player.check();
-                player.pickReward(rewards);
-            }
+            player.moveRight();
         }
         else if(keyH.leftPressed){
-            if(player.moveLeft())
-            {
-                //for(Enemy e:enemies)
-                //{
-                //    e.chase(player);
-                //}
-                player.punishment(punishments);
-                player.check();
-                player.pickReward(rewards);
-            }
+            player.moveLeft();
         }}
+        //for(Enemy e:enemies)
+        //{
+        //    e.chase(player);
+        //}
+        player.punishment(punishments);
+        player.check();
+        rewards=player.pickReward(rewards);
     }
 
     public void paintComponent (Graphics g){
