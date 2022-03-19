@@ -7,6 +7,8 @@ import java.util.HashMap;
 
 import Characters.Enemy;
 import Characters.EnemyGenerator;
+import RewardsAndPunishments.PunishmentGenerator;
+import RewardsAndPunishments.PunishmentRoadBlock;
 import RewardsAndPunishments.Reward;
 import RewardsAndPunishments.RewardGenerator;
 import Textures.Image;
@@ -49,6 +51,9 @@ public class GamePanel extends JPanel implements Runnable{
 
     EnemyGenerator enemyGenerator = new EnemyGenerator(this);
     ArrayList<Enemy> enemies = enemyGenerator.getEnemyList();
+
+    PunishmentGenerator punishmentGenerator = new PunishmentGenerator(this);
+    ArrayList<PunishmentRoadBlock> punishments = punishmentGenerator.getPunishmentsList();
 
     RewardGenerator rewardGenerator = new RewardGenerator(this);
     ArrayList<Reward> rewards = rewardGenerator.getRewardsList();
@@ -170,7 +175,7 @@ public class GamePanel extends JPanel implements Runnable{
                 {
                     e.chase(player);
                 }
-                player.punishment(bl,enemies);
+                player.punishment(punishments);
                 player.check();
                 player.pickReward(rewards);
             }
@@ -182,7 +187,7 @@ public class GamePanel extends JPanel implements Runnable{
                 {
                     e.chase(player);
                 }
-                player.punishment(bl,enemies);
+                player.punishment(punishments);
                 player.check();
                 player.pickReward(rewards);
             }
@@ -194,7 +199,7 @@ public class GamePanel extends JPanel implements Runnable{
                 {
                     e.chase(player);
                 }
-                player.punishment(bl,enemies);
+                player.punishment(punishments);
                 player.check();
                 player.pickReward(rewards);
             }
@@ -206,7 +211,7 @@ public class GamePanel extends JPanel implements Runnable{
                 {
                     e.chase(player);
                 }
-                player.punishment(bl,enemies);
+                player.punishment(punishments);
                 player.check();
                 player.pickReward(rewards);
             }
@@ -235,6 +240,10 @@ public class GamePanel extends JPanel implements Runnable{
         }
 
         for(Reward e : rewards) {
+            g.drawImage(e.getTexture().getTexture(), (int) e.getLocation().getX() * tileSize, (int) e.getLocation().getY() * tileSize, tileSize, tileSize, null);
+        }
+
+        for(PunishmentRoadBlock e : punishments) {
             g.drawImage(e.getTexture().getTexture(), (int) e.getLocation().getX() * tileSize, (int) e.getLocation().getY() * tileSize, tileSize, tileSize, null);
         }
 

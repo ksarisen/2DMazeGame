@@ -1,9 +1,9 @@
 package Characters;
 
 import MazeGame.KeyHandler;
-import Rewards.Barrier;
-import Rewards.RegularReward;
-import Rewards.Reward;
+import RewardsAndPunishments.PunishmentRoadBlock;
+import RewardsAndPunishments.RegularReward;
+import RewardsAndPunishments.Reward;
 import java.awt.Point;
 import java.util.ArrayList;
 
@@ -62,17 +62,11 @@ public class Player extends Character {
         }
     }
 
-    public void punishment(ArrayList<Barrier> bl, ArrayList<Enemy> el)
+    public void punishment(ArrayList<PunishmentRoadBlock> pl)
     {
-        for (Barrier barrier : bl) {
-            if (super.getLocation() == barrier.getLocation()) {
-                this.score = this.score - 20;
-                return;
-            }
-        }
-        for (Enemy enemy : el) {
-            if (super.getLocation() == enemy.getLocation()) {
-                this.score = -1;
+        for (PunishmentRoadBlock punishment : pl) {
+            if (super.getLocation() == punishment.getLocation()) {
+                this.score -= punishment.getValue();
                 return;
             }
         }
