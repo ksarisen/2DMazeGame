@@ -45,7 +45,7 @@ public class GamePanel extends JPanel implements Runnable{
 								"Level1.json"
 							};
 
-	Player player = new Player(0, "Player 1", 0,0, new Point(0,0), this, new Image("Car.png"));
+	Player player = new Player(0, "Player 1", 0,0, new Point(0,0), this, new Image("Car-East.png"));
 
     EnemyGenerator enemyGenerator;
     ArrayList<Enemy> enemies;

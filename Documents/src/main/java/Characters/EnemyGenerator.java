@@ -38,7 +38,7 @@ public class EnemyGenerator {
      * It also makes sure that each enemy has different location than any other enemies.
      */
     public Enemy generateEnemy(GamePanel map) {
-        Image enemyImg = new Image("Police.png");
+        Image enemyImg = new Image("Police-South.png");
 
         int xCord = r.nextInt(maxCordX - 1);
         int yCord = r.nextInt(maxCordY - 1);

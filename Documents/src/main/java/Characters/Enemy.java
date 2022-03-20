@@ -12,6 +12,7 @@ public class Enemy extends Character {
     public Enemy(int viewRange, int speedX, int speedY, Image texture, Point location, GamePanel map) {
         super(location, texture, speedX, speedY, map);
         this.viewRange = viewRange;
+        super.type="Police";
         return;
     }
 

@@ -21,6 +21,7 @@ public class Player extends Character {
         this.score = score;
         this.name = name;
         this.collection = 0;
+        super.type="Player";
     }
 
     /*

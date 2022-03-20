@@ -13,6 +13,7 @@ public abstract class Character {
     private int speedX;
     private int speedY;
     private Image texture;
+    public String type;
 
     /**
      * Creates a character given the parameters
@@ -80,6 +81,14 @@ public abstract class Character {
             if (r.isSouth()) {
                 this.location.y = this.location.y-1;
                 System.out.println("CAN MOVE UP");
+                if(type.equals("Police"))
+                {
+                    this.texture=new Image("Police-North.png");
+                }
+                else
+                {
+                    this.texture=new Image("Car-North.png");
+                }
                 return true;
             }
         }
@@ -97,6 +106,14 @@ public abstract class Character {
             if (r.isNorth()) {
                 this.location.y=this.location.y+1;
                 System.out.println("CAN MOVE DOWN");
+                if(type.equals("Police"))
+                {
+                    this.texture=new Image("Police-South.png");
+                }
+                else
+                {
+                    this.texture=new Image("Car-South.png");
+                }
                 return true;
             }
         }
@@ -114,6 +131,14 @@ public abstract class Character {
             if (r.isEast()) {
                 this.location.x=this.location.x-1;
                 System.out.println("CAN MOVE LEFT");
+                if(type.equals("Police"))
+                {
+                    this.texture=new Image("Police-West.png");
+                }
+                else
+                {
+                    this.texture=new Image("Car-West.png");
+                }
                 return true;
             }
         }
@@ -131,6 +156,14 @@ public abstract class Character {
             if (r.isWest()) {
                 this.location.x=this.location.x+1;
                 System.out.println("CAN MOVE RIGHT");
+                if(type.equals("Police"))
+                {
+                    this.texture=new Image("Police-East.png");
+                }
+                else
+                {
+                    this.texture=new Image("Car-East.png");
+                }
                 return true;
             }
         }

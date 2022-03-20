@@ -3,6 +3,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.HashMap;
 import javax.imageio.ImageIO;
+import java.awt.*;
+
 
 /**
  * 
@@ -42,10 +44,28 @@ public class Image {
 			} catch (Exception e) { e.printStackTrace(); }
 		}
 	}
+
+		public static BufferedImage rotateImage(Image imageToRotate) {
+			int widthOfImage = imageToRotate.texture.getWidth();
+			int heightOfImage = imageToRotate.texture.getHeight();
+			int typeOfImage = imageToRotate.texture.getType();
+
+			BufferedImage newImageFromBuffer = new BufferedImage(widthOfImage, heightOfImage, typeOfImage);
+
+			Graphics2D graphics2D = newImageFromBuffer.createGraphics();
+
+			graphics2D.rotate(Math.toRadians(90), widthOfImage / 2, heightOfImage / 2);
+			graphics2D.drawImage(imageToRotate.texture, null, 0, 0);
+
+			return newImageFromBuffer;
+		}
 	
 	public BufferedImage getTexture() {
 		return this.texture;
 		
 	}
-	
+
+	public void setTexture(BufferedImage texture) {
+		this.texture = texture;
+	}
 }
