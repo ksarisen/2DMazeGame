@@ -1,4 +1,5 @@
 package Objects;
+
 import MazeGame.GameObject;
 import Textures.Image;
 
@@ -10,12 +11,12 @@ import Textures.Image;
 
 public class BarrierGrass extends GameObject {
 
-	/**
-	 * Creates object with grass image
-	 *
-	 * @param s grass' name
-	 */
-	public BarrierGrass(String s) {
-		super.texture = new Image("Grass.png");
-	}
+    /**
+     * Creates object with grass image
+     *
+     * @param s grass' name
+     */
+    public BarrierGrass(String s) {
+        super.texture = new Image("Grass.png");
+    }
 }

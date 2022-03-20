@@ -13,6 +13,7 @@ import javax.swing.*;
  */
 public class MainMenu {
     static JFrame jf = new JFrame("Start Menu");
+
     public static void firstPage() {
 
         jf.setPreferredSize(new Dimension(700, 700));
@@ -26,7 +27,7 @@ public class MainMenu {
         jl.setBounds(150, 200, 400, 100);
         jl.setFont(new Font("", Font.BOLD, 24));
         jl.setForeground(Color.decode("#375a7f"));
-        
+
 
         JButton jl1 = new JButton("EXIT");
         jl1.setPreferredSize(new Dimension(400, 100));
@@ -34,8 +35,7 @@ public class MainMenu {
         jl1.setBounds(150, 400, 400, 100);
         jl1.setFont(new Font("", Font.BOLD, 24));
         jl1.setForeground(Color.decode("#375a7f"));
-        
-        
+
 
         jl.addActionListener(new ActionListener() {
 
@@ -45,7 +45,7 @@ public class MainMenu {
                 JFrame win = new JFrame();
                 win.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 win.setResizable(false);
-                win.setTitle("name_to_be_decidedd");
+                win.setTitle("Robber and Polices");
                 closeThis();
 
                 GamePanel gamepanel = new GamePanel(win);

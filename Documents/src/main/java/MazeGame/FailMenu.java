@@ -14,6 +14,7 @@ import javax.swing.*;
 public class FailMenu {
 
     static JFrame jf = new JFrame("Fail Menu");
+
     public static void firstPage() {
 
         jf.setPreferredSize(new Dimension(700, 700));
@@ -21,7 +22,7 @@ public class FailMenu {
         jf.getContentPane().setBackground(Color.DARK_GRAY);
         jf.setLayout(null);
 
-        JLabel jb=new JLabel("Fail to escape. Please try again",JLabel.CENTER);
+        JLabel jb = new JLabel("Fail to escape. Please try again", JLabel.CENTER);
         jb.setPreferredSize(new Dimension(680, 30));
         jf.add(jb);
         jb.setBounds(0, 200, 690, 30);

@@ -1,4 +1,5 @@
 package Objects;
+
 import MazeGame.GameObject;
 import Textures.Image;
 
@@ -10,12 +11,12 @@ import Textures.Image;
 
 public class Helicopter extends GameObject {
 
-	/**
-	 * Creates object with helicopter image
-	 *
-	 * @param x helicopter's name
-	 */
-	public Helicopter(String x) {
-		super.texture = new Image("Helicopter.png");
-	}
+    /**
+     * Creates object with helicopter image
+     *
+     * @param x helicopter's name
+     */
+    public Helicopter(String x) {
+        super.texture = new Image("Helicopter.png");
+    }
 }

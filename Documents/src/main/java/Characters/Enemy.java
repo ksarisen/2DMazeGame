@@ -18,11 +18,11 @@ public class Enemy extends Character {
     /**
      * Creates an Enemy with the given parameters
      *
-     * @param location a point where Character is located
-     * @param texture an Image that represents the Character
-     * @param speedX speed on the x-axis
-     * @param speedY speed on the y-axis
-     * @param map game panel that the Character belongs
+     * @param location  a point where Character is located
+     * @param texture   an Image that represents the Character
+     * @param speedX    speed on the x-axis
+     * @param speedY    speed on the y-axis
+     * @param map       game panel that the Character belongs
      * @param viewRange the range that this Enemy can view
      */
     public Enemy(int viewRange, int speedX, int speedY, Image texture, Point location, GamePanel map) {
@@ -45,6 +45,7 @@ public class Enemy extends Character {
     /**
      * The enemy will move closer to player when the player in enemy's view range. If there is a BarrierGrass then move
      * another way.
+     *
      * @param p The Player that this Enemy is chasing
      * @return the number of times that the enemy fail to move.
      */

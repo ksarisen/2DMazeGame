@@ -53,20 +53,20 @@ public class PunishmentGenerator {
      *
      * @param map a game panel where punishment should be created
      */
-    public PunishmentRoadBlock generatePunishment (GamePanel map) {
+    public PunishmentRoadBlock generatePunishment(GamePanel map) {
         Image punishmentImg = new Image("Construction.png");
 
-        int xCord = r.nextInt(maxCordX - 1 );
+        int xCord = r.nextInt(maxCordX - 1);
         int yCord = r.nextInt(maxCordY - 1);
 
         PunishmentRoadBlock newPunishment = new PunishmentRoadBlock(punishmentValue, punishmentImg, new Point(xCord, yCord), map);
 
         // Checks if the generated reward's location is equal to another one's in the list, if it is, then we use recursion
         for (PunishmentRoadBlock punishment : punishmentsList) {
-            if (newPunishment.getLocation().equals( punishment.getLocation()))
+            if (newPunishment.getLocation().equals(punishment.getLocation()))
                 return generatePunishment(map);
         }
-        if(!map.level.gameObjects[(int)newPunishment.getLocation().getY()][(int)newPunishment.getLocation().getX()].getClass().getSimpleName().equals("Road"))
+        if (!map.level.gameObjects[(int) newPunishment.getLocation().getY()][(int) newPunishment.getLocation().getX()].getClass().getSimpleName().equals("Road"))
             return generatePunishment(map);
         return newPunishment;
     }
