@@ -2,7 +2,6 @@ package Objects;
 import Textures.Image;
 import MazeGame.GameObject;
 
-
 /**
  * Creates object with Police Station image as described by constructor param
  * @author Reece Landry

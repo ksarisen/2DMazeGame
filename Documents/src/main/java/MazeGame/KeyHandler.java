@@ -28,6 +28,7 @@ public class KeyHandler implements KeyListener {
 
     }
 
+    // Checks if one of the "W, A, S, D" is pressed.
     @Override
     public void keyPressed(KeyEvent e) {
         int code = e.getKeyCode();
@@ -46,6 +47,7 @@ public class KeyHandler implements KeyListener {
         }
     }
 
+    // Checks if the key that is pressed is released or not/
     @Override
     public void keyReleased(KeyEvent e) {
         int code = e.getKeyCode();

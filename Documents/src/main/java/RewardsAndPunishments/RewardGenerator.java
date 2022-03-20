@@ -1,15 +1,15 @@
 package RewardsAndPunishments;
 
-import MazeGame.GameObject;
 import MazeGame.GamePanel;
-import MazeGame.LevelGenerator;
-import Objects.BarrierGrass;
 import Textures.Image;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
+/*
+ * Generates rewards
+ */
 public class RewardGenerator {
 
     private static final ArrayList<Reward> rewardsList = new ArrayList<>();
@@ -27,7 +27,7 @@ public class RewardGenerator {
     final int regRewardVal = 10;
     final int bonusRewardVal = 25;
 
-    // Generating and adding the new rewards to the list
+    // Generates and adds the new rewards to the list
     public RewardGenerator(GamePanel map) {
         this.map = map;
         for (int i = 0; i <= maxRegReward; i++) {
@@ -41,7 +41,7 @@ public class RewardGenerator {
 
     Random r = new Random();
 
-    // Generate a regular reward at some  point
+    // Generates a regular reward at some  point
     public Reward generateRegularReward (GamePanel map) {
         Image regRewardImg = new Image("gas.png");
 
@@ -50,7 +50,7 @@ public class RewardGenerator {
 
         Reward regReward = new RegularReward(regRewardVal, regRewardImg, new Point(xCord, yCord), map);
 
-        // Checking if the generated reward's location is equal to another one's in the list, if it is, then we use recursion
+        // Checks if the generated reward's location is equal to another one's in the list, if it is, then we use recursion
         for (Reward reward : rewardsList) {
             if (regReward.getLocation().equals(reward.getLocation()))
                 return generateRegularReward(map);
@@ -60,7 +60,7 @@ public class RewardGenerator {
         return regReward;
     }
 
-    // Generate a bonus reward at some random point
+    // Generates a bonus reward at some random point
     public Reward generateBonusReward (GamePanel map) {
         Image bonusRewardImg = new Image("money.png");
 
@@ -69,7 +69,7 @@ public class RewardGenerator {
 
         Reward bonusReward = new BonusReward(bonusRewardVal, bonusRewardImg, new Point(xCord, yCord), map);
 
-        // Checking if the generated reward's location is equal to another one's in the list, if it is, then we use recursion
+        // Checks if the generated reward's location is equal to another one's in the list, if it is, then we use recursion
         for (Reward reward : rewardsList) {
             if (bonusReward.getLocation() == reward.getLocation())
                 return generateBonusReward(map);
@@ -80,6 +80,7 @@ public class RewardGenerator {
                 return generateBonusReward(map);
         }
 
+        // Check if the location of the new punishment is same as any grass' location on the map, if it is, then recursion
         if(!map.level.gameObjects[(int)bonusReward.getLocation().getY()][(int)bonusReward.getLocation().getX()].getClass().getSimpleName().equals("Road"))
             return generateBonusReward(map);
         return bonusReward;

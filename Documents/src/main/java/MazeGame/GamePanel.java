@@ -3,11 +3,10 @@ package MazeGame;
 import javax.swing.JPanel;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import Characters.Enemy;
 import Characters.EnemyGenerator;
-import Objects.Road;
+
 import RewardsAndPunishments.PunishmentGenerator;
 import RewardsAndPunishments.PunishmentRoadBlock;
 import RewardsAndPunishments.Reward;
@@ -18,7 +17,7 @@ import javax.swing.JFrame;
 
 public class GamePanel extends JPanel implements Runnable{
     // Screen setting
-    final int originalTileSize = 50;// 16 by 16 tiles
+    final int originalTileSize = 50; // 16 by 16 tiles
     final int scale = 1;
     final int tileSize = originalTileSize *scale;
     final int maxScreenCol = 24;
@@ -26,7 +25,7 @@ public class GamePanel extends JPanel implements Runnable{
     final int screenWidth = tileSize * maxScreenCol;
     final int screenHeight = (tileSize * maxScreenRow);
 
-    // Set the frame rate here
+    // Sets the frame rate here
     int fps = 30;
 
     KeyHandler keyH = new KeyHandler();
@@ -34,14 +33,14 @@ public class GamePanel extends JPanel implements Runnable{
 
     public static LevelGenerator level;
     private int currentLevel = 0;
-    private  int check=0;
+    private  int check = 0;
 
     Timer timer = new Timer();
 
-    //create base URL for level loading
+    // Creates base URL for level loading
     private String basePath = "src/main/java/Levels/";
 
-	//create level options
+	// Creates level options
 	public String[] levels = new String[] {
 								"Level1.json"
 							};
@@ -118,7 +117,8 @@ public class GamePanel extends JPanel implements Runnable{
 			this.revalidate();
 		}
 		System.out.println("Create Game");
-		// Create level and build the game for the level #l
+
+		// Creates level and builds the game for the level #l
 		GamePanel.level = new LevelGenerator();
 		System.out.println(this.basePath + this.levels[l]);
 		GamePanel.level.buildGame(this.basePath + this.levels[l]);
@@ -152,7 +152,8 @@ public class GamePanel extends JPanel implements Runnable{
 	 * Switching the next level or displays end of game message.
 	 */
 	public void nextLevel() {
-		// Check if it is not the last level
+
+        // Check if it is not the last level
 		if(this.currentLevel < this.levels.length - 1) {
 			this.currentLevel++;
 			this.load(this.currentLevel);
@@ -179,10 +180,17 @@ public class GamePanel extends JPanel implements Runnable{
 		return this.level;
 	}
 
+    /*
+     * It updates the game after each cell the player moves.
+     * If 'W' is pressed, it moves towards north, else if 'S' is pressed, it moves towards south
+     * If 'D' is pressed, it moves towards east, else if 'A' is pressed, it moves towards west
+     * If there is nay reward or punishment in the cell that Player arrived, then it makes the player collects them.
+     * Collectibles disappear after being collected, and chase method for enemies being checked
+     */
     public void update(){
     	menu.update(player.getScore(), timer.getTimeRemaining());
         check++;
-        if(check==20||check==40){
+        if(check == 20|| check == 40){
         System.out.println(player.getLocation());
         if(keyH.upPressed){
             player.moveUp();
@@ -196,20 +204,23 @@ public class GamePanel extends JPanel implements Runnable{
         else if(keyH.leftPressed){
             player.moveLeft();
         }
-            punishments=player.punishment(punishments);
+            punishments = player.punishment(punishments);
         }
-        if(check==40)
+        if(check == 40)
         {
-            check=0;
+            check = 0;
             for(Enemy e:enemies)
             {
                 e.chase(player);
             }
         }
         player.check();
-        rewards=player.pickReward(rewards);
+        rewards = player.pickReward(rewards);
     }
 
+    /*
+     * It paints all the collectibles and the game objects of the game to be seen on the map.
+     */
     public void paintComponent (Graphics g){
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
