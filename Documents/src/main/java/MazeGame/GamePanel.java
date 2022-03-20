@@ -194,10 +194,7 @@ public class GamePanel extends JPanel implements Runnable{
     public void update(){
     	menu.update(player.getScore(), timer.getTimeRemaining());
         check++;
-        if(check == 20|| check == 40){
-        System.out.println(player.getLocation());
-        System.out.println(timer.getScore());
-        System.out.println(player.getCollection());
+        if(check == 10|| check == 20){
         if(keyH.upPressed){
             player.moveUp();
         }
@@ -212,7 +209,7 @@ public class GamePanel extends JPanel implements Runnable{
         }
             punishments = player.punishment(punishments);
         }
-        if(check == 40)
+        if(check == 20)
         {
             check = 0;
             for(Enemy e:enemies)
