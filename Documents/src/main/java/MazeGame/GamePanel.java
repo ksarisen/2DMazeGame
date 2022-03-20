@@ -197,6 +197,7 @@ public class GamePanel extends JPanel implements Runnable{
         if(check == 20|| check == 40){
         System.out.println(player.getLocation());
         System.out.println(timer.getScore());
+        System.out.println(player.getCollection());
         if(keyH.upPressed){
             player.moveUp();
         }

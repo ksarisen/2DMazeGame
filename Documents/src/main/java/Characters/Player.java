@@ -63,7 +63,7 @@ public class Player extends Character {
         for (Reward reward : rl) {
             if (reward.getLocation().equals(super.getLocation())) {
                 System.out.println("Reward is picked");
-                if (reward instanceof RegularReward)
+                if (reward.getClass().getSimpleName().equals("RegularReward"))
                     this.collection = this.collection + 1;
                 this.score = this.score + reward.getValue();
                 rl.remove(reward);

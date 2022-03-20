@@ -20,7 +20,7 @@ public class PunishmentGenerator {
 
     GamePanel map;
 
-    final int maxPunishment = 5;
+    final int maxPunishment = 4;
     final int maxCordX = 25;
     final int maxCordY = 15;
     final int punishmentValue = 15;
