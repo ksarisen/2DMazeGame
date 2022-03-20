@@ -1,6 +1,8 @@
 package RewardsAndPunishments;
+
 import MazeGame.GamePanel;
 import Textures.Image;
+
 import java.awt.Point;
 
 /**
@@ -37,12 +39,7 @@ public abstract class Reward {
     public void setMap(GamePanel map) {
         this.map = map;
     }
-    public void setLocation(Point location) {
-        this.location = location;
-    }
-    public void setValue(int value) {
-        this.value = value;
-    }
+
     public void setTexture(Image texture) {
         this.texture = texture;
     }
@@ -53,12 +50,15 @@ public abstract class Reward {
     public GamePanel getMap() {
         return map;
     }
+
     public Point getLocation() {
         return location;
     }
+
     public int getValue() {
         return value;
     }
+
     public Image getTexture() {
         return texture;
     }

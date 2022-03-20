@@ -7,57 +7,37 @@ import Textures.Image;
 import MazeGame.GamePanel;
 
 /**
- * Class for the Enemy
+ * Class for the Enemy, which will chase the player when the player in view range or move randomly when far from the player.
+ * But has half speed of the player
  *
  * @author Yuwen Jia
  */
 public class Enemy extends Character {
     int viewRange;
 
-    /**
-     * Creates an Enemy with the given parameters
-     *
-     * @param location a point where Character is located
-     * @param texture an Image that represents the Character
-     * @param speedX speed on the x-axis
-     * @param speedY speed on the y-axis
-     * @param map game panel that the Character belongs
-     * @param viewRange the range that this Enemy can view
-     */
     public Enemy(int viewRange, int speedX, int speedY, Image texture, Point location, GamePanel map) {
         super(location, texture, speedX, speedY, map);
         this.viewRange = viewRange;
-        super.type="Police";
+        super.type = "Police";
         return;
     }
 
-    /**
-     * Mutator method
-     *
-     * @param viewRange the range that this Enemy can view
-     */
-    public void setViewRange(int viewRange) {
-        this.viewRange = viewRange;
-    }
 
     /**
-     * Accessor methods
+     * Calculate the distance between the enemy and player.
      *
-     * @param p the Player that this Enemy is chasing
-     * @return this Enemy's view range, and it's distance towards the Player
+     * @param p Player object that this Enemy is chasing
+     * @return this Enemy's distance towards the Player
      */
     public int getDistance(Player p) {
         return Math.abs(p.getLocation().x - super.getLocation().x) + Math.abs(p.getLocation().y - super.getLocation().y);
     }
-    public int getViewRange() {
-        return viewRange;
-    }
 
     /**
-     * TODO Description of the method (HAS TO BE FILLED BY YUWEN)
-     *
+     * The enemy will move closer to player when the player in enemy's view range. If there is a BarrierGrass then move
+     * another way.
      * @param p The Player that this Enemy is chasing
-     * @return TODO HAS TO BE FILLED BY YUWEN
+     * @return the number of times that the enemy fail to move.
      */
     private int tightChase(Player p) {
         int times = 0;
@@ -65,13 +45,11 @@ public class Enemy extends Character {
         while (check) {
             times++;
             int random1 = (int) (Math.random() * (2));
-            if(p.getLocation().x - this.getLocation().x == 0)
-            {
-                random1=1;
+            if (p.getLocation().x - this.getLocation().x == 0) {
+                random1 = 1;
             }
-            if(p.getLocation().y - this.getLocation().y == 0)
-            {
-                random1=0;
+            if (p.getLocation().y - this.getLocation().y == 0) {
+                random1 = 0;
             }
             if (random1 == 0) {
                 if (p.getLocation().x - this.getLocation().x < 0) {
@@ -90,17 +68,17 @@ public class Enemy extends Character {
                         check = false;
                 }
             }
-            if(times==4)
-            {break;}
+            if (times == 4) {
+                break;
+            }
         }
         return times;
     }
 
     /**
-     * TODO Description of the method (HAS TO BE FILLED BY YUWEN)
+     * When the enemy is far from the player, the enemy will move randomly
      *
      * @param p The Player that this Enemy is chasing
-     * @return  TODO HAS TO BE FILLED BY YUWEN
      */
     private void randomChase(Player p) {
         boolean check = true;
@@ -127,10 +105,9 @@ public class Enemy extends Character {
     }
 
     /**
-     * TODO Description of the method (HAS TO BE FILLED BY YUWEN)
+     * The method which determine model of enemy's movement, and ensure the enemy will not be stuck.
      *
      * @param p The Player that this Enemy is chasing
-     * @return  TODO HAS TO BE FILLED BY YUWEN
      */
     public void chase(Player p) {
         if (getDistance(p) <= viewRange) {
