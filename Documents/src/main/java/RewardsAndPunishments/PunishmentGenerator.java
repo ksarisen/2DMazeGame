@@ -25,7 +25,10 @@ public class PunishmentGenerator {
     final int maxCordY = 15;
     final int punishmentValue = 15;
 
-    // Generates and adding the new punishment objects to the list
+    /**
+     *  Generates and adding the new punishment objects to the list
+     * @param map the map where the enemy be created.
+     */
     public PunishmentGenerator(GamePanel map) {
         this.map = map;
 
