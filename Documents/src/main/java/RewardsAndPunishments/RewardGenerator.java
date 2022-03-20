@@ -7,8 +7,11 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
-/*
- * Generates rewards
+/**
+ * Creates the reward objects, and it makes sure that none of the rewards are in the same cell
+ * with punishment objects or with each other. Also, makes sure that none of the rewards spawn on the grass.
+ *
+ * @author Kerem Sarisen
  */
 public class RewardGenerator {
 
@@ -27,7 +30,11 @@ public class RewardGenerator {
     final int regRewardVal = 10;
     final int bonusRewardVal = 25;
 
-    // Generates and adds the new rewards to the list
+    /**
+     * Generates and adds the new reward objects to the list with the given parameter
+     *
+     * @param map a game panel where reward should be created
+     */
     public RewardGenerator(GamePanel map) {
         this.map = map;
         for (int i = 0; i <= maxRegReward; i++) {
@@ -41,7 +48,11 @@ public class RewardGenerator {
 
     Random r = new Random();
 
-    // Generates a regular reward at some  point
+    /**
+     * Generates a regular reward at some random point with the given parameter
+     *
+     * @param map a game panel where regular reward should be created
+     */
     public Reward generateRegularReward (GamePanel map) {
         Image regRewardImg = new Image("gas.png");
 
@@ -64,7 +75,11 @@ public class RewardGenerator {
         return regReward;
     }
 
-    // Generates a bonus reward at some random point
+    /**
+     * Generates a bonus reward at some random point with the given parameter
+     *
+     * @param map a game panel where this bonus reward should be created
+     */
     public Reward generateBonusReward (GamePanel map) {
         Image bonusRewardImg = new Image("money.png");
 
@@ -84,7 +99,7 @@ public class RewardGenerator {
                 return generateBonusReward(map);
         }
 
-        // Check if the location of the new punishment is same as any grass' location on the map, if it is, then recursion
+        // Checks if the location of the new punishment is same as any grass' location on the map, if it is, then recursion
         if(!map.level.gameObjects[(int)bonusReward.getLocation().getY()][(int)bonusReward.getLocation().getX()].getClass().getSimpleName().equals("Road"))
             return generateBonusReward(map);
         return bonusReward;

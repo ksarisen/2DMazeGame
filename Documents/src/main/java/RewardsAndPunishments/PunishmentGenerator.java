@@ -7,13 +7,21 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
-/*
+/**
  * Creates the punishment objects, and it makes sure that none of the punishments are in the same cell
  * with each other. Also, makes sure that none of the punishments spawn on the grass.
+ *
+ * @author Kerem Sarisen
  */
 public class PunishmentGenerator {
+
     private static final ArrayList<PunishmentRoadBlock> punishmentsList = new ArrayList<>();
 
+    /**
+     * Accessor method
+     *
+     * @return the list for the punishments
+     */
     public static ArrayList<PunishmentRoadBlock> getPunishmentsList() {
         return punishmentsList;
     }
@@ -25,7 +33,11 @@ public class PunishmentGenerator {
     final int maxCordY = 15;
     final int punishmentValue = 15;
 
-    // Generates and adding the new punishment objects to the list
+    /**
+     * Generates and adds the new punishment objects to the list with the given parameter
+     *
+     * @param map a game panel where punishment should be created
+     */
     public PunishmentGenerator(GamePanel map) {
         this.map = map;
 
@@ -36,7 +48,11 @@ public class PunishmentGenerator {
 
     Random r = new Random();
 
-    // Generates a punishment road block at some random point
+    /**
+     * Generates a punishment road block at some random point with the given parameter
+     *
+     * @param map a game panel where punishment should be created
+     */
     public PunishmentRoadBlock generatePunishment (GamePanel map) {
         Image punishmentImg = new Image("Construction.png");
 

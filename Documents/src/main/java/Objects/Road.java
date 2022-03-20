@@ -3,12 +3,8 @@ import MazeGame.GameObject;
 import Textures.Image;
 
 /**
- *	Creates Road object based on encoded string of directions
- *	n = north
- *	s = south
- *	e = east
- *	w = west
- *	Strings must be in order of North, East, South, West
+ *	Creates Road object
+ *
  *  @author Reece Landry
  */
 
@@ -17,7 +13,17 @@ public class Road extends GameObject {
 	private boolean south;
 	private boolean east;
 	private boolean west;
-	
+
+	/**
+	 *	Creates Road object based on encoded string of directions
+	 *	n = north
+	 *	s = south
+	 *	e = east
+	 *	w = west
+	 *	Strings must be in order of North, East, South, West
+	 *
+	 * @param directionCode code to show which side
+	 */
 	public Road(String directionCode) {
 
 		this.east = false;
@@ -68,6 +74,12 @@ public class Road extends GameObject {
 		return west;
 	}
 
+	/**
+	 * Parses texture names
+	 *
+	 * @param s direction code
+	 * @return parsed name
+	 */
 	private String parseTextureName(String s) {
 		String textureName = "";
 		for (int i = 0; i < s.length(); i++) {
@@ -97,5 +109,4 @@ public class Road extends GameObject {
 		}
 		return textureName;
 	}
-	
 }
