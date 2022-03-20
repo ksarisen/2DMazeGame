@@ -6,7 +6,12 @@ import Objects.Road;
 import Textures.Image;
 import MazeGame.GamePanel;
 
-// Abstract class for the enemy and the player
+/**
+ * Abstract class for the enemy and the player
+ *
+ * @author Yuwen Jia
+ * @author Reece Landry
+ */
 public abstract class Character {
     private GamePanel map;
     private Point location;
@@ -17,12 +22,12 @@ public abstract class Character {
 
     /**
      * Creates a character given the parameters
+     *
      * @param location a point where Character is located
      * @param texture an Image that represents the Character
      * @param speedX speed on the x-axis
      * @param speedY speed on the y-axis
      * @param map game panel that the Character belongs
-     * @author Reece Landry
      */
     public Character(Point location, Image texture, int speedX, int speedY, GamePanel map) {
         this.location = location;
@@ -33,44 +38,44 @@ public abstract class Character {
 
     }
 
-    // Accessor methods
+    /**
+     * Accessor methods
+     *
+     * @return this Character's objects
+     * @see Image
+     * @see Point
+     * @see GamePanel
+     */
+
     public Point getLocation() {
         return location;
     }
     public Image getTexture() {
         return texture;
     }
-    public int getSpeedX() {
-        return speedX;
-    }
-    public int getSpeedY() {
-        return speedY;
-    }
     public GamePanel getMap() {
         return map;
     }
 
-    // Mutator methods
+    /**
+     * Mutator methods
+     */
+
     public void setLocation(Point location) {
         this.location = location;
     }
-    public void setLocation(int x, int y) {
-        this.location = new Point(x,y);
-    }
     public void setMap(GamePanel map) {
         this.map = map;
-    }
-    public void setSpeedX(int speedX) {
-        this.speedX = speedX;
-    }
-    public void setSpeedY(int speedY) {
-        this.speedY = speedY;
     }
     public void setTexture(Image texture) {
         this.texture = texture;
     }
 
-    // It moves the character towards north by subtracting Character's point on y-axis by 1
+    /**
+     * It moves the character towards north by subtracting Character's point on y-axis by 1
+     *
+     * @return the boolean value that says if this Character moved up or not
+     */
     public boolean moveUp () {
         if(((int)this.location.getY()-1)<=0)
             return false;
@@ -107,7 +112,11 @@ public abstract class Character {
         return false;
     }
 
-    // It moves the character towards south by adding Character's point on y-axis by 1
+    /**
+     * It moves the character towards south by adding Character's point on y-axis by 1
+     *
+     * @return the boolean value that says if this Character moved down or not
+     */
     public boolean moveDown () {
         if(((int)this.location.getY()+1)>=17)
             return false;
@@ -133,7 +142,11 @@ public abstract class Character {
         return false;
     }
 
-    // It moves the character towards west by subtracting Character's point on x-axis by 1
+    /**
+     * It moves the character towards west by subtracting Character's point on x-axis by 1
+     *
+     * @return the boolean value that says if this Character moved left or not
+     */
     public boolean moveLeft () {
 
         if(((int)this.location.getX()-1)<0)
@@ -158,7 +171,11 @@ public abstract class Character {
         return false;
     }
 
-    // It moves the character towards east by adding Character's point on x-axis by 1
+    /**
+     * It moves the character towards east by adding Character's point on x-axis by 1
+     *
+     * @return the boolean value that says if this Character moved right or not
+     */
     public boolean moveRight () {
         if(((int)this.location.getX()+1)>=24)
             return false;

@@ -6,6 +6,11 @@ import java.awt.Point;
 import Textures.Image;
 import MazeGame.GamePanel;
 
+/**
+ * Class for the Enemy
+ *
+ * @author Yuwen Jia
+ */
 public class Enemy extends Character {
     int viewRange;
 
@@ -16,19 +21,34 @@ public class Enemy extends Character {
         return;
     }
 
-
-    public int getViewRange() {
-        return viewRange;
-    }
-
+    /**
+     * Mutator method
+     *
+     * @param viewRange the range that this Enemy can view
+     */
     public void setViewRange(int viewRange) {
         this.viewRange = viewRange;
     }
 
+    /**
+     * Accessor methods
+     *
+     * @param p Player object that this Enemy is chasing
+     * @return this Enemy's view range, and it's distance towards the Player
+     */
     public int getDistance(Player p) {
         return Math.abs(p.getLocation().x - super.getLocation().x) + Math.abs(p.getLocation().y - super.getLocation().y);
     }
+    public int getViewRange() {
+        return viewRange;
+    }
 
+    /**
+     * TODO Description of the method (HAS TO BE FILLED BY YUWEN)
+     *
+     * @param p The Player that this Enemy is chasing
+     * @return TODO HAS TO BE FILLED BY YUWEN
+     */
     private int tightChase(Player p) {
         int times = 0;
         boolean check = true;
@@ -66,6 +86,12 @@ public class Enemy extends Character {
         return times;
     }
 
+    /**
+     * TODO Description of the method (HAS TO BE FILLED BY YUWEN)
+     *
+     * @param p The Player that this Enemy is chasing
+     * @return  TODO HAS TO BE FILLED BY YUWEN
+     */
     private void randomChase(Player p) {
         boolean check = true;
         while (check) {
@@ -90,7 +116,12 @@ public class Enemy extends Character {
         }
     }
 
-
+    /**
+     * TODO Description of the method (HAS TO BE FILLED BY YUWEN)
+     *
+     * @param p The Player that this Enemy is chasing
+     * @return  TODO HAS TO BE FILLED BY YUWEN
+     */
     public void chase(Player p) {
         if (getDistance(p) <= viewRange) {
             if (tightChase(p) == 4)

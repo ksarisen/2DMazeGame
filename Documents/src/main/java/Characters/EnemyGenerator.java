@@ -7,6 +7,11 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * EnemyGenerator clas to generate enemies on the game panel
+ *
+ * @author Kerem Sarisen
+ */
 public class EnemyGenerator {
     private static final ArrayList<Enemy> enemyList = new ArrayList<>();
 
@@ -23,7 +28,11 @@ public class EnemyGenerator {
     final int viewRange = 8;
     final int maxEnemyAmount = 2;
 
-    // Constructor that adds the generated enemies to the list that is declared to keep them
+    /**
+     * Constructor that adds the generated enemies to the list that is declared to keep them
+     *
+     * @param map the game panel where enemies need to be generated
+     */
     public EnemyGenerator(GamePanel map) {
         this.map = map;
         for (int i = 0; i <= maxEnemyAmount; i++) {
@@ -33,9 +42,13 @@ public class EnemyGenerator {
 
     Random r = new Random();
 
-    /*
+    /**
      * It generates enemy randomly on the map.
      * It also makes sure that each enemy has different location than any other enemies.
+     *
+     * @param map the game panel where enemies need to be generated
+     * @return Enemy that has been created
+     * @see Enemy
      */
     public Enemy generateEnemy(GamePanel map) {
         Image enemyImg = new Image("Police-South.png");
