@@ -1,1 +1,1 @@
-Our final project for Phase 2 in the Directory Documents.
+Our final project for Phase 2 in the Documents repository.
