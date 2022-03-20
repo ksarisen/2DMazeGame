@@ -55,6 +55,10 @@ public class RewardGenerator {
             if (regReward.getLocation().equals(reward.getLocation()))
                 return generateRegularReward(map);
         }
+        for (PunishmentRoadBlock punishment : map.getPunishmentsList()) {
+            if (regReward.getLocation() == punishment.getLocation())
+                return generateRegularReward(map);
+        }
         if(!map.level.gameObjects[(int)regReward.getLocation().getY()][(int)regReward.getLocation().getX()].getClass().getSimpleName().equals("Road"))
             return generateRegularReward(map);
         return regReward;
