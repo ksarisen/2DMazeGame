@@ -4,8 +4,10 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-/*
- * Sets the timer
+/**
+ * Creates a timer to track game progress. 
+ * @author reecelandry
+ *
  */
 public class Timer {
 	
@@ -19,6 +21,10 @@ public class Timer {
 		endTime = new Date(timeInSecs + (amountOfTime * 60 * 1000));
 	}
 	
+	/**
+	 * @author reecelandry
+	 * @return String formatted time string showing time remaining in game
+	 */
 	public String getTimeRemaining() {
 		SimpleDateFormat format = new SimpleDateFormat("mm:ss");
 		
