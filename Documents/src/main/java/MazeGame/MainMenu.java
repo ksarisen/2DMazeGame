@@ -6,10 +6,14 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+/**
+ * Class to show the screen if the user starts the game
+ *
+ * @author Yuwen Jia
+ */
 public class MainMenu {
     static JFrame jf = new JFrame("Start Menu");
-
-    public static void firtPage() {
+    public static void firstPage() {
 
         jf.setPreferredSize(new Dimension(700, 700));
         jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -59,7 +63,6 @@ public class MainMenu {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 closeThis();
             }
         });
@@ -68,6 +71,9 @@ public class MainMenu {
         jf.setVisible(true);
     }
 
+    /**
+     * Closes the menu
+     */
     public static void closeThis() {
         jf.dispose();
 

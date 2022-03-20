@@ -3,17 +3,25 @@ package MazeGame;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+/**
+ * It handles the keyboard actions of the user
+ *
+ * @author Hoomehr Mangoli
+ */
 public class KeyHandler implements KeyListener {
 
     public static boolean upPressed, downPressed, leftPressed, rightPressed;
-
 
     @Override
     public void keyTyped(KeyEvent e) {
 
     }
 
-    // Checks if one of the "W, A, S, D" is pressed.
+    /**
+     * Checks if one of the "W, A, S, D" is pressed.
+     *
+     * @param e key action
+     */
     @Override
     public void keyPressed(KeyEvent e) {
         int code = e.getKeyCode();
@@ -32,7 +40,11 @@ public class KeyHandler implements KeyListener {
         }
     }
 
-    // Checks if the key that is pressed is released or not/
+    /**
+     * Checks if the key that is pressed is released or not
+     *
+     * @param e key action
+     */
     @Override
     public void keyReleased(KeyEvent e) {
         int code = e.getKeyCode();

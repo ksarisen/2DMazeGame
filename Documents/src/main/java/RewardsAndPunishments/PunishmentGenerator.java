@@ -10,10 +10,18 @@ import java.util.Random;
 /**
  * Creates the punishment objects, and it makes sure that none of the punishments are in the same cell
  * with each other. Also, makes sure that none of the punishments spawn on the grass.
+ *
+ * @author Kerem Sarisen
  */
 public class PunishmentGenerator {
+
     private static final ArrayList<PunishmentRoadBlock> punishmentsList = new ArrayList<>();
 
+    /**
+     * Accessor method
+     *
+     * @return the list for the punishments
+     */
     public static ArrayList<PunishmentRoadBlock> getPunishmentsList() {
         return punishmentsList;
     }
@@ -26,8 +34,9 @@ public class PunishmentGenerator {
     final int punishmentValue = 15;
 
     /**
-     *  Generates and adding the new punishment objects to the list
-     * @param map the map where the enemy be created.
+     * Generates and adds the new punishment objects to the list with the given parameter
+     *
+     * @param map a game panel where punishment should be created
      */
     public PunishmentGenerator(GamePanel map) {
         this.map = map;
@@ -39,21 +48,25 @@ public class PunishmentGenerator {
 
     Random r = new Random();
 
-    // Generates a punishment road block at some random point
-    public PunishmentRoadBlock generatePunishment(GamePanel map) {
+    /**
+     * Generates a punishment road block at some random point with the given parameter
+     *
+     * @param map a game panel where punishment should be created
+     */
+    public PunishmentRoadBlock generatePunishment (GamePanel map) {
         Image punishmentImg = new Image("Construction.png");
 
-        int xCord = r.nextInt(maxCordX - 1);
+        int xCord = r.nextInt(maxCordX - 1 );
         int yCord = r.nextInt(maxCordY - 1);
 
         PunishmentRoadBlock newPunishment = new PunishmentRoadBlock(punishmentValue, punishmentImg, new Point(xCord, yCord), map);
 
         // Checks if the generated reward's location is equal to another one's in the list, if it is, then we use recursion
         for (PunishmentRoadBlock punishment : punishmentsList) {
-            if (newPunishment.getLocation().equals(punishment.getLocation()))
+            if (newPunishment.getLocation().equals( punishment.getLocation()))
                 return generatePunishment(map);
         }
-        if (!map.level.gameObjects[(int) newPunishment.getLocation().getY()][(int) newPunishment.getLocation().getX()].getClass().getSimpleName().equals("Road"))
+        if(!map.level.gameObjects[(int)newPunishment.getLocation().getY()][(int)newPunishment.getLocation().getX()].getClass().getSimpleName().equals("Road"))
             return generatePunishment(map);
         return newPunishment;
     }

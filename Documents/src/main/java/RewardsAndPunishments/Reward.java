@@ -8,6 +8,8 @@ import java.awt.Point;
 /**
  * The game includes a minimum of two types of rewards.
  * Collectible object by the player on the map of the game
+ *
+ * @author Kerem Sarisen
  */
 public abstract class Reward {
 
@@ -16,6 +18,14 @@ public abstract class Reward {
     private Image texture;
     private Point location;
 
+    /**
+     * Creates a reward with given parameters
+     *
+     * @param value score gift that reward holds
+     * @param texture an image of this reward
+     * @param location a point where this reward should be located
+     * @param map a game panel where this reward is being used
+     */
     public Reward(int value, Image texture, Point location, GamePanel map) {
         this.value = value;
         this.texture = texture;
@@ -23,7 +33,9 @@ public abstract class Reward {
         this.map = map;
     }
 
-    //Mutators
+    /**
+     * Mutators
+     */
     public void setMap(GamePanel map) {
         this.map = map;
     }
@@ -32,7 +44,9 @@ public abstract class Reward {
         this.texture = texture;
     }
 
-    //Accessors
+    /**
+     * Accessors
+     */
     public GamePanel getMap() {
         return map;
     }

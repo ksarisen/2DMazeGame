@@ -12,25 +12,30 @@ import java.awt.Point;
 
 public abstract class GameObject {
 
-    public static final int SIZE = 50;
-    public Point position;
-    protected int index = 0;
-    protected Image texture;
-    protected String path;
+	public static final int SIZE = 50;
+	public Point position;
+	protected int index = 0;
+	protected Image texture;
+	protected String path;
 
-    // Mutators
-    public void setTexture(Image t) {
-        this.texture = t;
-    }
+	/**
+	 * Mutators
+	 */
+	public void setTexture(Image t) {
+		this.texture = t;
+	}
+	public void setPosition(Point p) {
+		this.position = p;
+	}
 
-    public void setPosition(Point p) {
-        this.position = p;
-    }
-
-    // Accessors
-    public Image getTexture() {
-        return this.texture;
-    }
-
+	/**
+	 * Accessors
+	 */
+	public Image getTexture() {
+		return this.texture;
+	}
+	public Point getPosition() {
+		return this.position;
+	}
 
 }

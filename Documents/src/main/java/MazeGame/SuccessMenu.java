@@ -6,9 +6,14 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+/**
+ * Class to show the screen if the user wins the game
+ *
+ * @author Yuwen Jia
+ */
 public class SuccessMenu {
     static JFrame jf = new JFrame("Success Menu");
-    public static void firtPage(int score) {
+    public static void firstPage(int score) {
 
         jf.setPreferredSize(new Dimension(700, 700));
         jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -36,13 +41,10 @@ public class SuccessMenu {
         jl1.setFont(new Font("", Font.BOLD, 24));
         jl1.setForeground(Color.decode("#375a7f"));
 
-
-
         jl1.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 System.exit(0);
             }
         });
@@ -50,7 +52,11 @@ public class SuccessMenu {
         jf.pack();
         jf.setVisible(true);
     }
+
+    /**
+     * Closes the menu
+     */
     public static void closeThis() {
         jf.dispose();
-
-    }}
+    }
+}

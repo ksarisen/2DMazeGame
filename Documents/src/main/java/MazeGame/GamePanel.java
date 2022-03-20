@@ -15,6 +15,11 @@ import Textures.Image;
 import Characters.Player;
 import javax.swing.JFrame;
 
+/**
+ * It creates the panel where the game is being shown to the user
+ *
+ * @author Hoomehr Mangoli
+ */
 public class GamePanel extends JPanel implements Runnable{
     // Screen setting
     final int originalTileSize = 50; // 16 by 16 tiles
@@ -24,8 +29,6 @@ public class GamePanel extends JPanel implements Runnable{
     final int maxScreenRow = 17;
     final int screenWidth = tileSize * maxScreenCol;
     final int screenHeight = (tileSize * maxScreenRow);
-
-
 
     // Sets the frame rate here
     int fps = 30;
@@ -62,6 +65,11 @@ public class GamePanel extends JPanel implements Runnable{
     JFrame frame;
     public MenuBar menu = new MenuBar();
 
+    /**
+     * Constructor that creates the panel where the game will be screened
+     *
+     * @param f JFrame
+     */
     public GamePanel(JFrame f){
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setDoubleBuffered(true);
@@ -73,11 +81,17 @@ public class GamePanel extends JPanel implements Runnable{
 
     }
 
+    /**
+     * Starts the Thread
+     */
     public void startGameThread(){
         gameThread = new Thread(this);
         gameThread.start();
     }
 
+    /**
+     * Runs the panel
+     */
     @Override
     public void run(){
 
@@ -111,9 +125,10 @@ public class GamePanel extends JPanel implements Runnable{
     }
 
     /**
+     * Loads level #1
+     *
 	 * @author Reece Landry
-	 * @param l
-	 * Loads level #l
+	 * @param l new level
 	 */
 	public void load(int l) {
 		if(this.level != null) {
@@ -144,16 +159,18 @@ public class GamePanel extends JPanel implements Runnable{
 	}
 
 	/**
+     * Starts the game using the current Level
+     *
 	 * @author Reece Landry
-	 * Starts the game using the current Level
 	 */
 	public void startGame() {
 		this.load(this.currentLevel);
 	}
 
 	/**
+     * Switching the next level or displays end of game message
+     *
 	 * @author Reece Landry
-	 * Switching the next level or displays end of game message.
 	 */
 	public void nextLevel() {
 
@@ -170,11 +187,21 @@ public class GamePanel extends JPanel implements Runnable{
 		this.load(this.currentLevel);
 	}
 
-    //Accessors
+    /**
+     * Accessors
+     */
+    public ArrayList<Enemy> getEnemiesList () {
+        return enemies;
+    }
     public ArrayList<PunishmentRoadBlock> getPunishmentsList () {
         return punishments;
     }
-
+    public ArrayList<Reward> getRewardsList () {
+        return rewards;
+    }
+	public LevelGenerator getCurrentLevel() {
+		return this.level;
+	}
 
     /**
      * It updates the game after each cell the player moves.
@@ -182,6 +209,7 @@ public class GamePanel extends JPanel implements Runnable{
      * If 'D' is pressed, it moves towards east, else if 'A' is pressed, it moves towards west
      * If there is nay reward or punishment in the cell that Player arrived, then it makes the player collects them.
      * Collectibles disappear after being collected, and chase method for enemies being checked
+     *
      */
     public void update(){
     	menu.update(player.getScore(), timer.getTimeRemaining());
@@ -214,19 +242,21 @@ public class GamePanel extends JPanel implements Runnable{
             int total_score=player.getScore()+timer.getScore();
             frame.dispose();
             gameThread=null;
-            SuccessMenu.firtPage(total_score);
+            SuccessMenu.firstPage(total_score);
         };
         if(player.caught(enemies)||player.getScore()<0)
         {
             frame.dispose();
             gameThread=null;
-            FailMenu.firtPage();
+            FailMenu.firstPage();
         }
         rewards = player.pickReward(rewards);
     }
 
     /**
      * It paints all the collectibles and the game objects of the game to be seen on the map.
+     *
+     * @param g built-in Graphics object
      */
     public void paintComponent (Graphics g){
         super.paintComponent(g);

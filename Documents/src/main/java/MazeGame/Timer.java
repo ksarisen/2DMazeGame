@@ -5,9 +5,9 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * Creates a timer to track game progress. 
- * @author reecelandry
+ * Creates a timer to track game progress.
  *
+ * @author Reece Landry
  */
 public class Timer {
 	
@@ -22,7 +22,8 @@ public class Timer {
 	}
 	
 	/**
-	 * @author reecelandry
+	 * Return the remaining time to finish the game
+	 *
 	 * @return String formatted time string showing time remaining in game
 	 */
 	public String getTimeRemaining() {
@@ -35,6 +36,12 @@ public class Timer {
 		
 		return String.format("%02d", differenceInMinutes) + ":" + differenceInSeconds;
 	}
+
+	/**
+	 * Returns the player's modified end-game score
+	 *
+	 * @return the user score
+	 */
 	public int getScore()
 	{
 		Date currentTime = new Date();
