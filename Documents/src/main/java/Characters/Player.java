@@ -10,6 +10,11 @@ import java.util.Objects;
 import MazeGame.GamePanel;
 import Textures.Image;
 
+/**
+ * Class for the Player
+ *
+ * @author Yuwen Jia
+ */
 public class Player extends Character {
     private int score;
     private String name;
@@ -24,16 +29,20 @@ public class Player extends Character {
         super.type="Player";
     }
 
-    /*
+    /**
      * It checks if the player has collected all 10 regular rewards and
      * the location of the rescue helicopter same as the player's location
+     *
+     * @return true if this Player collected all the regular rewards, otherwise returns false
      */
     public boolean check()
     {
         return this.collection==10&Objects.equals(super.getLocation(), new Point(21, 1));
     }
 
-    // Accessors
+    /**
+     * Accessors methods
+     */
     public int getCollection() {
         return collection;
     }
@@ -44,7 +53,9 @@ public class Player extends Character {
         return score;
     }
 
-    // Mutators
+    /**
+     * Mutators methods
+     */
     public void setScore(int score) {
         this.score = score;
     }
@@ -52,11 +63,14 @@ public class Player extends Character {
         this.name = name;
     }
 
-    /*
+    /**
      * If the player's locations is same as reward's location then
      * it makes the player collect the reward.
      * Increases the score of the player by the worth of the reward's value
      * If the reward is regular reward then it increases the collection by 1 to keep the count of regulars.
+     *
+     * @param rl the list where all the rewards that have been created are kept
+     * @return the new modified list for the rewards
      */
     public ArrayList<Reward> pickReward(ArrayList<Reward> rl)
     {
@@ -73,9 +87,12 @@ public class Player extends Character {
         return rl;
     }
 
-    /*
+    /**
      * If the location of the player same as the location of the punishment then
      * it makes the players loose score by the worth of punishment's value
+     *
+     * @param pl the list where all the road blocks for punishment that have been created are kept
+     * @return the new modified list for the road blocks
      */
     public ArrayList<PunishmentRoadBlock> punishment(ArrayList<PunishmentRoadBlock> pl)
     {
@@ -88,7 +105,14 @@ public class Player extends Character {
         }
         return pl;
     }
-    public boolean catched(ArrayList<Enemy>el)
+
+    /**
+     * It checks if this Player caught by the enemy or not
+     *
+     * @param el the list of enemies in the game
+     * @return true if this Player is in the same cell with the Enemy, otherwise false
+     */
+    public boolean caught(ArrayList<Enemy>el)
     {
         for (Enemy e : el) {
             if (super.getLocation().equals( e.getLocation())) {

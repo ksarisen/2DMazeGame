@@ -226,7 +226,7 @@ public class GamePanel extends JPanel implements Runnable{
             gameThread=null;
             SuccessMenu.firtPage(total_score);
         };
-        if(player.catched(enemies)||player.getScore()<0)
+        if(player.caught(enemies)||player.getScore()<0)
         {
             frame.dispose();
             gameThread=null;
