@@ -20,8 +20,8 @@ public class RewardGenerator {
 
     GamePanel map;
 
-    final int maxRegReward = 10;
-    final int maxBonusReward = 2;
+    final int maxRegReward = 9;
+    final int maxBonusReward = 1;
     final int maxCordX = 25;
     final int maxCordY = 15;
     final int regRewardVal = 10;

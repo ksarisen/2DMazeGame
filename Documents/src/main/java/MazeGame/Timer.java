@@ -27,7 +27,7 @@ public class Timer {
 		long differenceInMinutes = (timeSince / (1000 * 60)) % 60;
 		long differenceInSeconds = timeSince / 1000 % 60;
 		
-		return differenceInMinutes + ":" + differenceInSeconds;
+		return String.format("%02d", differenceInMinutes) + ":" + differenceInSeconds;
 	}
 	public int getScore()
 	{
