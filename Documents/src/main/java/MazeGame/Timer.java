@@ -29,4 +29,12 @@ public class Timer {
 		
 		return differenceInMinutes + ":" + differenceInSeconds;
 	}
+	public int getScore()
+	{
+		Date currentTime = new Date();
+		long timeSince = endTime.getTime() - currentTime.getTime();
+		long differenceInMinutes = (timeSince / (1000 * 60)) % 60;
+		long differenceInSeconds = timeSince / 1000 % 60;
+		return (int) (differenceInMinutes*12+differenceInSeconds/5);
+	}
 }

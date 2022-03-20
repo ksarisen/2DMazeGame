@@ -25,8 +25,11 @@ public class GamePanel extends JPanel implements Runnable{
     final int screenWidth = tileSize * maxScreenCol;
     final int screenHeight = (tileSize * maxScreenRow);
 
+
+
     // Sets the frame rate here
     int fps = 30;
+    double remainingTime;
 
     KeyHandler keyH = new KeyHandler();
     Thread gameThread;
@@ -48,13 +51,13 @@ public class GamePanel extends JPanel implements Runnable{
 	Player player = new Player(0, "Player 1", 0,0, new Point(0,0), this, new Image("Car-East.png"));
 
     EnemyGenerator enemyGenerator;
-    ArrayList<Enemy> enemies;
+    ArrayList<Enemy> enemies=null;
 
     PunishmentGenerator punishmentGenerator;
-    ArrayList<PunishmentRoadBlock> punishments;
+    ArrayList<PunishmentRoadBlock> punishments=null;
 
     RewardGenerator rewardGenerator;
-    ArrayList<Reward> rewards;
+    ArrayList<Reward> rewards=null;
 
     JFrame frame;
     public MenuBar menu = new MenuBar();
@@ -90,7 +93,7 @@ public class GamePanel extends JPanel implements Runnable{
             // This is to call the paint component method.
 
             try{
-                double remainingTime = nextDrawTime - System.nanoTime();
+                remainingTime = nextDrawTime - System.nanoTime();
                 remainingTime = remainingTime/1000000;      // Converting nano seconds to milliseconds;
 
                 if(remainingTime < 0){
@@ -104,6 +107,7 @@ public class GamePanel extends JPanel implements Runnable{
             }
 
         }
+
     }
 
     /**
@@ -180,7 +184,7 @@ public class GamePanel extends JPanel implements Runnable{
 		return this.level;
 	}
 
-    /*
+    /**
      * It updates the game after each cell the player moves.
      * If 'W' is pressed, it moves towards north, else if 'S' is pressed, it moves towards south
      * If 'D' is pressed, it moves towards east, else if 'A' is pressed, it moves towards west
@@ -192,6 +196,7 @@ public class GamePanel extends JPanel implements Runnable{
         check++;
         if(check == 20|| check == 40){
         System.out.println(player.getLocation());
+        System.out.println(timer.getScore());
         if(keyH.upPressed){
             player.moveUp();
         }
@@ -214,7 +219,19 @@ public class GamePanel extends JPanel implements Runnable{
                 e.chase(player);
             }
         }
-        player.check();
+        if(player.check())
+        {
+            int total_score=player.getScore()+timer.getScore();
+            frame.dispose();
+            gameThread=null;
+            SuccessMenu.firtPage(total_score);
+        };
+        if(player.catched(enemies)||player.getScore()<0)
+        {
+            frame.dispose();
+            gameThread=null;
+            FailMenu.firtPage();
+        }
         rewards = player.pickReward(rewards);
     }
 

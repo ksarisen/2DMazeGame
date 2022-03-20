@@ -76,7 +76,19 @@ public abstract class Character {
             return false;
 
         if(map.level.gameObjects[(int)this.location.getY()][(int)this.location.getX()].getClass().getSimpleName().equals("Road") &
-                map.level.gameObjects[(int)this.location.getY()-1][(int)this.location.getX()].getClass().getSimpleName().equals("Road")) {
+                (map.level.gameObjects[(int)this.location.getY()-1][(int)this.location.getX()].getClass().getSimpleName().equals("Road")||
+                        map.level.gameObjects[(int)this.location.getY()-1][(int)this.location.getX()].getClass().getSimpleName().equals("Helicopter"))) {
+            if(map.level.gameObjects[(int)this.location.getY()-1][(int)this.location.getX()].getClass().getSimpleName().equals("Helicopter"))
+            {
+                if(type.equals("Player"))
+                {
+                    this.texture=new Image("Car-North.png");
+                    this.location.y = this.location.y-1;
+                    System.out.println("CAN MOVE UP");
+                    return true;
+                }
+                return false;
+            }
             Road r = (Road) map.level.gameObjects[this.location.y-1][this.location.x];
             if (r.isSouth()) {
                 this.location.y = this.location.y-1;
@@ -100,7 +112,8 @@ public abstract class Character {
         if(((int)this.location.getY()+1)>=17)
             return false;
 
-        if(map.level.gameObjects[(int)this.location.getY()][(int)this.location.getX()].getClass().getSimpleName().equals("Road") &
+        if((map.level.gameObjects[(int)this.location.getY()][(int)this.location.getX()].getClass().getSimpleName().equals("Road")||
+                map.level.gameObjects[(int)this.location.getY()][(int)this.location.getX()].getClass().getSimpleName().equals("Helicopter"))&
                 map.level.gameObjects[(int)this.location.getY()+1][(int)this.location.getX()].getClass().getSimpleName().equals("Road")) {
             Road r = (Road) map.level.gameObjects[this.location.y+1][this.location.x];
             if (r.isNorth()) {
@@ -151,7 +164,7 @@ public abstract class Character {
             return false;
 
         if(map.level.gameObjects[(int) this.location.getY()][(int) this.location.getX()].getClass().getSimpleName().equals("Road") &
-                map.level.gameObjects[(int) this.location.getY()][(int) this.location.getX() + 1].getClass().getSimpleName().equals("Road")) {
+                (map.level.gameObjects[(int) this.location.getY()][(int) this.location.getX() + 1].getClass().getSimpleName().equals("Road"))) {
             Road r = (Road) map.level.gameObjects[this.location.y][this.location.x+1];
             if (r.isWest()) {
                 this.location.x=this.location.x+1;

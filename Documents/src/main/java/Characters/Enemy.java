@@ -35,7 +35,6 @@ public class Enemy extends Character {
         while (check) {
             times++;
             int random1 = (int) (Math.random() * (2));
-            System.out.println(random1 + "random1");
             if(p.getLocation().x - this.getLocation().x == 0)
             {
                 random1=1;
@@ -71,7 +70,6 @@ public class Enemy extends Character {
         boolean check = true;
         while (check) {
             int random2 = (int) (Math.random() * (4));
-            System.out.println(random2 + "random2");
             if (random2 == 0) {
                 if (super.moveRight()) {
                     check = false;
@@ -103,5 +101,6 @@ public class Enemy extends Character {
         }
         System.out.println("Enemy move");
     }
+
 }
 

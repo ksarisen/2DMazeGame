@@ -30,7 +30,7 @@ public class Player extends Character {
      */
     public boolean check()
     {
-        return collection == 10 & Objects.equals(super.getLocation(), new Point(1, 21));
+        return this.collection==10&Objects.equals(super.getLocation(), new Point(21, 1));
     }
 
     // Accessors
@@ -87,6 +87,15 @@ public class Player extends Character {
             }
         }
         return pl;
+    }
+    public boolean catched(ArrayList<Enemy>el)
+    {
+        for (Enemy e : el) {
+            if (super.getLocation().equals( e.getLocation())) {
+                return true;
+            }
+        }
+        return false;
     }
 }
 
