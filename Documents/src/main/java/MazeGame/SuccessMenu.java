@@ -8,6 +8,7 @@ import javax.swing.*;
 
 public class SuccessMenu {
     static JFrame jf = new JFrame("Success Menu");
+
     public static void firtPage(int score) {
 
         jf.setPreferredSize(new Dimension(700, 700));
@@ -16,13 +17,13 @@ public class SuccessMenu {
         jf.setLayout(null);
 
 
-        JLabel jb=new JLabel("Congratulations! ! ! Escape successfully",JLabel.CENTER);
+        JLabel jb = new JLabel("Congratulations! ! ! Escape successfully", JLabel.CENTER);
         jb.setPreferredSize(new Dimension(680, 30));
         jf.add(jb);
         jb.setBounds(0, 200, 690, 30);
         jb.setFont(new Font("", Font.BOLD, 24));
         jb.setForeground(Color.decode("#375a7f"));
-        JLabel jb1=new JLabel("Your Score is: "+score,JLabel.CENTER);
+        JLabel jb1 = new JLabel("Your Score is: " + score, JLabel.CENTER);
         jb1.setPreferredSize(new Dimension(680, 30));
         jf.add(jb1);
         jb1.setBounds(0, 300, 690, 30);
@@ -37,7 +38,6 @@ public class SuccessMenu {
         jl1.setForeground(Color.decode("#375a7f"));
 
 
-
         jl1.addActionListener(new ActionListener() {
 
             @Override
@@ -50,7 +50,9 @@ public class SuccessMenu {
         jf.pack();
         jf.setVisible(true);
     }
+
     public static void closeThis() {
         jf.dispose();
 
-    }}
+    }
+}

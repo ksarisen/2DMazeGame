@@ -56,13 +56,13 @@ public class EnemyGenerator {
         int xCord = r.nextInt(maxCordX - 1);
         int yCord = r.nextInt(maxCordY - 1);
 
-        Enemy enemy = new Enemy(viewRange, speedX, speedY, enemyImg, new Point(xCord, yCord), map );
+        Enemy enemy = new Enemy(viewRange, speedX, speedY, enemyImg, new Point(xCord, yCord), map);
 
         for (Enemy value : enemyList) {
             if (enemy.getLocation() == value.getLocation())
                 return generateEnemy(map);
         }
-        if(!map.level.gameObjects[(int)enemy.getLocation().getY()][(int)enemy.getLocation().getX()].getClass().getSimpleName().equals("Road"))
+        if (!map.level.gameObjects[(int) enemy.getLocation().getY()][(int) enemy.getLocation().getX()].getClass().getSimpleName().equals("Road"))
             return generateEnemy(map);
         return enemy;
     }

@@ -7,21 +7,6 @@ public class KeyHandler implements KeyListener {
 
     public static boolean upPressed, downPressed, leftPressed, rightPressed;
 
-    public static boolean isDownPressed() {
-        return downPressed;
-    }
-
-    public static boolean isLeftPressed() {
-        return leftPressed;
-    }
-
-    public static boolean isRightPressed() {
-        return rightPressed;
-    }
-
-    public static boolean isUpPressed() {
-        return upPressed;
-    }
 
     @Override
     public void keyTyped(KeyEvent e) {

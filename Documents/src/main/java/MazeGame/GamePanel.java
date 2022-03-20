@@ -171,18 +171,10 @@ public class GamePanel extends JPanel implements Runnable{
 	}
 
     //Accessors
-    public ArrayList<Enemy> getEnemiesList () {
-        return enemies;
-    }
     public ArrayList<PunishmentRoadBlock> getPunishmentsList () {
         return punishments;
     }
-    public ArrayList<Reward> getRewardsList () {
-        return rewards;
-    }
-	public LevelGenerator getCurrentLevel() {
-		return this.level;
-	}
+
 
     /**
      * It updates the game after each cell the player moves.
@@ -236,7 +228,7 @@ public class GamePanel extends JPanel implements Runnable{
         rewards = player.pickReward(rewards);
     }
 
-    /*
+    /**
      * It paints all the collectibles and the game objects of the game to be seen on the map.
      */
     public void paintComponent (Graphics g){

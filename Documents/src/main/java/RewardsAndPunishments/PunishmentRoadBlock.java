@@ -5,7 +5,7 @@ import Textures.Image;
 
 import java.awt.*;
 
-/*
+/**
  * Punishment object to decrease player's score
  */
 public class PunishmentRoadBlock extends Reward {

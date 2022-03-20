@@ -7,7 +7,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
-/*
+/**
  * Generates rewards
  */
 public class RewardGenerator {
@@ -42,7 +42,7 @@ public class RewardGenerator {
     Random r = new Random();
 
     // Generates a regular reward at some  point
-    public Reward generateRegularReward (GamePanel map) {
+    public Reward generateRegularReward(GamePanel map) {
         Image regRewardImg = new Image("gas.png");
 
         int xCord = r.nextInt(maxCordX - 1);
@@ -59,13 +59,13 @@ public class RewardGenerator {
             if (regReward.getLocation() == punishment.getLocation())
                 return generateRegularReward(map);
         }
-        if(!map.level.gameObjects[(int)regReward.getLocation().getY()][(int)regReward.getLocation().getX()].getClass().getSimpleName().equals("Road"))
+        if (!map.level.gameObjects[(int) regReward.getLocation().getY()][(int) regReward.getLocation().getX()].getClass().getSimpleName().equals("Road"))
             return generateRegularReward(map);
         return regReward;
     }
 
     // Generates a bonus reward at some random point
-    public Reward generateBonusReward (GamePanel map) {
+    public Reward generateBonusReward(GamePanel map) {
         Image bonusRewardImg = new Image("money.png");
 
         int xCord = r.nextInt(maxCordX - 1);
@@ -85,7 +85,7 @@ public class RewardGenerator {
         }
 
         // Check if the location of the new punishment is same as any grass' location on the map, if it is, then recursion
-        if(!map.level.gameObjects[(int)bonusReward.getLocation().getY()][(int)bonusReward.getLocation().getX()].getClass().getSimpleName().equals("Road"))
+        if (!map.level.gameObjects[(int) bonusReward.getLocation().getY()][(int) bonusReward.getLocation().getX()].getClass().getSimpleName().equals("Road"))
             return generateBonusReward(map);
         return bonusReward;
     }

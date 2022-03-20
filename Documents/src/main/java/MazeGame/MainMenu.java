@@ -8,6 +8,7 @@ import javax.swing.*;
 
 public class MainMenu {
     static JFrame jf = new JFrame("Start Menu");
+
     public static void firtPage() {
 
         jf.setPreferredSize(new Dimension(700, 700));
@@ -64,7 +65,9 @@ public class MainMenu {
         jf.pack();
         jf.setVisible(true);
     }
+
     public static void closeThis() {
         jf.dispose();
 
-    }}
+    }
+}
