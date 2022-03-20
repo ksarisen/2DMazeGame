@@ -6,6 +6,7 @@ import java.awt.Point;
 
 /**
  * Creates a {@code GameObject} that stores details of cells on the game board
+ *
  * @author Reece Landry
  */
 
@@ -17,7 +18,9 @@ public abstract class GameObject {
 	protected Image texture;
 	protected String path;
 
-	// Mutators
+	/**
+	 * Mutators
+	 */
 	public void setTexture(Image t) {
 		this.texture = t;
 	}
@@ -25,7 +28,9 @@ public abstract class GameObject {
 		this.position = p;
 	}
 
-	// Accessors
+	/**
+	 * Accessors
+	 */
 	public Image getTexture() {
 		return this.texture;
 	}

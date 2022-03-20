@@ -20,10 +20,9 @@ import java.awt.Point;
 
 
 /**
- * @author Reece Landry
- * 
  * Creates a level from a JSON file using game objects
- * 
+ *
+ * @author Reece Landry
  */
 
 public class LevelGenerator extends JComponent {
@@ -66,8 +65,9 @@ public class LevelGenerator extends JComponent {
 	/**
 	 * Creates a map based on the JSON file at levelPath
 	 * based on the decoding scheme defined in code
+	 *
 	 * @author Reece Landry
-	 * @param levelPath
+	 * @param levelPath level description
 	 */
 	
 	public void buildGame(String levelPath) {
@@ -106,8 +106,9 @@ public class LevelGenerator extends JComponent {
 	
 	/**
 	 * Initializes a game object given the parameters
-	 * @param o
-	 * @param p
+	 *
+	 * @param o the GameObject that is being located
+	 * @param p the location of the param o
 	 * @author Reece Landry
 	 */
 	
@@ -119,7 +120,8 @@ public class LevelGenerator extends JComponent {
 	
 	/**
 	 * Adds the object to the list of {@code GameObject}
-	 * @param obj
+	 *
+	 * @param obj the GameObject that is being put in the list
 	 * @author Reece Landry
 	 */
 	
@@ -129,6 +131,7 @@ public class LevelGenerator extends JComponent {
 	
 	/**
 	 * Clears the current list of {@code GameObject}
+	 *
 	 * @author Reece Landry
 	 */
 	
@@ -138,6 +141,7 @@ public class LevelGenerator extends JComponent {
 	
 	/**
 	 * Returns the coordinates of the player starting position
+	 *
 	 * @return Point
 	 * @author Reece Landry
 	 */

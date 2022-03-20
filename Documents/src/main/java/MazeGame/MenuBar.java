@@ -4,15 +4,13 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.io.File;
 
 import javax.swing.*;
 
-
 /**
- * 
- * @author Reece Landry
+ * Sets the bars that is being showed on during the gameplay
  *
+ * @author Reece Landry
  */
 
 public class MenuBar extends JPanel {
@@ -21,7 +19,9 @@ public class MenuBar extends JPanel {
 	
 	JLabel gasMeter = new JLabel("Gas: 2/10");
 
-	// Settings to arrange how the screen looks.
+	/**
+	 * Settings to arrange how the screen looks.
+	 */
  	public MenuBar() {
  		
 		this.setLayout(new BorderLayout());
@@ -54,7 +54,12 @@ public class MenuBar extends JPanel {
 		this.add(window, BorderLayout.CENTER);
 	 }
 
-	 // Updates the time for the user
+	 /**
+	  * Updates the time for the user
+	  *
+	  * @param score user's score
+	  * @param time the remaining time to finish the game
+	  */
  	public void update(int score, String time) {
  		
  		gasMeter.setText("" + score);
