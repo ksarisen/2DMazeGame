@@ -72,6 +72,8 @@ public class Player extends Character {
         this.score = score;
     }
 
+    public void setCollection(int collection) {this.collection=collection;}
+
     public void setName(String name) {
         this.name = name;
     }
