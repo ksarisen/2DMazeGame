@@ -31,6 +31,12 @@ public class Enemy extends Character {
         super.type = "Police";
     }
 
+    /**
+     * Accessors methods
+     */
+    public int getViewRange() {
+        return viewRange;
+    }
 
     /**
      * Calculate the distance between the enemy and player.

@@ -18,8 +18,8 @@ import java.util.ArrayList;
 
 public class PlayerTest {
 	
-	Player player;
-	JFrame frame=new JFrame();
+	private Player player;
+	private JFrame frame=new JFrame();
 	
 	@BeforeEach
 	void setUp() {
@@ -30,7 +30,7 @@ public class PlayerTest {
 	@Test
 	void generatePlayer() {
 		//test player functions
-		assertEquals(0, player.getScore(), "fail to create the player");
+		assertNotNull(player, "fail to create the player");
 	}
 
 	@Test
