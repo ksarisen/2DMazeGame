@@ -13,7 +13,7 @@ import javax.swing.*;
  */
 public class FailMenu {
 
-    static JFrame jf = new JFrame("Fail Menu");
+    public static JFrame jf = new JFrame("Fail Menu");
 
     public static void firstPage() {
 
