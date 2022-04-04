@@ -23,7 +23,6 @@ public class BankTest {
     @Test
     void generateLeftBank()
     {
-        b=new Bank("l");
         assertNotNull(b,"fail to create left bank");
     }
 }
