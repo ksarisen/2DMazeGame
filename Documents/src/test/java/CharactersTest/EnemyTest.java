@@ -23,7 +23,7 @@ public class EnemyTest {
 
     @Test
     void generateEnemy(){
-        assertNotNull(enemy, "fail to create the player");
+        assertNotNull(enemy, "fail to create the enemy");
     }
 
     @Test

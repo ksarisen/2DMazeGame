@@ -3,6 +3,7 @@ package MazeGame;
 import javax.swing.JPanel;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.*;
 
 import Characters.Enemy;
 import Characters.EnemyGenerator;
@@ -36,7 +37,7 @@ public class GamePanel extends JPanel implements Runnable {
     double remainingTime;
 
     KeyHandler keyH = new KeyHandler();
-    Thread gameThread;
+    private Thread gameThread;
 
     public static LevelGenerator level;
     private int currentLevel = 0;
@@ -80,6 +81,13 @@ public class GamePanel extends JPanel implements Runnable {
         this.startGame();
         this.setVisible(true);
 
+    }
+
+    /**
+     * getter of the Thread
+     */
+    public Thread getGameThread() {
+        return gameThread;
     }
 
     /**

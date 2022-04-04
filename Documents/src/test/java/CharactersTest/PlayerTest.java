@@ -17,20 +17,25 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class PlayerTest {
-	
-	private Player player;
+
 	private JFrame frame=new JFrame();
-	
+	GamePanel gamePanel=new GamePanel(frame);
+	private Player player;
 	@BeforeEach
-	void setUp() {
-		//create new player
-		player = new Player(0,"null",1,1,new Point(0,0),new GamePanel(frame),new Image("Car-East.png"));
-	}
+	void setup(){
+		gamePanel.getEnemiesList().clear();
+		gamePanel.getPunishmentsList().clear();
+		gamePanel.getRewardsList().clear();
+	player = new Player(0,"null",1,1,new Point(0,0),gamePanel,new Image("Car-East.png"));}
+
 	
 	@Test
 	void generatePlayer() {
 		//test player functions
 		assertNotNull(player, "fail to create the player");
+		player.getMap().getEnemiesList().clear();
+		player.getMap().getRewardsList().clear();
+		player.getMap().getPunishmentsList().clear();
 	}
 
 	@Test

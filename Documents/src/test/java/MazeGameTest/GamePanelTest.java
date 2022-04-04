@@ -1,4 +1,4 @@
-package test.java.MazeGameTest;
+package MazeGameTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -30,6 +30,6 @@ public class GamePanelTest {
 	@Test
 	void testGameThread() {
 		panel.startGameThread();
-		assertNotNull(panel.gameThread);
+		assertNotNull(panel.getGameThread());
 	}
 }
