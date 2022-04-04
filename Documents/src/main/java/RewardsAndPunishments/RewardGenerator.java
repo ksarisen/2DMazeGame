@@ -21,8 +21,6 @@ public class RewardGenerator {
         return rewardsList;
     }
 
-    GamePanel map;
-
     final int maxRegReward = 9;
     final int maxBonusReward = 1;
     final int maxCordX = 25;
@@ -36,7 +34,6 @@ public class RewardGenerator {
      * @param map a game panel where reward should be created
      */
     public RewardGenerator(GamePanel map) {
-        this.map = map;
         for (int i = 0; i <= maxRegReward; i++) {
             rewardsList.add(generateRegularReward(map));
         }
