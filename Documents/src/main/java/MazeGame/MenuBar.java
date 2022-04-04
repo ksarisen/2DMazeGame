@@ -15,9 +15,17 @@ import javax.swing.*;
 
 public class MenuBar extends JPanel {
 
-    JLabel timer = new JLabel("Timer");
+    private JLabel timer = new JLabel("Timer");
 
-    JLabel gasMeter = new JLabel("Gas: 2/10");
+    private JLabel gasMeter = new JLabel("Gas: 2/10");
+
+    public JLabel getGasMeter() {
+        return gasMeter;
+    }
+
+    public JLabel getTimer() {
+        return timer;
+    }
 
     /**
      * Settings to arrange how the screen looks.
