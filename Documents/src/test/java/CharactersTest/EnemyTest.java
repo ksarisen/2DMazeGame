@@ -40,6 +40,7 @@ public class EnemyTest {
         //test tightChase
         Player player = new Player(0,"null",1,1,new Point(16,2),new GamePanel(frame),new Image("Car-East.png"));
         enemy.chase(player);
+        enemy.getMap().getRewardsList().clear();
         assertEquals(new Point(16,2), enemy.getLocation(), "fail to chase the player in above");
     }
 
@@ -83,7 +84,7 @@ public class EnemyTest {
         Player player = new Player(0,"null",1,1,new Point(2,21),new GamePanel(frame),new Image("Car-East.png"));
         enemy.chase(player);
         enemy.getMap().getRewardsList().clear();
-        assertNotEquals(enemy.getLocation(),new Point(13,4) , "fail to move when the player out of the view range");
+        assertNotEquals(new Point(13,4),enemy.getLocation() , "fail to move when the player out of the view range");
     }
 
     @Test
@@ -93,7 +94,7 @@ public class EnemyTest {
         enemy.setLocation(new Point(10,3));
         Player player = new Player(0,"null",1,1,new Point(2,21),new GamePanel(frame),new Image("Car-East.png"));
         enemy.chase(player);
-        assertNotEquals(enemy.getLocation(),new Point(10,3) , "fail to move when the player out of the view range and 1 way of the enemy is blocked by grass");
+        assertNotEquals(new Point(10,3) ,enemy.getLocation(), "fail to move when the player out of the view range and 1 way of the enemy is blocked by grass");
     }
 
     @Test
@@ -103,7 +104,7 @@ public class EnemyTest {
         enemy.setLocation(new Point(2,5));
         Player player = new Player(0,"null",1,1,new Point(2,21),new GamePanel(frame),new Image("Car-East.png"));
         enemy.chase(player);
-        assertNotEquals(enemy.getLocation(),new Point(2,5) , "fail to move when the player out of the view range and 2 ways of the enemy is blocked by grass");
+        assertNotEquals(new Point(2,5) ,enemy.getLocation(), "fail to move when the player out of the view range and 2 ways of the enemy is blocked by grass");
     }
 
 }
