@@ -50,7 +50,7 @@ This will package the program into a JAR file (~/target/Cops and Robbers.jar)
 mvn javadoc:javadoc
 ```
 
-This will create a javadoc website (~/target/site/JavaDocs)
+This will create a javadoc website (~/target/site/JavaDocs)<br>To open the webpage simply open the index.html file in your browser
 
 #### Creating Maven Site
 
@@ -58,7 +58,7 @@ This will create a javadoc website (~/target/site/JavaDocs)
 mvn site
 ```
 
-This will create a site for all Maven information (~/target/site)
+This will create a site for all Maven information (~/target/site)<br>To open the webpage simply open the index.html file in your browser
 
 ## Looking for files?
 
