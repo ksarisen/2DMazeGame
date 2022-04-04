@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class EnemyGeneratorTest {
-    private JFrame frame= new JFrame();
+    private final JFrame frame= new JFrame();
     GamePanel map=new GamePanel(frame);
     @Test
     void generateAllEnemies()
@@ -61,11 +61,11 @@ public class EnemyGeneratorTest {
         for(Enemy e1:el)
         {
             for(Enemy e2:el)
-            if(e1!=e2&e1.getLocation().equals(e2.getLocation()))
-            {
-                check=false;
-            }
+                if (e1 != e2 & e1.getLocation().equals(e2.getLocation())) {
+                    check = false;
+                    break;
+                }
         }
-        assertTrue(check, "Some enemies does not been generated in road");
+        assertTrue(check, "Some enemies have been generated in the same location");
     }
 }
