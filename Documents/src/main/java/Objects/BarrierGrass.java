@@ -1,6 +1,5 @@
 package Objects;
 
-import MazeGame.GameObject;
 import Textures.Image;
 
 /**

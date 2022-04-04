@@ -1,7 +1,6 @@
 package Objects;
 
 import Textures.Image;
-import MazeGame.GameObject;
 
 /**
  * Creates Police Station

@@ -1,4 +1,4 @@
-package MazeGame;
+package Objects;
 
 import Textures.Image;
 

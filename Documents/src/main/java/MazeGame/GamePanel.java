@@ -3,11 +3,11 @@ package MazeGame;
 import javax.swing.JPanel;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.*;
 
 import Characters.Enemy;
 import Characters.EnemyGenerator;
 
+import Objects.GameObject;
 import RewardsAndPunishments.PunishmentGenerator;
 import RewardsAndPunishments.PunishmentRoadBlock;
 import RewardsAndPunishments.Reward;

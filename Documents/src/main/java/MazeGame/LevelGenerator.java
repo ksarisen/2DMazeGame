@@ -1,11 +1,7 @@
 package MazeGame;
 
 import Characters.Player;
-import Objects.Bank;
-import Objects.BarrierGrass;
-import Objects.PoliceStation;
-import Objects.Road;
-import Objects.Helicopter;
+import Objects.*;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
