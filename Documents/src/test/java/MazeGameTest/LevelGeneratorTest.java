@@ -1,4 +1,4 @@
-package test.java;
+package MazeGameTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 
