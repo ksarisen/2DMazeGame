@@ -12,7 +12,7 @@ import javax.swing.*;
  * @author Yuwen Jia
  */
 public class SuccessMenu {
-    static JFrame jf = new JFrame("Success Menu");
+    public static JFrame jf = new JFrame("Success Menu");
 
     public static void firstPage(int score) {
 
