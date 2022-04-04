@@ -15,7 +15,7 @@ public class Timer {
 
     Date endTime;
 
-    Timer() {
+    public Timer() {
         Calendar date = Calendar.getInstance();
         long timeInSecs = date.getTimeInMillis();
         endTime = new Date(timeInSecs + (amountOfTime * 60 * 1000));
