@@ -148,8 +148,4 @@ public class LevelGenerator extends JComponent {
         return this.playerStart;
     }
 
-    public static ArrayList<GameObject> getGameObjectsList() {
-        return queue;
-    }
-
 }

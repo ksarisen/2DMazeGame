@@ -51,7 +51,4 @@ public class FailMenu {
     /**
      * Closes the menu
      */
-    public static void closeThis() {
-        jf.dispose();
-    }
 }

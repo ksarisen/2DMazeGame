@@ -14,9 +14,7 @@ public abstract class GameObject {
 
     public static final int SIZE = 50;
     public Point position;
-    protected int index = 0;
     protected Image texture;
-    protected String path;
 
     /**
      * Mutators
@@ -34,10 +32,6 @@ public abstract class GameObject {
      */
     public Image getTexture() {
         return this.texture;
-    }
-
-    public Point getPosition() {
-        return this.position;
     }
 
 }

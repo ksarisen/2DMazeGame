@@ -1,7 +1,6 @@
 package Characters;
 
 import RewardsAndPunishments.PunishmentRoadBlock;
-import RewardsAndPunishments.RegularReward;
 import RewardsAndPunishments.Reward;
 
 import java.awt.Point;

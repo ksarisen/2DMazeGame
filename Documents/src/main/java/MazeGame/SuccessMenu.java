@@ -53,11 +53,4 @@ public class SuccessMenu {
         jf.pack();
         jf.setVisible(true);
     }
-
-    /**
-     * Closes the menu
-     */
-    public static void closeThis() {
-        jf.dispose();
-    }
 }
