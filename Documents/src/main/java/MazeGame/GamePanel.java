@@ -93,6 +93,11 @@ public class GamePanel extends JPanel implements Runnable {
         return keyH;
     }
 
+    public void setCheck(int i)
+    {
+        this.check=i;
+    }
+
     /**
      * Starts the Thread
      */

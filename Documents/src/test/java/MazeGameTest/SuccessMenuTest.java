@@ -23,6 +23,8 @@ public class SuccessMenuTest {
     @Test
     void testCreateFailMenu() {
         //test create Success menu
-        assertEquals("Success Menu", SuccessMenu.jf.getTitle(), "Failed to create the Success Menu");
+        SuccessMenu successMenu = null;
+        successMenu.firstPage(10);
+        assertEquals("Success Menu", successMenu.jf.getTitle(), "Failed to create the Success Menu");
     }
 }
