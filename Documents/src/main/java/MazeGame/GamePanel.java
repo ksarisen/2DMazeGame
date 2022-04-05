@@ -277,8 +277,4 @@ public class GamePanel extends JPanel implements Runnable {
         level.clearQueue();
         g2.dispose();
     }
-
-    public int getCheck() {
-        return check;
-    }
 }

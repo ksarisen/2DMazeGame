@@ -53,13 +53,6 @@ public class Player extends Character {
     /**
      * Accessors methods
      */
-    public int getCollection() {
-        return collection;
-    }
-
-    public String getName() {
-        return name;
-    }
 
     public int getScore() {
         return score;
@@ -73,10 +66,6 @@ public class Player extends Character {
     }
 
     public void setCollection(int collection) {this.collection=collection;}
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     /**
      * If the player's locations is same as reward's location then
