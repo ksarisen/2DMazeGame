@@ -36,6 +36,9 @@ public class GamePanel extends JPanel implements Runnable {
     int fps = 30;
     double remainingTime;
 
+    public FailMenu fail;
+    public SuccessMenu success;
+
     KeyHandler keyH = new KeyHandler();
     private Thread gameThread;
 
@@ -153,6 +156,7 @@ public class GamePanel extends JPanel implements Runnable {
         Point start = level.getPlayerStart();
         player.setLocation(start);
 
+
         this.frame.add(menu, BorderLayout.NORTH);
         this.add(this.level, BorderLayout.CENTER);
         enemyGenerator = new EnemyGenerator(this);
@@ -214,6 +218,8 @@ public class GamePanel extends JPanel implements Runnable {
         return this.level;
     }
 
+    public Player getPlayer(){return player;}
+
     /**
      * It updates the game after each cell the player moves.
      * If 'W' is pressed, it moves towards north, else if 'S' is pressed, it moves towards south
@@ -246,13 +252,13 @@ public class GamePanel extends JPanel implements Runnable {
             int total_score = player.getScore() + timer.getScore();
             frame.dispose();
             gameThread = null;
-            SuccessMenu.firstPage(total_score);
+            success.firstPage(total_score);
         }
         ;
         if (player.caught(enemies) || player.getScore() < 0) {
             frame.dispose();
             gameThread = null;
-            FailMenu.firstPage();
+            fail.firstPage();
         }
         rewards = player.pickReward(rewards);
     }
