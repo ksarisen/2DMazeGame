@@ -31,7 +31,6 @@ public class MenuBar extends JPanel {
      * Settings to arrange how the screen looks.
      */
     public MenuBar() {
-
         this.setLayout(new BorderLayout());
 
         JPanel window = new JPanel();
