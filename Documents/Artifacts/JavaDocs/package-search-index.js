@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"Characters"},{"l":"MazeGame"},{"l":"Objects"},{"l":"RewardsAndPunishments"},{"l":"Textures"}];updateSearchResults();
