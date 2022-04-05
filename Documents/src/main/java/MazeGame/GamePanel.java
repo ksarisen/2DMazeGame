@@ -39,17 +39,13 @@ public class GamePanel extends JPanel implements Runnable {
     public FailMenu fail;
     public SuccessMenu success;
 
-    private KeyHandler keyH = new KeyHandler();
+    private final KeyHandler keyH = new KeyHandler();
     private Thread gameThread;
 
     public static LevelGenerator level;
-    private int currentLevel = 0;
     private int check = 0;
 
-    Timer timer = new Timer();
-
-    // Creates base URL for level loading
-    private String basePath = "src/main/java/Levels/";
+    public Timer timer = new Timer();
 
     // Creates level options
     public String[] levels = new String[]{
@@ -154,8 +150,10 @@ public class GamePanel extends JPanel implements Runnable {
 
         // Creates level and builds the game for the level #l
         GamePanel.level = new LevelGenerator();
-        System.out.println(this.basePath + this.levels[l]);
-        GamePanel.level.buildGame(this.basePath + this.levels[l]);
+        // Creates base URL for level loading
+        String basePath = "src/main/java/Levels/";
+        System.out.println(basePath + this.levels[l]);
+        GamePanel.level.buildGame(basePath + this.levels[l]);
 
         Point start = level.getPlayerStart();
         player.setLocation(start);
@@ -180,27 +178,8 @@ public class GamePanel extends JPanel implements Runnable {
      * @author Reece Landry
      */
     public void startGame() {
-        this.load(this.currentLevel);
-    }
-
-    /**
-     * Switching the next level or displays end of game message
-     *
-     * @author Reece Landry
-     */
-    public void nextLevel() {
-
-        // Check if it is not the last level
-        if (this.currentLevel < this.levels.length - 1) {
-            this.currentLevel++;
-            this.load(this.currentLevel);
-        } else {
-            //TODO: show end game menu
-        }
-    }
-
-    public void restartLevel() {
-        this.load(this.currentLevel);
+        int currentLevel = 0;
+        this.load(currentLevel);
     }
 
     /**
@@ -216,10 +195,6 @@ public class GamePanel extends JPanel implements Runnable {
 
     public ArrayList<Reward> getRewardsList() {
         return rewards;
-    }
-
-    public LevelGenerator getCurrentLevel() {
-        return this.level;
     }
 
     public Player getPlayer(){return player;}
@@ -260,7 +235,6 @@ public class GamePanel extends JPanel implements Runnable {
             gameThread = null;
             success.firstPage(total_score);
         }
-        ;
         if (player.caught(enemies) || player.getScore() < 0) {
             frame.dispose();
             gameThread = null;
@@ -304,4 +278,7 @@ public class GamePanel extends JPanel implements Runnable {
         g2.dispose();
     }
 
+    public int getCheck() {
+        return check;
+    }
 }

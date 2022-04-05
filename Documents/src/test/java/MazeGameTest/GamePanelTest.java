@@ -8,6 +8,8 @@ import org.junit.jupiter.api.*;
 
 import MazeGame.GamePanel;
 
+import java.awt.*;
+
 public class GamePanelTest {
 
 	GamePanel panel;
@@ -46,6 +48,6 @@ public class GamePanelTest {
 	void testGameCompletion() {
 		panel.getPlayer().setCollection(10);
 		panel.getPlayer().setLocation(new Point(21, 1));
-		assertEquals(panel.getPlayer().check(), true, "Could not complete game");
+		assertTrue(panel.getPlayer().check(), "Could not complete game");
 	}
 }
