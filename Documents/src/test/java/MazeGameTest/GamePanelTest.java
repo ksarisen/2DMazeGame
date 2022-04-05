@@ -36,9 +36,16 @@ public class GamePanelTest {
 	void testRunAndUpdateAndRepaint() {
 		panel.startGameThread();
 		panel.run();
-		assertEquals(panel.menu.getGasMeter().getText(), " 0", "Gas meter text is not equal to player's score" );
+		assertEquals(panel.menu.getGasMeter().getText(), "0", "Gas meter text is not equal to player's score" );
 		assertEquals(panel.menu.getTimer().getText(), panel.timer.getTimeRemaining(), "Timer doesn't show the correct remaining time");
 		assertEquals(panel.getCheck(), 1);
 
+	}
+	
+	@Test
+	void testGameCompletion() {
+		panel.getPlayer().setCollection(10);
+		panel.getPlayer().setLocation(new Point(21, 1));
+		assertEquals(panel.getPlayer().check(), true, "Could not complete game");
 	}
 }
