@@ -17,7 +17,6 @@ public class GamePanelTest {
 		//create new player
 		JFrame win = new JFrame();
 		panel = new GamePanel(win);
-		
 	}
 	
 	@Test

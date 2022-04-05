@@ -39,7 +39,7 @@ public class GamePanel extends JPanel implements Runnable {
     public FailMenu fail;
     public SuccessMenu success;
 
-    KeyHandler keyH = new KeyHandler();
+    private KeyHandler keyH = new KeyHandler();
     private Thread gameThread;
 
     public static LevelGenerator level;
@@ -91,6 +91,10 @@ public class GamePanel extends JPanel implements Runnable {
      */
     public Thread getGameThread() {
         return gameThread;
+    }
+
+    public KeyHandler getKeyH() {
+        return keyH;
     }
 
     /**
@@ -231,11 +235,13 @@ public class GamePanel extends JPanel implements Runnable {
         menu.update(player.getScore(), timer.getTimeRemaining());
         check++;
         if (check == 10 || check == 20) {
+            System.out.println("------------");
             if (keyH.upPressed) {
                 player.moveUp();
             } else if (keyH.downPressed) {
                 player.moveDown();
             } else if (keyH.rightPressed) {
+                System.out.println("=========d");
                 player.moveRight();
             } else if (keyH.leftPressed) {
                 player.moveLeft();
