@@ -46,7 +46,7 @@ public class GamePanel extends JPanel implements Runnable {
     private int currentLevel = 0;
     private int check = 0;
 
-    public Timer timer = new Timer();
+    Timer timer = new Timer();
 
     // Creates base URL for level loading
     private String basePath = "src/main/java/Levels/";
@@ -224,7 +224,7 @@ public class GamePanel extends JPanel implements Runnable {
      * It updates the game after each cell the player moves.
      * If 'W' is pressed, it moves towards north, else if 'S' is pressed, it moves towards south
      * If 'D' is pressed, it moves towards east, else if 'A' is pressed, it moves towards west
-     * If there is a reward or punishment in the cell that Player arrived, then it makes the player collects them.
+     * If there is nay reward or punishment in the cell that Player arrived, then it makes the player collects them.
      * Collectibles disappear after being collected, and chase method for enemies being checked
      */
     public void update() {
@@ -296,10 +296,6 @@ public class GamePanel extends JPanel implements Runnable {
 
         level.clearQueue();
         g2.dispose();
-    }
-
-    public int getCheck() {
-        return check;
     }
 
 }

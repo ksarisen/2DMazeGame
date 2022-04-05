@@ -32,14 +32,4 @@ public class GamePanelTest {
 		panel.startGameThread();
 		assertNotNull(panel.getGameThread());
 	}
-
-	@Test
-	void testRunAndUpdateAndRepaint() {
-		panel.startGameThread();
-		panel.run();
-		assertEquals(panel.menu.getGasMeter().getText(), " 0", "Gas meter text is not equal to player's score" );
-		assertEquals(panel.menu.getTimer().getText(), panel.timer.getTimeRemaining(), "Timer doesn't show the correct remaining time");
-		assertEquals(panel.getCheck(), 1);
-
-	}
 }
