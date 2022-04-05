@@ -14,6 +14,7 @@ import MazeGame.GamePanel;
  */
 public class Enemy extends Character {
     int viewRange;
+    boolean chase;
 
     /**
      * Creates an Enemy with the given parameters
@@ -123,6 +124,7 @@ public class Enemy extends Character {
      * @param p The Player that this Enemy is chasing
      */
     public void chase(Player p) {
+        chase = true;
         if (getDistance(p) <= viewRange) {
             if (tightChase(p) == 4)
                 randomChase(p);
@@ -131,6 +133,10 @@ public class Enemy extends Character {
             randomChase(p);
         }
         System.out.println("Enemy move");
+    }
+
+    public boolean getChase() {
+        return chase;
     }
 
 }

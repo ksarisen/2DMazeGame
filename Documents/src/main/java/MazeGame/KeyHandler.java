@@ -17,6 +17,19 @@ public class KeyHandler implements KeyListener {
 
     }
 
+    public void setUpPressed(boolean val) {
+        upPressed = val;
+    }
+    public void setDownPressed(boolean val) {
+        downPressed = val;
+    }
+    public void setLeftPressed(boolean val) {
+        leftPressed = val;
+    }
+    public void setRightPressed(boolean val) {
+        rightPressed = val;
+    }
+
     /**
      * Checks if one of the "W, A, S, D" is pressed.
      *

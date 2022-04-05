@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import javax.swing.JFrame;
 
+import Characters.Enemy;
 import org.junit.jupiter.api.*;
 
 import MazeGame.GamePanel;
@@ -39,5 +40,19 @@ public class GamePanelTest {
 		panel.getPlayer().setCollection(10);
 		panel.getPlayer().setLocation(new Point(21, 1));
 		assertTrue(panel.getPlayer().check(), "Could not complete game");
+	}
+
+	@Test
+	void testUpdate() {
+		// When check == 20
+		panel.setCheck(19);
+		panel.getPlayer().setCollection(10);
+		panel.getPlayer().setLocation(new Point(21, 1));
+		panel.update();
+		for (Enemy e : panel.getEnemiesList()) {
+			assertTrue(e.getChase(), "Enemy failed to chase on the panel");
+		}
+		assertEquals(panel.getGameThread(), null);
+		assertEquals(panel.getCheck(), 0);
 	}
 }
