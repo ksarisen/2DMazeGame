@@ -87,7 +87,7 @@ public class RewardGenerator {
 
         // Checks if the generated reward's location is equal to another one's in the list, if it is, then we use recursion
         for (Reward reward : rewardsList) {
-            if (bonusReward.getLocation() == reward.getLocation())
+            if (bonusReward.getLocation().equals( reward.getLocation()))
                 return generateBonusReward(map);
         }
 

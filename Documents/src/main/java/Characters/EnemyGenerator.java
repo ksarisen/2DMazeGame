@@ -59,7 +59,7 @@ public class EnemyGenerator {
         Enemy enemy = new Enemy(viewRange, speedX, speedY, enemyImg, new Point(xCord, yCord), map);
 
         for (Enemy value : enemyList) {
-            if (enemy.getLocation() == value.getLocation())
+            if (enemy.getLocation().equals( value.getLocation()))
                 return generateEnemy(map);
         }
         if (!map.level.gameObjects[(int) enemy.getLocation().getY()][(int) enemy.getLocation().getX()].getClass().getSimpleName().equals("Road"))
