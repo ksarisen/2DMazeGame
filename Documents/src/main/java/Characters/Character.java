@@ -98,6 +98,12 @@ public abstract class Character {
             }
             Road r = (Road) map.level.gameObjects[this.location.y - 1][this.location.x];
             if (r.isSouth()) {
+                if(type.equals("Police"))
+                {
+                    for(Enemy e: map.getEnemiesList())
+                        if(e.getLocation().equals(new Point(this.location.x,this.location.y-1)))
+                            return false;
+                }
                 this.location.y = this.location.y - 1;
                 System.out.println("CAN MOVE UP");
                 if (type.equals("Police")) {
@@ -125,6 +131,12 @@ public abstract class Character {
                 map.level.gameObjects[(int) this.location.getY() + 1][(int) this.location.getX()].getClass().getSimpleName().equals("Road")) {
             Road r = (Road) map.level.gameObjects[this.location.y + 1][this.location.x];
             if (r.isNorth()) {
+                if(type.equals("Police"))
+                {
+                    for(Enemy e: map.getEnemiesList())
+                        if(e.getLocation().equals(new Point(this.location.x,this.location.y+1)))
+                            return false;
+                }
                 this.location.y = this.location.y + 1;
                 System.out.println("CAN MOVE DOWN");
                 if (type.equals("Police")) {
@@ -151,6 +163,12 @@ public abstract class Character {
                 map.level.gameObjects[(int) this.location.getY()][(int) this.location.getX() - 1].getClass().getSimpleName().equals("Road")) {
             Road r = (Road) map.level.gameObjects[this.location.y][this.location.x - 1];
             if (r.isEast()) {
+                if(type.equals("Police"))
+                {
+                    for(Enemy e: map.getEnemiesList())
+                        if(e.getLocation().equals(new Point(this.location.x-1,this.location.y)))
+                            return false;
+                }
                 this.location.x = this.location.x - 1;
                 System.out.println("CAN MOVE LEFT");
                 if (type.equals("Police")) {
@@ -177,6 +195,14 @@ public abstract class Character {
                 (map.level.gameObjects[(int) this.location.getY()][(int) this.location.getX() + 1].getClass().getSimpleName().equals("Road"))) {
             Road r = (Road) map.level.gameObjects[this.location.y][this.location.x + 1];
             if (r.isWest()) {
+                if(type.equals("Police"))
+                {
+                    for(Enemy e: map.getEnemiesList())
+                        if(e.getLocation().equals(new Point(this.location.x+1,this.location.y)))
+                        {
+                            return false;
+                        }
+                }
                 this.location.x = this.location.x + 1;
                 System.out.println("CAN MOVE RIGHT");
                 if (type.equals("Police")) {
