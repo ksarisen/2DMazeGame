@@ -24,22 +24,20 @@ import javax.swing.JFrame;
  */
 public class GamePanel extends JPanel implements Runnable {
     // Screen setting
-    final int originalTileSize = 50; // 16 by 16 tiles
-    final int scale = 1;
-    final int tileSize = originalTileSize * scale;
-    final int maxScreenCol = 24;
-    final int maxScreenRow = 17;
-    final int screenWidth = tileSize * maxScreenCol;
-    final int screenHeight = (tileSize * maxScreenRow);
+	final int TILE_SIZE = 50;
+	final int MAX_COLS = 24;
+	final int MAX_ROWS = 17;
+	final int SCREEN_WIDTH = TILE_SIZE * MAX_COLS;
+	final int SCREEN_HEIGHT = TILE_SIZE * MAX_ROWS;
 
     // Sets the frame rate here
-    int fps = 30;
+    final int FPS = 30;
     double remainingTime;
 
     public FailMenu fail;
     public SuccessMenu success;
 
-    private final KeyHandler keyH = new KeyHandler();
+    private final KeyHandler KEYH = new KeyHandler();
     private Thread gameThread;
 
     public static LevelGenerator level;
@@ -72,9 +70,9 @@ public class GamePanel extends JPanel implements Runnable {
      * @param f JFrame
      */
     public GamePanel(JFrame f) {
-        this.setPreferredSize(new Dimension(screenWidth, screenHeight));
+        this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
         this.setDoubleBuffered(true);
-        this.addKeyListener(keyH);
+        this.addKeyListener(KEYH);
         this.setFocusable(true);
         this.frame = f;
         this.startGame();
@@ -90,7 +88,7 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public KeyHandler getKeyH() {
-        return keyH;
+        return KEYH;
     }
 
     public void setCheck(int i)
@@ -112,7 +110,7 @@ public class GamePanel extends JPanel implements Runnable {
     @Override
     public void run() {
 
-        double drawInterval = 1000000000 / fps; // this is around 0.01666 seconds
+        double drawInterval = 1000000000 / FPS; // this is around 0.01666 seconds
         double nextDrawTime = System.nanoTime() + drawInterval;
         // This is the core of the game
         // Game loop
@@ -162,7 +160,7 @@ public class GamePanel extends JPanel implements Runnable {
 
         Point start = level.getPlayerStart();
         player.setLocation(start);
-
+        
 
         this.frame.add(menu, BorderLayout.NORTH);
         this.add(this.level, BorderLayout.CENTER);
@@ -216,14 +214,14 @@ public class GamePanel extends JPanel implements Runnable {
         check++;
         if (check == 10 || check == 20) {
             System.out.println("------------");
-            if (keyH.upPressed) {
+            if (KEYH.upPressed) {
                 player.moveUp();
-            } else if (keyH.downPressed) {
+            } else if (KEYH.downPressed) {
                 player.moveDown();
-            } else if (keyH.rightPressed) {
+            } else if (KEYH.rightPressed) {
                 System.out.println("=========d");
                 player.moveRight();
-            } else if (keyH.leftPressed) {
+            } else if (KEYH.leftPressed) {
                 player.moveLeft();
             }
             punishments = player.punishment(punishments);
@@ -264,19 +262,19 @@ public class GamePanel extends JPanel implements Runnable {
             }
         }
         for (GameObject obj : level.queue) {
-            g.drawImage(obj.getTexture().getTexture(), (int) obj.position.getX() * tileSize, (int) obj.position.getY() * tileSize, tileSize, tileSize, null);
+            g.drawImage(obj.getTexture().getTexture(), (int) obj.position.getX() * TILE_SIZE, (int) obj.position.getY() * TILE_SIZE, TILE_SIZE, TILE_SIZE, null);
         }
-        g.drawImage(player.getTexture().getTexture(), (int) player.getLocation().getX() * tileSize, (int) player.getLocation().getY() * tileSize, tileSize, tileSize, null);
+        g.drawImage(player.getTexture().getTexture(), (int) player.getLocation().getX() * TILE_SIZE, (int) player.getLocation().getY() * TILE_SIZE, TILE_SIZE, TILE_SIZE, null);
         for (Enemy e : enemies) {
-            g.drawImage(e.getTexture().getTexture(), (int) e.getLocation().getX() * tileSize, (int) e.getLocation().getY() * tileSize, tileSize, tileSize, null);
+            g.drawImage(e.getTexture().getTexture(), (int) e.getLocation().getX() * TILE_SIZE, (int) e.getLocation().getY() * TILE_SIZE, TILE_SIZE, TILE_SIZE, null);
         }
 
         for (Reward e : rewards) {
-            g.drawImage(e.getTexture().getTexture(), (int) e.getLocation().getX() * tileSize, (int) e.getLocation().getY() * tileSize, tileSize, tileSize, null);
+            g.drawImage(e.getTexture().getTexture(), (int) e.getLocation().getX() * TILE_SIZE, (int) e.getLocation().getY() * TILE_SIZE, TILE_SIZE, TILE_SIZE, null);
         }
 
         for (PunishmentRoadBlock e : punishments) {
-            g.drawImage(e.getTexture().getTexture(), (int) e.getLocation().getX() * tileSize, (int) e.getLocation().getY() * tileSize, tileSize, tileSize, null);
+            g.drawImage(e.getTexture().getTexture(), (int) e.getLocation().getX() * TILE_SIZE, (int) e.getLocation().getY() * TILE_SIZE, TILE_SIZE, TILE_SIZE, null);
         }
 
         level.clearQueue();
