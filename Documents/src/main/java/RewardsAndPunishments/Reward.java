@@ -14,9 +14,9 @@ import java.awt.*;
 public abstract class Reward {
 
     private GamePanel map;
-    private int value;
+    private final int value;
     private Image texture;
-    private Point location;
+    private final Point location;
 
     /**
      * Creates a reward with given parameters
