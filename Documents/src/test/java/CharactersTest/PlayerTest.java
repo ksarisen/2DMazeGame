@@ -26,7 +26,7 @@ public class PlayerTest {
 		gamePanel.getEnemiesList().clear();
 		gamePanel.getPunishmentsList().clear();
 		gamePanel.getRewardsList().clear();
-	player = new Player(0,"null",1,1,new Point(0,0),gamePanel,new Image("Car-East.png"));}
+	player = new Player(0,"null",new Point(0,0),gamePanel,new Image("Car-East.png"));}
 
 	
 	@Test
@@ -116,7 +116,7 @@ public class PlayerTest {
 	void beCaught() {
 		//test caught
 		ArrayList<Enemy> el=new ArrayList<>();
-		Enemy e1=new Enemy(10,1,1,new Image("Police-West.png"),new Point(0,0),player.getMap());
+		Enemy e1=new Enemy(10,new Image("Police-West.png"),new Point(0,0),player.getMap());
 		el.add(e1);
 		assertTrue( player.caught(el), "Fail to be caught");
 	}
@@ -125,7 +125,7 @@ public class PlayerTest {
 	void farFromEnemies() {
 		//test caught
 		ArrayList<Enemy> el=new ArrayList<>();
-		Enemy e1=new Enemy(10,1,1,new Image("Police-West.png"),new Point(10,10),player.getMap());
+		Enemy e1=new Enemy(10,new Image("Police-West.png"),new Point(10,10),player.getMap());
 		el.add(e1);
 		assertFalse( player.caught(el), "Be caught by mistake");
 	}

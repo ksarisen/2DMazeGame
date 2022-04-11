@@ -18,7 +18,7 @@ public class EnemyTest {
     void setUp() {
         //create new enemy
         frame=new JFrame();
-        enemy = new Enemy(8,1,1,new Image("Police-East.png"),new Point(16,3),new GamePanel(frame));
+        enemy = new Enemy(8,new Image("Police-East.png"),new Point(16,3),new GamePanel(frame));
     }
 
     @Test
@@ -30,7 +30,7 @@ public class EnemyTest {
     void calculateDistance()
     {
         //test getDistance
-        Player player = new Player(0,"null",1,1,new Point(18,5),new GamePanel(frame),new Image("Car-East.png"));
+        Player player = new Player(0,"null",new Point(18,5),new GamePanel(frame),new Image("Car-East.png"));
         assertEquals(4, enemy.getDistance(player), "fail to calculate the distance from player");
     }
 
@@ -38,7 +38,7 @@ public class EnemyTest {
     void playerInAbove_withoutBlocked()
     {
         //test tightChase
-        Player player = new Player(0,"null",1,1,new Point(16,2),new GamePanel(frame),new Image("Car-East.png"));
+        Player player = new Player(0,"null",new Point(16,2),new GamePanel(frame),new Image("Car-East.png"));
         enemy.chase(player);
         enemy.getMap().getRewardsList().clear();
         assertEquals(new Point(16,2), enemy.getLocation(), "fail to chase the player in above");
@@ -49,7 +49,7 @@ public class EnemyTest {
     {
         //test tightChase
         enemy.setLocation(new Point(6,8));
-        Player player = new Player(0,"null",1,1,new Point(3,8),new GamePanel(frame),new Image("Car-East.png"));
+        Player player = new Player(0,"null",new Point(3,8),new GamePanel(frame),new Image("Car-East.png"));
         enemy.chase(player);
         enemy.getMap().getRewardsList().clear();
         assertEquals(new Point(5,8), enemy.getLocation(), "fail to chase the player in the left");
@@ -60,7 +60,7 @@ public class EnemyTest {
     {
         //test tightChase
         enemy.setLocation(new Point(10,6));
-        Player player = new Player(0,"null",1,1,new Point(12,6),new GamePanel(frame),new Image("Car-East.png"));
+        Player player = new Player(0,"null",new Point(12,6),new GamePanel(frame),new Image("Car-East.png"));
         enemy.chase(player);
         enemy.getMap().getRewardsList().clear();
         assertNotEquals(new Point(11,6), enemy.getLocation(), "fail to chase the player in the right when a grass blocked in the right");
@@ -71,7 +71,7 @@ public class EnemyTest {
     {
         //test tightChase
         enemy.setLocation(new Point(10,3));
-        Player player = new Player(0,"null",1,1,new Point(10,5),new GamePanel(frame),new Image("Car-East.png"));
+        Player player = new Player(0,"null",new Point(10,5),new GamePanel(frame),new Image("Car-East.png"));
         enemy.chase(player);
         assertNotEquals(new Point(10,4), enemy.getLocation(), "fail to chase the player in bottom when a grass blocked in bottom");
     }
@@ -81,7 +81,7 @@ public class EnemyTest {
     {
         //test randomChase
         enemy.setLocation(new Point(13,4));
-        Player player = new Player(0,"null",1,1,new Point(2,21),new GamePanel(frame),new Image("Car-East.png"));
+        Player player = new Player(0,"null",new Point(2,21),new GamePanel(frame),new Image("Car-East.png"));
         enemy.chase(player);
         enemy.getMap().getRewardsList().clear();
         assertNotEquals(new Point(13,4),enemy.getLocation() , "fail to move when the player out of the view range");
@@ -92,7 +92,7 @@ public class EnemyTest {
     {
         //test randomChase
         enemy.setLocation(new Point(10,3));
-        Player player = new Player(0,"null",1,1,new Point(2,21),new GamePanel(frame),new Image("Car-East.png"));
+        Player player = new Player(0,"null",new Point(2,21),new GamePanel(frame),new Image("Car-East.png"));
         enemy.chase(player);
         assertNotEquals(new Point(10,3) ,enemy.getLocation(), "fail to move when the player out of the view range and 1 way of the enemy is blocked by grass");
     }
@@ -102,7 +102,7 @@ public class EnemyTest {
     {
         //test randomChase
         enemy.setLocation(new Point(2,5));
-        Player player = new Player(0,"null",1,1,new Point(2,21),new GamePanel(frame),new Image("Car-East.png"));
+        Player player = new Player(0,"null",new Point(2,21),new GamePanel(frame),new Image("Car-East.png"));
         enemy.chase(player);
         assertNotEquals(new Point(2,5) ,enemy.getLocation(), "fail to move when the player out of the view range and 2 ways of the enemy is blocked by grass");
     }

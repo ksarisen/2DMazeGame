@@ -15,8 +15,6 @@ import MazeGame.GamePanel;
 public abstract class Character {
     private GamePanel map;
     private Point location;
-    private int speedX;
-    private int speedY;
     private Image texture;
     public String type;
 
@@ -25,15 +23,11 @@ public abstract class Character {
      *
      * @param location a point where Character is located
      * @param texture  an Image that represents the Character
-     * @param speedX   speed on the x-axis
-     * @param speedY   speed on the y-axis
      * @param map      game panel that the Character belongs
      */
-    public Character(Point location, Image texture, int speedX, int speedY, GamePanel map) {
+    public Character(Point location, Image texture,  GamePanel map) {
         this.location = location;
         this.texture = texture;
-        this.speedX = speedX;
-        this.speedY = speedY;
         this.map = map;
 
     }

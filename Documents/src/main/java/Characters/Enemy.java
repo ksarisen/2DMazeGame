@@ -21,13 +21,11 @@ public class Enemy extends Character {
      *
      * @param location  a point where Character is located
      * @param texture   an Image that represents the Character
-     * @param speedX    speed on the x-axis
-     * @param speedY    speed on the y-axis
      * @param map       game panel that the Character belongs
      * @param viewRange the range that this Enemy can view
      */
-    public Enemy(int viewRange, int speedX, int speedY, Image texture, Point location, GamePanel map) {
-        super(location, texture, speedX, speedY, map);
+    public Enemy(int viewRange, Image texture, Point location, GamePanel map) {
+        super(location, texture, map);
         this.viewRange = viewRange;
         super.type = "Police";
     }

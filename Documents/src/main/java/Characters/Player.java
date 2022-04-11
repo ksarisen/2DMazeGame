@@ -25,14 +25,12 @@ public class Player extends Character {
      *
      * @param location a point where Character is located
      * @param texture  an Image that represents the Character
-     * @param speedX   speed on the x-axis
-     * @param speedY   speed on the y-axis
      * @param map      game panel that the Character belongs
      * @param name     a name that is given to this Player
      * @param score    this Player's score
      */
-    public Player(int score, String name, int speedX, int speedY, Point location, GamePanel map, Image texture) {
-        super(location, texture, speedX, speedY, map);
+    public Player(int score, String name,  Point location, GamePanel map, Image texture) {
+        super(location, texture, map);
         this.score = score;
         this.name = name;
         this.collection = 0;
