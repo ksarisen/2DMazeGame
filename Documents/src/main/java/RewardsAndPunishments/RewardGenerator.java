@@ -22,12 +22,12 @@ public class RewardGenerator {
         return rewardsList;
     }
 
-    final int maxRegReward = 10;
-    final int maxBonusReward = 2;
+    final int maxRegRewardAmount = 10;
+    final int maxBonusRewardAmount = 2;
     final int maxCordX = 25;
     final int maxCordY = 15;
-    final int regRewardVal = 10;
-    final int bonusRewardVal = 25;
+    final int regRewardValue = 10;
+    final int bonusRewardValue = 25;
 
     /**
      * Generates and adds the new reward objects to the list with the given parameter
@@ -35,11 +35,11 @@ public class RewardGenerator {
      * @param map a game panel where reward should be created
      */
     public RewardGenerator(GamePanel map) {
-        for (int i = 0; i <= maxRegReward-1; i++) {
+        for (int i = 0; i <= maxRegRewardAmount -1; i++) {
             rewardsList.add(generateRegularReward(map));
         }
 
-        for (int i = 0; i <= maxBonusReward-1; i++) {
+        for (int i = 0; i <= maxBonusRewardAmount -1; i++) {
             rewardsList.add(generateBonusReward(map));
         }
     }
@@ -57,7 +57,7 @@ public class RewardGenerator {
         int xCord = r.nextInt(maxCordX - 1);
         int yCord = r.nextInt(maxCordY - 1);
 
-        Reward regReward = new RegularReward(regRewardVal, regRewardImg, new Point(xCord, yCord), map);
+        Reward regReward = new RegularReward(regRewardValue, regRewardImg, new Point(xCord, yCord), map);
 
         // Checks if the generated reward's location is equal to another one's in the list, if it is, then we use recursion
         for (Reward reward : rewardsList) {
@@ -84,7 +84,7 @@ public class RewardGenerator {
         int xCord = r.nextInt(maxCordX - 1);
         int yCord = r.nextInt(maxCordY - 1);
 
-        Reward bonusReward = new BonusReward(bonusRewardVal, bonusRewardImg, new Point(xCord, yCord), map);
+        Reward bonusReward = new BonusReward(bonusRewardValue, bonusRewardImg, new Point(xCord, yCord), map);
 
         // Checks if the generated reward's location is equal to another one's in the list, if it is, then we use recursion
         for (Reward reward : rewardsList) {

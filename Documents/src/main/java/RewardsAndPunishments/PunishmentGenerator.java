@@ -29,7 +29,7 @@ public class PunishmentGenerator {
 
     GamePanel map;
 
-    final int maxPunishment = 5;
+    final int maxPunishmentAmount = 5;
     final int maxCordX = 25;
     final int maxCordY = 15;
     final int punishmentValue = 15;
@@ -42,7 +42,7 @@ public class PunishmentGenerator {
     public PunishmentGenerator(GamePanel map) {
         this.map = map;
 
-        for (int i = 0; i <= maxPunishment-1; i++) {
+        for (int i = 0; i <= maxPunishmentAmount -1; i++) {
             punishmentsList.add(generatePunishment(map));
         }
     }
