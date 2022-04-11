@@ -15,14 +15,14 @@ import java.util.Random;
  */
 public class RewardGenerator {
 
-    private static final ArrayList<Reward> rewardsList = new ArrayList<>();
+    private final ArrayList<Reward> rewardsList = new ArrayList<>();
 
-    public static ArrayList<Reward> getRewardsList() {
+    public ArrayList<Reward> getRewardsList() {
         return rewardsList;
     }
 
-    final int maxRegReward = 9;
-    final int maxBonusReward = 1;
+    final int maxRegReward = 10;
+    final int maxBonusReward = 2;
     final int maxCordX = 25;
     final int maxCordY = 15;
     final int regRewardVal = 10;
@@ -34,11 +34,11 @@ public class RewardGenerator {
      * @param map a game panel where reward should be created
      */
     public RewardGenerator(GamePanel map) {
-        for (int i = 0; i <= maxRegReward; i++) {
+        for (int i = 0; i <= maxRegReward-1; i++) {
             rewardsList.add(generateRegularReward(map));
         }
 
-        for (int i = 0; i <= maxBonusReward; i++) {
+        for (int i = 0; i <= maxBonusReward-1; i++) {
             rewardsList.add(generateBonusReward(map));
         }
     }
@@ -96,7 +96,7 @@ public class RewardGenerator {
                 return generateBonusReward(map);
         }
 
-        // Checks if the location of the new punishment is same as any grass' location on the map, if it is, then recursion
+        // Checks if the location of the new bonus reward is same as any punishment's location on the map, if it is, then recursion
         if (!map.level.gameObjects[(int) bonusReward.getLocation().getY()][(int) bonusReward.getLocation().getX()].getClass().getSimpleName().equals("Road"))
             return generateBonusReward(map);
         return bonusReward;

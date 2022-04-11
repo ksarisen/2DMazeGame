@@ -15,20 +15,20 @@ import java.util.Random;
  */
 public class PunishmentGenerator {
 
-    private static final ArrayList<PunishmentRoadBlock> punishmentsList = new ArrayList<>();
+    private final ArrayList<PunishmentRoadBlock> punishmentsList = new ArrayList<>();
 
     /**
      * Accessor method
      *
      * @return the list for the punishments
      */
-    public static ArrayList<PunishmentRoadBlock> getPunishmentsList() {
+    public ArrayList<PunishmentRoadBlock> getPunishmentsList() {
         return punishmentsList;
     }
 
     GamePanel map;
 
-    final int maxPunishment = 4;
+    final int maxPunishment = 5;
     final int maxCordX = 25;
     final int maxCordY = 15;
     final int punishmentValue = 15;
@@ -41,7 +41,7 @@ public class PunishmentGenerator {
     public PunishmentGenerator(GamePanel map) {
         this.map = map;
 
-        for (int i = 0; i <= maxPunishment; i++) {
+        for (int i = 0; i <= maxPunishment-1; i++) {
             punishmentsList.add(generatePunishment(map));
         }
     }
@@ -66,6 +66,8 @@ public class PunishmentGenerator {
             if (newPunishment.getLocation().equals(punishment.getLocation()))
                 return generatePunishment(map);
         }
+
+        // Checks if the location of the new punishment is same as any punishment's location on the map, if it is, then recursion
         if (!map.level.gameObjects[(int) newPunishment.getLocation().getY()][(int) newPunishment.getLocation().getX()].getClass().getSimpleName().equals("Road"))
             return generatePunishment(map);
         return newPunishment;
