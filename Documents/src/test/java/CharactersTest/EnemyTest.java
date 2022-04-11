@@ -38,10 +38,11 @@ public class EnemyTest {
     void playerInAbove_withoutBlocked()
     {
         //test tightChase
-        Player player = new Player(0,"null",new Point(16,2),new GamePanel(frame),new Image("Car-East.png"));
+        enemy.setLocation(new Point(4,8));
+        Player player = new Player(0,"null",new Point(4,7),new GamePanel(frame),new Image("Car-East.png"));
         enemy.chase(player);
         enemy.getMap().getRewardsList().clear();
-        assertEquals(new Point(16,2), enemy.getLocation(), "fail to chase the player in above");
+        assertEquals(new Point(4,7), enemy.getLocation(), "fail to chase the player in above");
     }
 
     @Test
