@@ -213,13 +213,11 @@ public class GamePanel extends JPanel implements Runnable {
         menu.update(player.getScore(), timer.getTimeRemaining());
         check++;
         if (check == 10 || check == 20) {
-            System.out.println("------------");
             if (KEYH.upPressed) {
                 player.moveUp();
             } else if (KEYH.downPressed) {
                 player.moveDown();
             } else if (KEYH.rightPressed) {
-                System.out.println("=========d");
                 player.moveRight();
             } else if (KEYH.leftPressed) {
                 player.moveLeft();

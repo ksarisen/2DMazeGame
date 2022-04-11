@@ -48,11 +48,11 @@ public class EnemyTest {
     void playerInTheLeft_withoutBlocked()
     {
         //test tightChase
-        enemy.setLocation(new Point(14,6));
-        Player player = new Player(0,"null",1,1,new Point(12,6),new GamePanel(frame),new Image("Car-East.png"));
+        enemy.setLocation(new Point(6,8));
+        Player player = new Player(0,"null",1,1,new Point(3,8),new GamePanel(frame),new Image("Car-East.png"));
         enemy.chase(player);
         enemy.getMap().getRewardsList().clear();
-        assertEquals(new Point(13,6), enemy.getLocation(), "fail to chase the player in the left");
+        assertEquals(new Point(5,8), enemy.getLocation(), "fail to chase the player in the left");
     }
 
     @Test
