@@ -3,7 +3,6 @@ package RewardsAndPunishments;
 import MazeGame.GamePanel;
 import Textures.Image;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
 
 import javax.swing.*;
 
@@ -27,13 +26,6 @@ public class RegularRewardTest {
     private final Point point = new Point(xCord, yCord);
 
     private final Image regRewardImg = new Image("gas.png");
-    @BeforeEach
-    void setup()
-    {
-        panel.getEnemiesList().clear();
-        panel.getPunishmentsList().clear();
-        panel.getRewardsList().clear();
-    }
 
     @Test
     public void regRewardConstructorTest() {
