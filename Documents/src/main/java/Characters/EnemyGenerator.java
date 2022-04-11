@@ -13,9 +13,9 @@ import java.util.Random;
  * @author Kerem Sarisen
  */
 public class EnemyGenerator {
-    private static final ArrayList<Enemy> enemyList = new ArrayList<>();
+    private final ArrayList<Enemy> enemyList = new ArrayList<>();
 
-    public static ArrayList<Enemy> getEnemyList() {
+    public ArrayList<Enemy> getEnemyList() {
         return enemyList;
     }
 
@@ -23,10 +23,8 @@ public class EnemyGenerator {
 
     final int maxCordX = 25;
     final int maxCordY = 15;
-    final int speedX = 1;
-    final int speedY = 1;
     final int viewRange = 8;
-    final int maxEnemyAmount = 2;
+    final int maxEnemyAmount = 3;
 
     /**
      * Constructor that adds the generated enemies to the list that is declared to keep them
@@ -35,7 +33,7 @@ public class EnemyGenerator {
      */
     public EnemyGenerator(GamePanel map) {
         this.map = map;
-        for (int i = 0; i <= maxEnemyAmount; i++) {
+        for (int i = 1; i <= maxEnemyAmount; i++) {
             enemyList.add(generateEnemy(map));
         }
     }
@@ -56,7 +54,7 @@ public class EnemyGenerator {
         int xCord = r.nextInt(maxCordX - 1);
         int yCord = r.nextInt(maxCordY - 1);
 
-        Enemy enemy = new Enemy(viewRange, speedX, speedY, enemyImg, new Point(xCord, yCord), map);
+        Enemy enemy = new Enemy(viewRange, enemyImg, new Point(xCord, yCord), map);
 
         for (Enemy value : enemyList) {
             if (enemy.getLocation().equals( value.getLocation()))
