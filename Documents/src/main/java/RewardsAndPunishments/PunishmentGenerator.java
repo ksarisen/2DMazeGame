@@ -1,6 +1,7 @@
 package RewardsAndPunishments;
 
 import MazeGame.GamePanel;
+import MazeGame.LevelGenerator;
 import Textures.Image;
 
 import java.awt.*;
@@ -68,7 +69,7 @@ public class PunishmentGenerator {
         }
 
         // Checks if the location of the new punishment is same as any punishment's location on the map, if it is, then recursion
-        if (!map.level.gameObjects[(int) newPunishment.getLocation().getY()][(int) newPunishment.getLocation().getX()].getClass().getSimpleName().equals("Road"))
+        if (!LevelGenerator.gameObjects[(int) newPunishment.getLocation().getY()][(int) newPunishment.getLocation().getX()].getClass().getSimpleName().equals("Road"))
             return generatePunishment(map);
         return newPunishment;
     }
