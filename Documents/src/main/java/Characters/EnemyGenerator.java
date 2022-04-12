@@ -1,14 +1,15 @@
 package Characters;
 
-import Textures.Image;
 import MazeGame.GamePanel;
+import Textures.Image;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * EnemyGenerator clas to generate enemies on the game panel
+ * EnemyGenerator clas to generate enemies on the game panel without overlapping with other enemies, punishments
+ * and rewards
  *
  * @author Kerem Sarisen
  */
@@ -57,7 +58,7 @@ public class EnemyGenerator {
         Enemy enemy = new Enemy(viewRange, enemyImg, new Point(xCord, yCord), map);
 
         for (Enemy value : enemyList) {
-            if (enemy.getLocation().equals( value.getLocation()))
+            if (enemy.getLocation().equals(value.getLocation()))
                 return generateEnemy(map);
         }
         if (!map.level.gameObjects[(int) enemy.getLocation().getY()][(int) enemy.getLocation().getX()].getClass().getSimpleName().equals("Road"))

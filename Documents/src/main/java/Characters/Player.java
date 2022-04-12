@@ -1,17 +1,16 @@
 package Characters;
 
+import MazeGame.GamePanel;
 import RewardsAndPunishments.PunishmentRoadBlock;
 import RewardsAndPunishments.Reward;
+import Textures.Image;
 
-import java.awt.Point;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Objects;
 
-import MazeGame.GamePanel;
-import Textures.Image;
-
 /**
- * Class for the Player
+ * Class for the Player, which contains the methods to check whether the player win or lose
  *
  * @author Yuwen Jia
  */
@@ -27,7 +26,7 @@ public class Player extends Character {
      * @param map      game panel that the Character belongs
      * @param score    this Player's score
      */
-    public Player(int score,  Point location, GamePanel map, Image texture) {
+    public Player(int score, Point location, GamePanel map, Image texture) {
         super(location, texture, map);
         this.score = score;
         this.collection = 0;
@@ -59,7 +58,9 @@ public class Player extends Character {
         this.score = score;
     }
 
-    public void setCollection(int collection) {this.collection=collection;}
+    public void setCollection(int collection) {
+        this.collection = collection;
+    }
 
     /**
      * If the player's locations is same as reward's location then

@@ -1,13 +1,14 @@
 package Characters;
 
-import java.awt.Point;
-
+import MazeGame.GamePanel;
 import Objects.Road;
 import Textures.Image;
-import MazeGame.GamePanel;
+
+import java.awt.*;
 
 /**
- * Abstract class for the enemy and the player
+ * Abstract class for the enemy and the player, which contains the movement method to let character move in the Game
+ * Panel
  *
  * @author Yuwen Jia
  * @author Reece Landry
@@ -25,7 +26,7 @@ public abstract class Character {
      * @param texture  an Image that represents the Character
      * @param map      game panel that the Character belongs
      */
-    public Character(Point location, Image texture,  GamePanel map) {
+    public Character(Point location, Image texture, GamePanel map) {
         this.location = location;
         this.texture = texture;
         this.map = map;
@@ -73,8 +74,8 @@ public abstract class Character {
      * check whether the character can move to the direction we want without overlapping, and repaint the
      * image of the character, so that characters are heading in the direction we want.
      *
-     * @return  whether the character can move to the direction without overlapping
-     * @param direction  the direction which character want to move
+     * @param direction the direction which character want to move
+     * @return whether the character can move to the direction without overlapping
      */
     private boolean checkOverlappingAndDrawTheDirection(String direction) {
         String temp = null;

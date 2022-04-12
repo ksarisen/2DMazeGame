@@ -1,10 +1,9 @@
 package Characters;
 
-import java.lang.Math;
-import java.awt.Point;
-
-import Textures.Image;
 import MazeGame.GamePanel;
+import Textures.Image;
+
+import java.awt.*;
 
 /**
  * Class for the Enemy, which will chase the player when the player in view range or move randomly when far from the player.
