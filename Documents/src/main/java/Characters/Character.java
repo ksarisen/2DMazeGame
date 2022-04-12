@@ -70,6 +70,49 @@ public abstract class Character {
     }
 
     /**
+     * check whether the character can move to the direction we want without overlapping, and repaint the
+     * image of the character, so that characters are heading in the direction we want.
+     *
+     * @return  whether the character can move to the direction without overlapping
+     * @param direction  the direction which character want to move
+     */
+    private boolean checkOverlappingAndDrawTheDirection(String direction) {
+        String temp = null;
+        Point destination = null;
+        switch (direction) {
+            case "North":
+                temp = "UP";
+                destination = new Point(new Point(this.location.x, this.location.y - 1));
+                break;
+            case "West":
+                temp = "LEFT";
+                destination = new Point(new Point(this.location.x - 1, this.location.y));
+                break;
+            case "South":
+                temp = "DOWN";
+                destination = new Point(new Point(this.location.x, this.location.y + 1));
+                break;
+            case "East":
+                temp = "RIGHT";
+                destination = new Point(new Point(this.location.x + 1, this.location.y));
+                break;
+        }
+        if (this.type.equals("Police")) {
+            for (Enemy e : map.getEnemiesList())
+                if (e.getLocation().equals(destination))
+                    return false;
+        }
+        this.setLocation(destination);
+        System.out.println("CAN MOVE " + temp);
+        if (type.equals("Police")) {
+            this.texture = new Image("Police-" + direction + ".png");
+        } else {
+            this.texture = new Image("Car-" + direction + ".png");
+        }
+        return true;
+    }
+
+    /**
      * It moves the character towards north by subtracting Character's point on y-axis by 1
      *
      * @return the boolean value that says if this Character moved up or not
@@ -92,20 +135,7 @@ public abstract class Character {
             }
             Road r = (Road) map.level.gameObjects[this.location.y - 1][this.location.x];
             if (r.isSouth()) {
-                if(type.equals("Police"))
-                {
-                    for(Enemy e: map.getEnemiesList())
-                        if(e.getLocation().equals(new Point(this.location.x,this.location.y-1)))
-                            return false;
-                }
-                this.location.y = this.location.y - 1;
-                System.out.println("CAN MOVE UP");
-                if (type.equals("Police")) {
-                    this.texture = new Image("Police-North.png");
-                } else {
-                    this.texture = new Image("Car-North.png");
-                }
-                return true;
+                return checkOverlappingAndDrawTheDirection("North");
             }
         }
         return false;
@@ -125,20 +155,7 @@ public abstract class Character {
                 map.level.gameObjects[(int) this.location.getY() + 1][(int) this.location.getX()].getClass().getSimpleName().equals("Road")) {
             Road r = (Road) map.level.gameObjects[this.location.y + 1][this.location.x];
             if (r.isNorth()) {
-                if(type.equals("Police"))
-                {
-                    for(Enemy e: map.getEnemiesList())
-                        if(e.getLocation().equals(new Point(this.location.x,this.location.y+1)))
-                            return false;
-                }
-                this.location.y = this.location.y + 1;
-                System.out.println("CAN MOVE DOWN");
-                if (type.equals("Police")) {
-                    this.texture = new Image("Police-South.png");
-                } else {
-                    this.texture = new Image("Car-South.png");
-                }
-                return true;
+                return checkOverlappingAndDrawTheDirection("South");
             }
         }
         return false;
@@ -157,20 +174,7 @@ public abstract class Character {
                 map.level.gameObjects[(int) this.location.getY()][(int) this.location.getX() - 1].getClass().getSimpleName().equals("Road")) {
             Road r = (Road) map.level.gameObjects[this.location.y][this.location.x - 1];
             if (r.isEast()) {
-                if(type.equals("Police"))
-                {
-                    for(Enemy e: map.getEnemiesList())
-                        if(e.getLocation().equals(new Point(this.location.x-1,this.location.y)))
-                            return false;
-                }
-                this.location.x = this.location.x - 1;
-                System.out.println("CAN MOVE LEFT");
-                if (type.equals("Police")) {
-                    this.texture = new Image("Police-West.png");
-                } else {
-                    this.texture = new Image("Car-West.png");
-                }
-                return true;
+                return checkOverlappingAndDrawTheDirection("West");
             }
         }
         return false;
@@ -189,22 +193,7 @@ public abstract class Character {
                 (map.level.gameObjects[(int) this.location.getY()][(int) this.location.getX() + 1].getClass().getSimpleName().equals("Road"))) {
             Road r = (Road) map.level.gameObjects[this.location.y][this.location.x + 1];
             if (r.isWest()) {
-                if(type.equals("Police"))
-                {
-                    for(Enemy e: map.getEnemiesList())
-                        if(e.getLocation().equals(new Point(this.location.x+1,this.location.y)))
-                        {
-                            return false;
-                        }
-                }
-                this.location.x = this.location.x + 1;
-                System.out.println("CAN MOVE RIGHT");
-                if (type.equals("Police")) {
-                    this.texture = new Image("Police-East.png");
-                } else {
-                    this.texture = new Image("Car-East.png");
-                }
-                return true;
+                return checkOverlappingAndDrawTheDirection("East");
             }
         }
         return false;
