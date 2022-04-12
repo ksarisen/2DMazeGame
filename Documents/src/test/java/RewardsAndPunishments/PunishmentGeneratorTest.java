@@ -1,6 +1,7 @@
 package RewardsAndPunishments;
 
 import MazeGame.GamePanel;
+import MazeGame.LevelGenerator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -49,7 +50,7 @@ class PunishmentGeneratorTest {
         boolean check = true;
         for(PunishmentRoadBlock e:punishmentList)
         {
-            if(!map.level.gameObjects[(int) e.getLocation().getY()][(int) e.getLocation().getX()].getClass().getSimpleName().equals("Road"))
+            if(!LevelGenerator.gameObjects[(int) e.getLocation().getY()][(int) e.getLocation().getX()].getClass().getSimpleName().equals("Road"))
             {
                 check = false;
             }

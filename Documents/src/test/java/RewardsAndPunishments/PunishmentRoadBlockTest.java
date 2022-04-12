@@ -29,11 +29,9 @@ public class PunishmentRoadBlockTest {
     @BeforeEach
     void setup()
     {
-        if(panel!=null) {
-            panel.getEnemiesList().clear();
-            panel.getPunishmentsList().clear();
-            panel.getRewardsList().clear();
-        }
+        panel.getEnemiesList().clear();
+        panel.getPunishmentsList().clear();
+        panel.getRewardsList().clear();
     }
 
     @Test
