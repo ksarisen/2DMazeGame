@@ -2,7 +2,7 @@ package Objects;
 
 import Textures.Image;
 
-import java.awt.Point;
+import java.awt.*;
 
 /**
  * Creates a {@code GameObject} that stores details of cells on the game board

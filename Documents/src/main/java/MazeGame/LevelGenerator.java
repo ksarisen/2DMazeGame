@@ -2,18 +2,16 @@ package MazeGame;
 
 import Characters.Player;
 import Objects.*;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.io.File;
 import java.io.FileReader;
-import javax.swing.JComponent;
-import java.awt.Point;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 
 /**

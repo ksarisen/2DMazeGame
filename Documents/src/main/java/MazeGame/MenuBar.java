@@ -1,11 +1,7 @@
 package MazeGame;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * Sets the bars that is being showed on during the gameplay

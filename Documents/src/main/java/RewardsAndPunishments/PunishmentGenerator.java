@@ -42,7 +42,7 @@ public class PunishmentGenerator {
     public PunishmentGenerator(GamePanel map) {
         this.map = map;
 
-        for (int i = 0; i <= maxPunishmentAmount -1; i++) {
+        for (int i = 0; i <= maxPunishmentAmount - 1; i++) {
             punishmentsList.add(generatePunishment(map));
         }
     }

@@ -35,11 +35,11 @@ public class RewardGenerator {
      * @param map a game panel where reward should be created
      */
     public RewardGenerator(GamePanel map) {
-        for (int i = 0; i <= maxRegRewardAmount -1; i++) {
+        for (int i = 0; i <= maxRegRewardAmount - 1; i++) {
             rewardsList.add(generateRegularReward(map));
         }
 
-        for (int i = 0; i <= maxBonusRewardAmount -1; i++) {
+        for (int i = 0; i <= maxBonusRewardAmount - 1; i++) {
             rewardsList.add(generateBonusReward(map));
         }
     }
@@ -65,7 +65,7 @@ public class RewardGenerator {
                 return generateRegularReward(map);
         }
         for (PunishmentRoadBlock punishment : map.getPunishmentsList()) {
-            if (regReward.getLocation().equals( punishment.getLocation()))
+            if (regReward.getLocation().equals(punishment.getLocation()))
                 return generateRegularReward(map);
         }
         if (!LevelGenerator.gameObjects[(int) regReward.getLocation().getY()][(int) regReward.getLocation().getX()].getClass().getSimpleName().equals("Road"))
@@ -88,7 +88,7 @@ public class RewardGenerator {
 
         // Checks if the generated reward's location is equal to another one's in the list, if it is, then we use recursion
         for (Reward reward : rewardsList) {
-            if (bonusReward.getLocation().equals( reward.getLocation()))
+            if (bonusReward.getLocation().equals(reward.getLocation()))
                 return generateBonusReward(map);
         }
 

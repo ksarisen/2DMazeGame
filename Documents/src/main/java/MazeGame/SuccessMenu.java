@@ -1,10 +1,9 @@
 package MazeGame;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.*;
 
 /**
  * Class to show the screen if the user wins the game

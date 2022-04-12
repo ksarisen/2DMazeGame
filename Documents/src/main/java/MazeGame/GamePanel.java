@@ -1,21 +1,18 @@
 package MazeGame;
 
-import javax.swing.JPanel;
-import java.awt.*;
-import java.util.ArrayList;
-
 import Characters.Enemy;
 import Characters.EnemyGenerator;
-
+import Characters.Player;
 import Objects.GameObject;
 import RewardsAndPunishments.PunishmentGenerator;
 import RewardsAndPunishments.PunishmentRoadBlock;
 import RewardsAndPunishments.Reward;
 import RewardsAndPunishments.RewardGenerator;
 import Textures.Image;
-import Characters.Player;
 
-import javax.swing.JFrame;
+import javax.swing.*;
+import java.awt.*;
+import java.util.ArrayList;
 
 /**
  * It creates the panel where the game is being shown to the user
@@ -24,11 +21,11 @@ import javax.swing.JFrame;
  */
 public class GamePanel extends JPanel implements Runnable {
     // Screen setting
-	final int TILE_SIZE = 50;
-	final int MAX_COLS = 24;
-	final int MAX_ROWS = 17;
-	final int SCREEN_WIDTH = TILE_SIZE * MAX_COLS;
-	final int SCREEN_HEIGHT = TILE_SIZE * MAX_ROWS;
+    final int TILE_SIZE = 50;
+    final int MAX_COLS = 24;
+    final int MAX_ROWS = 17;
+    final int SCREEN_WIDTH = TILE_SIZE * MAX_COLS;
+    final int SCREEN_HEIGHT = TILE_SIZE * MAX_ROWS;
 
     // Sets the frame rate here
     final int FPS = 30;
@@ -91,9 +88,8 @@ public class GamePanel extends JPanel implements Runnable {
         return KEYH;
     }
 
-    public void setCheck(int i)
-    {
-        this.check=i;
+    public void setCheck(int i) {
+        this.check = i;
     }
 
     /**
@@ -160,7 +156,7 @@ public class GamePanel extends JPanel implements Runnable {
 
         Point start = level.getPlayerStart();
         player.setLocation(start);
-        
+
 
         this.frame.add(menu, BorderLayout.NORTH);
         this.add(this.level, BorderLayout.CENTER);
@@ -200,7 +196,9 @@ public class GamePanel extends JPanel implements Runnable {
         return rewards;
     }
 
-    public Player getPlayer(){return player;}
+    public Player getPlayer() {
+        return player;
+    }
 
     /**
      * It updates the game after each cell the player moves.
@@ -278,6 +276,7 @@ public class GamePanel extends JPanel implements Runnable {
         level.clearQueue();
         g2.dispose();
     }
+
     public int getCheck() {
         return check;
     }
