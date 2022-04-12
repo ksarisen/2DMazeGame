@@ -26,7 +26,7 @@ public class PlayerTest {
 		gamePanel.getEnemiesList().clear();
 		gamePanel.getPunishmentsList().clear();
 		gamePanel.getRewardsList().clear();
-	player = new Player(0,"null",new Point(0,0),gamePanel,new Image("Car-East.png"));}
+	player = new Player(0,new Point(0,0),gamePanel,new Image("Car-East.png"));}
 
 	
 	@Test
@@ -43,7 +43,7 @@ public class PlayerTest {
 		//test check
 		player.setCollection(10);
 		player.setLocation(new Point(21,1));
-		assertTrue( player.check(), "fail to win the game when the requirement are satisfied");
+		assertTrue( player.checkWinTheGame(), "fail to win the game when the requirement are satisfied");
 	}
 
 	@Test
@@ -51,7 +51,7 @@ public class PlayerTest {
 		//test check
 		player.setCollection(10);
 		player.setLocation(new Point(20,1));
-		assertFalse( player.check(), "win this game when player not arrive the helicopter");
+		assertFalse( player.checkWinTheGame(), "win this game when player not arrive the helicopter");
 	}
 
 	@Test
@@ -59,7 +59,7 @@ public class PlayerTest {
 		//test check
 		player.setCollection(9);
 		player.setLocation(new Point(21,1));
-		assertFalse( player.check(), "win this game when player not arrive the helicopter and not collect all rewards");
+		assertFalse( player.checkWinTheGame(), "win this game when player not arrive the helicopter and not collect all rewards");
 	}
 
 	@Test
@@ -98,8 +98,8 @@ public class PlayerTest {
 		ArrayList<PunishmentRoadBlock> pl=new ArrayList<>();
 		PunishmentRoadBlock r1=new PunishmentRoadBlock(10,new Image("money.png"),new Point(0,0),player.getMap());
 		pl.add(r1);
-		player.punishment(pl);
-		assertEquals( 0,player.punishment(pl).size(), "fail to get punishment");
+		player.getPunishments(pl);
+		assertEquals( 0,player.getPunishments(pl).size(), "fail to get punishment");
 	}
 
 	@Test
@@ -108,8 +108,8 @@ public class PlayerTest {
 		ArrayList<PunishmentRoadBlock> pl=new ArrayList<>();
 		PunishmentRoadBlock r1=new PunishmentRoadBlock(10,new Image("money.png"),new Point(20,10),player.getMap());
 		pl.add(r1);
-		player.punishment(pl);
-		assertEquals( 1,player.punishment(pl).size(), "get wrong punishment");
+		player.getPunishments(pl);
+		assertEquals( 1,player.getPunishments(pl).size(), "get wrong punishment");
 	}
 
 	@Test

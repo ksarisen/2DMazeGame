@@ -50,7 +50,7 @@ public class GamePanel extends JPanel implements Runnable {
             "Level1.json"
     };
 
-    Player player = new Player(0, "Player 1", new Point(0, 0), this, new Image("Car-East.png"));
+    Player player = new Player(0, new Point(0, 0), this, new Image("Car-East.png"));
 
     EnemyGenerator enemyGenerator;
     ArrayList<Enemy> enemies = null;
@@ -222,7 +222,7 @@ public class GamePanel extends JPanel implements Runnable {
             } else if (KEYH.leftPressed) {
                 player.moveLeft();
             }
-            punishments = player.punishment(punishments);
+            punishments = player.getPunishments(punishments);
         }
         if (check == 20) {
             check = 0;
@@ -230,7 +230,7 @@ public class GamePanel extends JPanel implements Runnable {
                 e.chase(player);
             }
         }
-        if (player.check()) {
+        if (player.checkWinTheGame()) {
             int total_score = player.getScore() + timer.getScore();
             frame.dispose();
             gameThread = null;

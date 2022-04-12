@@ -39,7 +39,7 @@ public class GamePanelTest {
 	void testGameCompletion() {
 		panel.getPlayer().setCollection(10);
 		panel.getPlayer().setLocation(new Point(21, 1));
-		assertTrue(panel.getPlayer().check(), "Could not complete game");
+		assertTrue(panel.getPlayer().checkWinTheGame(), "Could not complete game");
 	}
 
 	@Test

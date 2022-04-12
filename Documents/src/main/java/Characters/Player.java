@@ -17,7 +17,6 @@ import Textures.Image;
  */
 public class Player extends Character {
     private int score;
-    private String name;
     private int collection;
 
     /**
@@ -26,13 +25,11 @@ public class Player extends Character {
      * @param location a point where Character is located
      * @param texture  an Image that represents the Character
      * @param map      game panel that the Character belongs
-     * @param name     a name that is given to this Player
      * @param score    this Player's score
      */
-    public Player(int score, String name,  Point location, GamePanel map, Image texture) {
+    public Player(int score,  Point location, GamePanel map, Image texture) {
         super(location, texture, map);
         this.score = score;
-        this.name = name;
         this.collection = 0;
         super.type = "Player";
     }
@@ -43,7 +40,7 @@ public class Player extends Character {
      *
      * @return true if this Player collected all the regular rewards, otherwise returns false
      */
-    public boolean check() {
+    public boolean checkWinTheGame() {
         return this.collection == 10 & Objects.equals(super.getLocation(), new Point(21, 1));
     }
 
@@ -94,7 +91,7 @@ public class Player extends Character {
      * @param pl the list where all the road blocks for punishment that have been created are kept
      * @return the new modified list for the road blocks
      */
-    public ArrayList<PunishmentRoadBlock> punishment(ArrayList<PunishmentRoadBlock> pl) {
+    public ArrayList<PunishmentRoadBlock> getPunishments(ArrayList<PunishmentRoadBlock> pl) {
         for (PunishmentRoadBlock punishment : pl) {
             if (super.getLocation().equals(punishment.getLocation())) {
                 this.score -= punishment.getValue();

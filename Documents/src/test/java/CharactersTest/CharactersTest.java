@@ -15,7 +15,7 @@ public class CharactersTest {
     JFrame frame=new JFrame();
     @Test
     void playerMoveUp_withoutBlocked() {
-        Player player = new Player(0,"null",new Point(16,3),new GamePanel(frame),new Image("Car-East.png"));
+        Player player = new Player(0,new Point(16,3),new GamePanel(frame),new Image("Car-East.png"));
         player.moveUp();
         assertEquals(new Point(16,2),player.getLocation(), "fail to move up when there is no grass blocked");
     }
@@ -27,7 +27,7 @@ public class CharactersTest {
 
     @Test
     void playerMoveDown_withBlocked_ByGrass() {
-        Player player = new Player(0,"null",new Point(3,2),new GamePanel(frame),new Image("Car-East.png"));
+        Player player = new Player(0,new Point(3,2),new GamePanel(frame),new Image("Car-East.png"));
         assertFalse(player.moveDown(), "Wrong movement when there is grass blocked down the player");
     }
     @Test
@@ -38,7 +38,7 @@ public class CharactersTest {
     }
     @Test
     void playerMoveLeft_withoutBlocked() {
-        Player player = new Player(0,"null",new Point(7,8),new GamePanel(frame),new Image("Car-East.png"));
+        Player player = new Player(0,new Point(7,8),new GamePanel(frame),new Image("Car-East.png"));
         player.moveLeft();
         assertEquals(new Point(6,8),player.getLocation(), "fail to move left when there is no grass blocked");
     }
@@ -50,7 +50,7 @@ public class CharactersTest {
 
     @Test
     void playerMoveRight_withBlocked_ByGrass() {
-        Player player = new Player(0,"null",new Point(16,9),new GamePanel(frame),new Image("Car-East.png"));
+        Player player = new Player(0,new Point(16,9),new GamePanel(frame),new Image("Car-East.png"));
         assertFalse(player.moveRight(), "Wrong movement when there is grass blocked right to the player");
     }
     @Test
