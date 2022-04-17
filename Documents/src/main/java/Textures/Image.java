@@ -3,6 +3,7 @@ package Textures;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.InputStream;
 import java.util.HashMap;
 
 
@@ -31,11 +32,10 @@ public class Image {
         } else {
             try {
                 // Gets current thread and find file path
-                ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-                File file = new File(classLoader.getResource("" + path).toURI());
-
+                ClassLoader classLoader = Thread.currentThread().getContextClassLoader();;
+                InputStream in= classLoader.getResourceAsStream(""+path);
                 // Reads the file
-                BufferedImage texture = ImageIO.read(file);
+                BufferedImage texture = ImageIO.read(in);
                 // Adds the texture to list of all textures
                 this.textures.put(path, texture);
 

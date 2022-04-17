@@ -54,6 +54,40 @@
         <artifactId>maven-site-plugin</artifactId>
         <version>3.11.0</version>
       </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<classpathPrefix>lib/</classpathPrefix>
+							<mainClass>com.mycmp.demo.Main</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>3.1.1</version>
+				<executions>
+					<execution>
+						<id>copy</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>
+								${project.build.directory}/lib
+							</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
 	         <plugin>
 	         	<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
@@ -71,6 +105,12 @@
 				<directory>src/main/java/Textures</directory>
 					<includes><include>*.png</include></includes>
 	     	</resource>
+			<resource>
+				<directory>src/main/java/Levels</directory>
+				<includes>
+					<include>*.json</include>
+				</includes>
+			</resource>
 	  	</resources>
 	 </build>
   

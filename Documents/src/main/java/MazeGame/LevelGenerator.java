@@ -8,8 +8,8 @@ import org.json.simple.parser.JSONParser;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
-import java.io.FileReader;
+import java.io.*;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -70,9 +70,15 @@ public class LevelGenerator extends JComponent {
 
         // Reads json file
         try {
-            File file = new File(levelPath);
-            FileReader fileReader = new FileReader(file.getAbsoluteFile());
-            JSONObject object = (JSONObject) parser.parse(fileReader);
+            String path = "Level1.json";
+            InputStream is = this.getClass().getClassLoader().getResourceAsStream(path);
+            BufferedReader in = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
+            StringBuffer buffer = new StringBuffer();
+            String line = "";
+            while ((line = in.readLine()) != null){
+                buffer.append(line);
+            }
+            JSONObject object = (JSONObject) parser.parse(buffer.toString());
             JSONArray layout = (JSONArray) object.get("layout");
             JSONArray first = (JSONArray) layout.get(0);
 
