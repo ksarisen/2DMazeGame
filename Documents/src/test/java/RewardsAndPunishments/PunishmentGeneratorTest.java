@@ -2,7 +2,6 @@ package RewardsAndPunishments;
 
 import MazeGame.GamePanel;
 import MazeGame.LevelGenerator;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import javax.swing.*;
@@ -15,15 +14,6 @@ class PunishmentGeneratorTest {
 
     private final JFrame frame= new JFrame();
     GamePanel map = new GamePanel(frame);
-    @BeforeEach
-    void setup()
-    {
-        if(map!=null) {
-            map.getEnemiesList().clear();
-            map.getPunishmentsList().clear();
-            map.getRewardsList().clear();
-        }
-    }
 
     @Test
     void generateAllPunishments()
