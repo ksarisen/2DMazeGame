@@ -42,6 +42,12 @@ This will compile the program to ensure it is building properly
 mvn package
 ```
 
+#### Run JAR file
+
+```bash
+java -cp Cops\ and\ Robbers.jar MazeGame/Main
+```
+
 This will package the program into a JAR file (~/target/Cops and Robbers.jar)
 
 #### Creating JavaDoc
