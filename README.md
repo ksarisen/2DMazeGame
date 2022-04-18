@@ -45,9 +45,10 @@ mvn package
 #### Run JAR file
 
 ```bash
-java -cp target/Cops\ and\ Robbers.jar MazeGame/Main
+java -cp target/Cops\ and\ Robbers.jar MazeGame/Main (Or)
+java -cp target/Cops" "and" "Robbers.jar MazeGame/Main
 ```
-
+This depends on your machine's system
 This will package the program into a JAR file (~/target/Cops and Robbers.jar)
 
 #### Creating JavaDoc
