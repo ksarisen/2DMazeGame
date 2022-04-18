@@ -45,7 +45,7 @@ mvn package
 #### Run JAR file
 
 ```bash
-java -cp Cops\ and\ Robbers.jar MazeGame/Main
+java -cp target/Cops\ and\ Robbers.jar MazeGame/Main
 ```
 
 This will package the program into a JAR file (~/target/Cops and Robbers.jar)
